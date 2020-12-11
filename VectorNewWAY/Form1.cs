@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VectorNewWAY.Mode;
 
 namespace VectorNewWAY
 {
     public partial class Form1 : Form
     {
+        IMode _mouseMode;
 
         public Form1()
         {
@@ -25,18 +27,18 @@ namespace VectorNewWAY
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-
+            _mouseMode.MouseDown(e);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-
+            _mouseMode.MouseMove(e);
         }
 
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-
+            _mouseMode.MouseUp(e);
         }
 
 
@@ -194,7 +196,7 @@ namespace VectorNewWAY
         {
             if (radioButtonPaintMode.Checked)
             {
-
+                _mouseMode = new PaintIMode();
             }
         }
 
