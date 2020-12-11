@@ -11,6 +11,7 @@ using System.Drawing.Drawing2D;//для Brush
 
 namespace VectorNewWAY.Figures
 {
+    /*
     public class Ellipse : AFigure
     {
         public Ellipse(Pen pen)
@@ -18,7 +19,7 @@ namespace VectorNewWAY.Figures
             Painter = new EllipseIPainter();
             Reaction = new NoReactionIReaction();
             Filler = new EllipseFiller();
-            started = false;
+            Started = false;
             Color = pen.Color;
             Width = (int)pen.Width;
             _anglesNumber = 0;
@@ -229,5 +230,5 @@ namespace VectorNewWAY.Figures
             return true;
         }
     }
-}
+    */
 }

@@ -418,7 +418,6 @@
             this.Name = "Form1";
             this.Text = "RastPaint";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackPenWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._anglesNumber)).EndInit();
