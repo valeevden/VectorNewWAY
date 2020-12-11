@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using VectorNewWAY.Mode;
+using VectorNewWAY.Figures;
+using VectorNewWAY.Fabrics;
 
 namespace VectorNewWAY.Mode
 {
@@ -12,6 +16,13 @@ namespace VectorNewWAY.Mode
         bool _mouseDown;
         MouseEventArgs e;
         AFigure figure;
+        IFigureFabric fabrica;
+
+        public PaintIMode(Pen p, MouseEventArgs e, AFigure figure)
+        {
+            
+        }
+
         public void MouseDown()
         {
             _mouseDown = true;
@@ -38,11 +49,11 @@ namespace VectorNewWAY.Mode
                 figure = fabrica.CreateFigure(_pen);
             }
         }
-        public void MouseMove(MouseEventArgs e)
+        public void MouseMove()
         {
 
         }
-        public void MouseUp(MouseEventArgs e)
+        public void MouseUp()
         {
 
         }

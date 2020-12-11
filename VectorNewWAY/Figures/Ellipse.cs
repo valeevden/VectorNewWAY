@@ -70,7 +70,7 @@ namespace VectorNewWAY.Figures
 
         public void Rotate(Point point)
         {
-            Rectangle rectangleForGP = MakeRectangleFromPointsList(pointsList); //Создаем ректангл из листа
+            RectangleFigure rectangleForGP = MakeRectangleFromPointsList(pointsList); //Создаем ректангл из листа
             GraphicsPath EllipseGP = new GraphicsPath(); // Создаем новый график пас
             EllipseGP.AddEllipse(rectangleForGP); // Добавляем в график пас новую область видимости
             EllipseGP.Flatten();
@@ -192,13 +192,13 @@ namespace VectorNewWAY.Figures
         }
 
         // Приватный метод, который принимает на вход массив поинтов и выплевывает ректангл
-        private Rectangle MakeRectangleFromPointsList(List<Point> point)
+        private RectangleFigure MakeRectangleFromPointsList(List<Point> point)
         {
             int x = point[0].X;
             int y = point[0].Y;
             int width = point[1].X - point[0].X;
             int height = point[1].Y - point[0].Y;
-            Rectangle rectangle = new Rectangle(x, y, width, height);
+            RectangleFigure rectangle = new RectangleFigure(x, y, width, height);
             return rectangle;
 
         }
