@@ -7,11 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VectorNewWAY.Mode;
+using VectorNewWAY.Figures;
+using VectorNewWAY.Fabrics;
 
 namespace VectorNewWAY
 {
     public partial class Form1 : Form
     {
+        IMode _mouseMode;
+        static AFigure _figure;
+        IModeFabric _mouseModeFabric;
+        Pen _pen = new Pen(Color.Red, 6);
+        Canvas canvas;
+        bool mouseDown = false;
 
         public Form1()
         {
@@ -20,23 +29,41 @@ namespace VectorNewWAY
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
+            _figure = new RectangleFigure();
+            _mouseModeFabric = new PaintIModeFabric();
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            mouseDown = true;
+            if (mouseDown)
+            {
+                _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
+                _mouseMode.MouseDown();
 
+            }
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-
+            if (mouseDown)
+            {
+                _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
+                _mouseMode.MouseMove();
+                pictureBox1.Image = canvas.DrawIt(_figure, _pen);
+            }
         }
 
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-
+            mouseDown = false;
+            if (mouseDown == false)
+            {
+                _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
+                _mouseMode.MouseUp();
+            }
         }
 
 
@@ -78,24 +105,6 @@ namespace VectorNewWAY
         {
 
         }
-
-        private void trackPenWidth_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void colorPalete_Click(object sender, EventArgs e)
-        {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                colorPalete.BackColor = colorDialog1.Color;
-
-            }
-        }
-
-
-
-
         private void Ellipse_Click(object sender, EventArgs e)
         {
 
@@ -131,10 +140,18 @@ namespace VectorNewWAY
 
         }
 
-
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        private void trackPenWidth_Scroll(object sender, EventArgs e)
         {
 
+        }
+
+        private void colorPalete_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                colorPalete.BackColor = colorDialog1.Color;
+
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -194,7 +211,7 @@ namespace VectorNewWAY
         {
             if (radioButtonPaintMode.Checked)
             {
-
+                _mouseModeFabric = new PaintIModeFabric();
             }
         }
 
