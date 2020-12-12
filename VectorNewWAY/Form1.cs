@@ -22,14 +22,14 @@ namespace VectorNewWAY
         Canvas canvas;
         bool mouseDown = false;
         IFigureFabric fabric;
+        SingletonData _data;
         int a;//чтобы мейн обогнал всех
         int B; // все пломал
 
         public Form1()
         {
             InitializeComponent();
-            SingletonObj PB = new SingletonObj
-            SingletonObj.PictureBox1 = pictureBox1;
+            _data = SingletonData.GetData();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace VectorNewWAY
             if (mouseDown)
             {
                 _figure =_mouseMode.MouseMove(_pen, e);
-                pictureBox1.Image = canvas.DrawIt(_figure, _pen);
+                pictureBox1.Image = _data.PictureBox1.Image;
             }
         }
 

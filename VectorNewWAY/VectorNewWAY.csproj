@@ -49,7 +49,7 @@
     <Compile Include="Canvas.cs" />
     <Compile Include="Fabrics\EllipseIFabric.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />
-    <Compile Include="FigureList\SingletonFigureList.cs" />
+    <Compile Include="FigureList\SingletonData.cs" />
     <Compile Include="Figures\AFigure.cs" />
     <Compile Include="Figures\EllipseFigure.cs" />
     <Compile Include="Figures\RectangleFigure.cs" />
@@ -62,6 +62,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Mode\IMode.cs" />
+    <Compile Include="Mode\MoveIMode.cs" />
     <Compile Include="Mode\PaintIMode.cs" />
     <Compile Include="Painters\IPainter.cs" />
     <Compile Include="Painters\PathIPainter.cs" />
