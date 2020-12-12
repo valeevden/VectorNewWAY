@@ -18,8 +18,7 @@ namespace VectorNewWAY.FigureList
         {
             //_figureList = new SingletonFigureList();//зачем мы это написали?? вызов конструктора в конструкторе
             FigureList = new List<AFigure> { };
-            PictureBox1 = new PictureBox();
-            Canvas = new Canvas(PictureBox1.Width, PictureBox1.Height);
+
         }
 
         public static SingletonData GetData()

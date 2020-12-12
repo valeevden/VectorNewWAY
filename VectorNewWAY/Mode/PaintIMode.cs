@@ -20,6 +20,7 @@ namespace VectorNewWAY.Mode
         Point _startPoint;
         Point _tmpPoint;
         bool _mouseMove;
+        SingletonData _singletone;
 
         public PaintIMode()
         {
@@ -28,7 +29,7 @@ namespace VectorNewWAY.Mode
 
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
-            
+            _singletone = SingletonData.GetData();
             //if (_figure.Reaction is FreeLineIRightClickReaction
             //            || _figure.Reaction is FreeFigureIRightClickReaction
             //            || _figure.Reaction is TriangleIRightClickReaction)
@@ -63,7 +64,7 @@ namespace VectorNewWAY.Mode
             //}
             _figure.Update(_startPoint, e.Location);
             _mouseMove = true; //после записи точки запись заканчивается
-
+            _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
             _figure.SecondPoint = e.Location;
 
             GC.Collect();

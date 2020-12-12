@@ -13,8 +13,9 @@ namespace VectorNewWAY.Mode
 {
     public class MoveIMode : IMode
     {
-        SingletonObj _singletone;
+        SingletonData _singletone;
         AFigure _movingFigure;
+        PointF _startPoint;
 
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
@@ -38,9 +39,13 @@ namespace VectorNewWAY.Mode
                     figure = checkFigure;
                     _movingFigure = checkFigure;
                     _singletone.FigureList.Remove(figure);
-                    Form1.pictureBox1.Image = canvas.Clear();
-                    DrawAll();
-                    startPoint = checkFigure.touchPoint;
+                    _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
+                    foreach (AFigure figureINList in _singletone.FigureList)
+                    {
+                        _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(figureINList.Color, figureINList.Width));
+                        _singletone.Canvas.Save();
+                    }
+                    _startPoint = checkFigure.TouchPoint;
                     break;
                 }
             }

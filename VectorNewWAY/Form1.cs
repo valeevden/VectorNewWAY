@@ -29,12 +29,13 @@ namespace VectorNewWAY
         public Form1()
         {
             InitializeComponent();
-            _data = SingletonData.GetData();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
+            _data = SingletonData.GetData();
+            _data.PictureBox1 = pictureBox1;
+            _data.Canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
             _figure = new EllipseFigure(_pen);
             _mouseMode = new PaintIMode();
 
@@ -62,7 +63,7 @@ namespace VectorNewWAY
               
            _figure = _mouseMode.MouseUp(_pen, e);
 
-            canvas.Save();
+            //canvas.Save();
         }
 
 
