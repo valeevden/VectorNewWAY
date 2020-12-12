@@ -69,11 +69,10 @@ namespace VectorNewWAY.Mode
 
             GC.Collect();
         }
-        public AFigure MouseUp(Pen pen, MouseEventArgs e)
+        public void MouseUp(Pen pen, MouseEventArgs e)
         {
             SingletonData _fL = SingletonData.GetData();
             _fL.FigureList.Add(_figure);
-            return _figure;
         }
     }
 }
