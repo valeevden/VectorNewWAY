@@ -64,6 +64,11 @@ namespace VectorNewWAY.Figures
 
         public override bool IsEdge(PointF eLocation)
         {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddEllipse(rectangle);
+
             Pen penGP = new Pen(Color, Width);
             if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
             {
@@ -78,6 +83,11 @@ namespace VectorNewWAY.Figures
 
         public override bool IsArea(PointF eLocation)
         {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddEllipse(rectangle);
+
             if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
             {
                 TouchPoint = eLocation;
@@ -95,8 +105,8 @@ namespace VectorNewWAY.Figures
         {
             RectangleF rectangle = MakeRectangleFromPointsList();
             
-            SizeX = SizeX + point.Y/2*rectangle.Width*0.01f;
-            SizeY = SizeY + point.Y/2* rectangle.Height * 0.01f;
+            SizeX = SizeX - point.Y/2 * rectangle.Width*0.008f;
+            SizeY = SizeY - point.Y/2* rectangle.Height * 0.008f;
         }
 
         public override void Rotate(int RotateAngle)

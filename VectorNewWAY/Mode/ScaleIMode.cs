@@ -54,7 +54,7 @@ namespace VectorNewWAY.Mode
 
         public void MouseUp(Pen pen, MouseEventArgs e)
         {
-            
+            _singletone.FigureList.Add(_scaleFigure);
         }
     }
 }
