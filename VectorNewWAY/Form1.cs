@@ -37,20 +37,16 @@ namespace VectorNewWAY
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
-            if (mouseDown)
-            {
-                _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
-                _mouseMode.MouseDown();
-
-            }
+            
+            _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
+            _mouseMode.MouseDown();
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
-                _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
-                _mouseMode.MouseMove();
+                _mouseMode.MouseMove(_pen, e);
                 pictureBox1.Image = canvas.DrawIt(_figure, _pen);
             }
         }
@@ -59,11 +55,8 @@ namespace VectorNewWAY
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-            if (mouseDown == false)
-            {
-                _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
-                _mouseMode.MouseUp();
-            }
+              
+            _mouseMode.MouseUp(_pen, e);
         }
 
 
