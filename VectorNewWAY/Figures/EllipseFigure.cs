@@ -94,11 +94,9 @@ namespace VectorNewWAY.Figures
         public override void Scale(PointF point)
         {
             RectangleF rectangle = MakeRectangleFromPointsList();
-            float deltaX = (point.X - rectangle.Y);
-            float deltaY = (point.Y - rectangle.X);
-            SizeX = rectangle.Width * deltaX;
-            SizeY = rectangle.Height * deltaY;
-            dX *= 1.02f;
+            
+            SizeX = SizeX + point.Y/2*rectangle.Width*0.01f;
+            SizeY = SizeY + point.Y/2* rectangle.Height * 0.01f;
         }
 
         public override void Rotate(int RotateAngle)
