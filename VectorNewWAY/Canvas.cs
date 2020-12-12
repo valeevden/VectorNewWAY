@@ -30,10 +30,10 @@ namespace VectorNewWAY
             _graphics = Graphics.FromImage(_tmpBitmap); //графикс рисует на временном битмапе
             figure.Painter.DrawFigure(pen, _graphics, figure.GetPath());
 
-            //if (figure.IsFilled == true)
-            //{
-            //    figure.Filler.FillFigure(pen, _graphics, figure.GetPoints());
-            //}
+            if (figure.IsFilled == true)
+            {
+                figure.Filler.FillFigure(pen, _graphics, figure.GetPath());
+            }
 
             return _tmpBitmap;
         }

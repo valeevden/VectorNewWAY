@@ -1,26 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VectorNewWAY.Fabrics;
+using System.Drawing;
+using VectorNewWAY.Mode;
 using VectorNewWAY.Figures;
 using VectorNewWAY.FigureList;
+using VectorNewWAY.Fabrics;
 
 namespace VectorNewWAY.Mode
 {
-    public class MoveIMode : IMode
+    public class FillIMode : IMode
     {
         SingletonData _singletone;
-        AFigure _movingFigure;
+        AFigure _fillFigure;
+        MouseEventArgs _e;
+        AFigure _figure;
+        Pen _pen;
         PointF _startPoint;
+        PointF _tmpPoint;
+        bool _mouseMove;
 
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
             _singletone = SingletonData.GetData();
-            _movingFigure = null;
+            _fillFigure = null;
             foreach (AFigure checkFigure in _singletone.FigureList)
             {
                 //if (checkFigure.IsPeak(e.Location))
@@ -34,9 +40,10 @@ namespace VectorNewWAY.Mode
                 //    mode = "PEAK";
                 //    break;
                 //}
-                if (checkFigure.IsEdge(e.Location) || (checkFigure.IsArea(e.Location) && checkFigure.IsFilled))
+                if (checkFigure.IsEdge(e.Location) || (checkFigure.IsArea(e.Location)))
                 {
-                    _movingFigure = checkFigure;
+                    _fillFigure = checkFigure;
+                    _fillFigure.IsFilled = true;
                     _singletone.FigureList.Remove(checkFigure);
                     _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
                     foreach (AFigure figureINList in _singletone.FigureList)
@@ -44,40 +51,31 @@ namespace VectorNewWAY.Mode
                         _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(figureINList.Color, figureINList.Width));
                         _singletone.Canvas.Save();
                     }
+                    _fillFigure.Color = p.Color;
+                    _singletone.Canvas.DrawIt(_fillFigure, p);
                     _startPoint = checkFigure.TouchPoint;
                     break;
                 }
             }
         }
 
+        
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
-            if (_movingFigure != null)
-            {
-                PointF delta = new PointF(e.X - _startPoint.X, e.Y - _startPoint.Y);
-                _startPoint = e.Location;
-
-                _movingFigure.Move(delta);
-                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_movingFigure, new Pen(_movingFigure.Color, _movingFigure.Width));
-
-                GC.Collect();
-            }
             
         }
 
+        
+
         public void MouseUp(Pen pen, MouseEventArgs e)
         {
-            if (_movingFigure != null)
+            _singletone.FigureList.Add(_fillFigure);
+            _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
+            foreach (AFigure figureINList in _singletone.FigureList)
             {
-                _singletone.FigureList.Add(_movingFigure);
-                _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
-                foreach (AFigure figureINList in _singletone.FigureList)
-                {
-                    _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(_movingFigure.Color, _movingFigure.Width));
-                }
-                    _singletone.Canvas.Save();
+                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(figureINList.Color, figureINList.Width));
             }
-
+            _singletone.Canvas.Save();
         }
     }
 }

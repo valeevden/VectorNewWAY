@@ -60,7 +60,7 @@ namespace VectorNewWAY
         {
             mouseDown = false;
               
-            _figure = _mouseMode.MouseUp(_pen, e);
+            _mouseMode.MouseUp(_pen, e);
 
             _data.Canvas.Save();
         }
@@ -245,7 +245,7 @@ namespace VectorNewWAY
         {
             if (FILL.Checked)
             {
-
+                _mouseMode = new FillIMode();
             }
         }
 
