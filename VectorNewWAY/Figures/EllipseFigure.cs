@@ -28,7 +28,7 @@ namespace VectorNewWAY.Figures
             Width = (int)pen.Width;
             AnglesNumber = 0;
             IsFilled = false;
-            
+            ScaleMatrix = new Matrix(); 
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -36,9 +36,9 @@ namespace VectorNewWAY.Figures
             Path = new GraphicsPath();
             RectangleF rectangle = MakeRectangleFromPointsList();
             Path.AddEllipse(rectangle);
-            Matrix scaleMatrix = new Matrix();
-            scaleMatrix.Scale(1.3f, 1.3f);
-            Path.Transform(scaleMatrix);
+
+            Path.Transform(ScaleMatrix);
+           // Path.Transform(RotateMatrix);
             return Path;
         }
 
@@ -91,9 +91,13 @@ namespace VectorNewWAY.Figures
 
         public override void Scale(PointF point)
         {
-            Matrix scaleMatrix = new Matrix();
-            scaleMatrix.Scale(1.3f, 1.3f);
-            Path.Transform(scaleMatrix);
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            PointF[] prgls = new PointF[]
+              { new PointF(rectangle.Location.X - rectangle.Width/2, rectangle.Location.Y - rectangle.Height/2),
+               new PointF(rectangle.Width*1.5f, rectangle.Location.Y - rectangle.Height/2),
+               new PointF(rectangle.Location.X - rectangle.Width/2, rectangle.Height*1.5f) };
+            ScaleMatrix = new Matrix(rectangle, prgls);
+
         }
 
 

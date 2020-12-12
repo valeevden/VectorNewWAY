@@ -23,7 +23,7 @@ namespace VectorNewWAY.Figures
         public PointF TmpPoint { get; set; }
         public PointF TouchPoint { get; set; }//точка касания при перемещении, вращении или заливке фигуры
         public PointF[] PointsArray { get; set; }//массив точек фигуры
-        public Matrix Matrix { get; set; }
+        public Matrix ScaleMatrix { get; set; }
         public List<PointF> PointsList { get; set; }//лист точек - та же информация что и в массиве точек
         public GraphicsPath Path { get; set; }//точки кисти
         //public IRightClickReaction Reaction { get; set; }
