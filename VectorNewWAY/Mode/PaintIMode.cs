@@ -21,14 +21,12 @@ namespace VectorNewWAY.Mode
         Point _tmpPoint;
         bool _mouseMove;
 
-        public PaintIMode(Pen p, MouseEventArgs e, AFigure figure)
+        public PaintIMode()
         {
-            _pen = p;
-            _e = e;
-            _figure = figure;
+           
         }
 
-        public void MouseDown()
+        public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
             
             //if (_figure.Reaction is FreeLineIRightClickReaction
@@ -50,11 +48,11 @@ namespace VectorNewWAY.Mode
             //}
             //else
             //{
-                _startPoint = _e.Location;
-                _figure = _figure.ReturnItself();
+                _startPoint = e.Location;
+                _figure = fabric.CreateFigure(p);
             //}
         }
-        public void MouseMove(Pen pen, MouseEventArgs e)
+        public AFigure MouseMove(Pen pen, MouseEventArgs e)
         {
             //if ((_figure.Reaction is FreeLineIRightClickReaction
             //               || _figure.Reaction is FreeFigureIRightClickReaction
@@ -63,18 +61,19 @@ namespace VectorNewWAY.Mode
             //    _figure._anglesNumber++;
             //    _figure.pointsList.Add(tmpPoint); //точка добавляется в лист в начале движения мыши
             //}
-            _figure.Update(_startPoint, _e.Location);
+            _figure.Update(_startPoint, e.Location);
             _mouseMove = true; //после записи точки запись заканчивается
 
-            _figure.secondPoint = _e.Location;
-            
+            _figure.SecondPoint = e.Location;
 
             GC.Collect();
+            return _figure;
         }
-        public void MouseUp(Pen pen, MouseEventArgs e)
+        public AFigure MouseUp(Pen pen, MouseEventArgs e)
         {
             SingletonFigureList _fL = SingletonFigureList.GetFigureList();
             _fL.FigureList.Add(_figure);
+            return _figure;
         }
     }
 }
