@@ -17,7 +17,6 @@ namespace VectorNewWAY
     {
         IMode _mouseMode;
         static AFigure _figure;
-        IModeFabric _mouseModeFabric;
         Pen _pen = new Pen(Color.Red, 6);
         Canvas canvas;
         bool mouseDown = false;
@@ -31,15 +30,14 @@ namespace VectorNewWAY
         {
             canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
             _figure = new RectangleFigure();
-            _mouseModeFabric = new PaintIModeFabric();
+            _mouseMode = new PaintIMode();
+
         }
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
-            
-            _mouseMode = _mouseModeFabric.CreateMode(_pen, e, _figure);
-            _mouseMode.MouseDown();
+            _mouseMode.MouseDown(_pen, e, _figure);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
@@ -204,7 +202,7 @@ namespace VectorNewWAY
         {
             if (radioButtonPaintMode.Checked)
             {
-                _mouseModeFabric = new PaintIModeFabric();
+                _mouseMode = new PaintIMode ();
             }
         }
 
