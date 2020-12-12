@@ -62,7 +62,7 @@ namespace VectorNewWAY.Figures
 
         }//получение точек для промежуточной прорисовки
 
-        public void Move(Point delta)
+        public virtual void Move(PointF delta)
         {
 
         }

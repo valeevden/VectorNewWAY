@@ -50,7 +50,7 @@ namespace VectorNewWAY
         {
             if (mouseDown)
             {
-                _figure =_mouseMode.MouseMove(_pen, e);
+                _mouseMode.MouseMove(_pen, e);
                 pictureBox1.Image = _data.PictureBox1.Image;
             }
         }
@@ -142,7 +142,8 @@ namespace VectorNewWAY
 
         private void trackPenWidth_Scroll(object sender, EventArgs e)
         {
-
+            _pen = new Pen(colorDialog1.Color, trackPenWidth.Value);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void colorPalete_Click(object sender, EventArgs e)
@@ -150,7 +151,8 @@ namespace VectorNewWAY
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 colorPalete.BackColor = colorDialog1.Color;
-
+                _pen = new Pen(colorDialog1.Color, trackPenWidth.Value);
+                //radioButtonPaintMode.Checked = true;
             }
         }
 

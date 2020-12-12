@@ -53,7 +53,7 @@ namespace VectorNewWAY.Mode
                 _figure = fabric.CreateFigure(p);
             //}
         }
-        public AFigure MouseMove(Pen pen, MouseEventArgs e)
+        public void MouseMove(Pen pen, MouseEventArgs e)
         {
             //if ((_figure.Reaction is FreeLineIRightClickReaction
             //               || _figure.Reaction is FreeFigureIRightClickReaction
@@ -68,7 +68,6 @@ namespace VectorNewWAY.Mode
             _figure.SecondPoint = e.Location;
 
             GC.Collect();
-            return _figure;
         }
         public AFigure MouseUp(Pen pen, MouseEventArgs e)
         {
