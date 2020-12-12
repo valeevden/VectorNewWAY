@@ -11,9 +11,9 @@ namespace VectorNewWAY.FigureList
     {
         private static SingletonFigureList _figureList;
         public List<AFigure> FigureList { get; set; }
-        private SingletonFigureList()
+        protected SingletonFigureList()
         {
-            _figureList = new SingletonFigureList();
+            //_figureList = new SingletonFigureList();//зачем мы это написали?? вызов конструктора в конструкторе
             FigureList = new List<AFigure> { };
         }
 

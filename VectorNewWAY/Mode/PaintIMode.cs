@@ -14,7 +14,6 @@ namespace VectorNewWAY.Mode
 {
     public class PaintIMode : IMode
     {
-        bool _mouseDown;
         MouseEventArgs _e;
         AFigure _figure;
         Pen _pen;
@@ -31,7 +30,7 @@ namespace VectorNewWAY.Mode
 
         public void MouseDown()
         {
-            _mouseDown = true;
+            
             //if (_figure.Reaction is FreeLineIRightClickReaction
             //            || _figure.Reaction is FreeFigureIRightClickReaction
             //            || _figure.Reaction is TriangleIRightClickReaction)
@@ -55,7 +54,7 @@ namespace VectorNewWAY.Mode
                 _figure = _figure.ReturnItself();
             //}
         }
-        public void MouseMove()
+        public void MouseMove(Pen pen, MouseEventArgs e)
         {
             //if ((_figure.Reaction is FreeLineIRightClickReaction
             //               || _figure.Reaction is FreeFigureIRightClickReaction
@@ -72,10 +71,8 @@ namespace VectorNewWAY.Mode
 
             GC.Collect();
         }
-        public void MouseUp()
+        public void MouseUp(Pen pen, MouseEventArgs e)
         {
-            _mouseDown = false;
-            _mouseMove = false;
             SingletonFigureList _fL = SingletonFigureList.GetFigureList();
             _fL.FigureList.Add(_figure);
         }
