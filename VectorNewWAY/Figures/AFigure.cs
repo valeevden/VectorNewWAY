@@ -40,12 +40,12 @@ namespace VectorNewWAY.Figures
         public bool IsFilled { get; set; }//залито/не залито
         public int MovingPeakIndex;
 
-        public virtual bool IsEdge(Point touchPoint)//метод определяет попали или не попали в грань
+        public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
         {
             return false;
         }
 
-        public virtual bool IsArea(Point touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
+        public virtual bool IsArea(PointF touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
         {
             return false;
         }

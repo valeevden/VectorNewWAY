@@ -73,9 +73,9 @@ namespace VectorNewWAY.Mode
                 _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
                 foreach (AFigure figureINList in _singletone.FigureList)
                 {
-                    _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(figureINList.Color, figureINList.Width));
-                    _singletone.Canvas.Save();
+                    _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(_movingFigure.Color, _movingFigure.Width));
                 }
+                    _singletone.Canvas.Save();
             }
 
         }

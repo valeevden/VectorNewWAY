@@ -245,7 +245,7 @@ namespace VectorNewWAY
         {
             if (FILL.Checked)
             {
-
+                _mouseMode = new FillIMode();
             }
         }
 

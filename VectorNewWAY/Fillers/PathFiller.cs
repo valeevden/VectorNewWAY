@@ -10,16 +10,7 @@ namespace VectorNewWAY.Fillers
 {
     public class PathFiller : IFiller
     {
-        GraphicsPath Path;
-        public PathFiller()
-        {
-
-        }
-        public PathFiller(GraphicsPath path)
-        {
-            Path = path;
-        }
-        public void FillFigure(Pen pen, Graphics graphics, Point[] points)
+        public void FillFigure(Pen pen, Graphics graphics, GraphicsPath Path)
         {
             graphics.FillPath(new SolidBrush(pen.Color), Path);
         }

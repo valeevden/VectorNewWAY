@@ -17,8 +17,8 @@ namespace VectorNewWAY.Mode
         MouseEventArgs _e;
         AFigure _figure;
         Pen _pen;
-        Point _startPoint;
-        Point _tmpPoint;
+        PointF _startPoint;
+        PointF _tmpPoint;
         bool _mouseMove;
         SingletonData _singletone;
 

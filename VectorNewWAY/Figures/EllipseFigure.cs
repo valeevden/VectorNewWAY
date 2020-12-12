@@ -56,7 +56,7 @@ namespace VectorNewWAY.Figures
         }
 
 
-        public override bool IsEdge(Point eLocation)
+        public override bool IsEdge(PointF eLocation)
         {
             Pen penGP = new Pen(Color, Width);
             if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
@@ -70,7 +70,7 @@ namespace VectorNewWAY.Figures
             }
         }
 
-        public override bool IsArea(Point eLocation)
+        public override bool IsArea(PointF eLocation)
         {
             if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
             {
