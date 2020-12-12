@@ -58,14 +58,7 @@ namespace VectorNewWAY.Figures
 
         public override bool IsEdge(Point eLocation)
         {
-            //RectangleF rectangleForGP = MakeRectangleFromPointsList(); //Создаем ректангл из листа
-            //GraphicsPath EllipseGP = new GraphicsPath(); // Создаем новый график пас
-            //EllipseGP.AddEllipse(MakeRectangleFromPointsList()); // Добавляем в график пас новую область видимости
-
-            //Array[] PathArray = new Array[] { EllipseGP.PathPoints };
-
             Pen penGP = new Pen(Color, Width);
-
             if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
             {
                 TouchPoint = eLocation;
@@ -75,8 +68,22 @@ namespace VectorNewWAY.Figures
             {
                 return false;
             }
+        }
 
-       }
+        public override bool IsArea(Point eLocation)
+        {
+            if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
+            {
+                TouchPoint = eLocation;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
 
         //public void Rotate(Point point)
         //{
@@ -181,68 +188,6 @@ namespace VectorNewWAY.Figures
                 PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
             }
         }
-
-        //public bool IsArea(Point eLocation)
-        //{
-        //    RectangleF rectangleForGP = MakeRectangleFromPointsList(pointsList); //Создаем ректангл из листа
-        //    GraphicsPath EllipseGP = new GraphicsPath(); // Создаем новый график пас
-        //    EllipseGP.AddEllipse(rectangleForGP); // Добавляем в график пас новую область видимости
-
-        //    Array[] PathArray = new Array[] { EllipseGP.PathPoints };
-
-        //    if (EllipseGP.IsVisible(eLocation)) // Если точка входит в область видимости 
-        //    {
-        //        touchPoint = eLocation;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-
-        //// Приватный метод, который принимает на вход массив поинтов и выплевывает ректангл
-        //private RectangleFigure MakeRectangleFromPointsList(List<Point> point)
-        //{
-        //    int x = point[0].X;
-        //    int y = point[0].Y;
-        //    int width = point[1].X - point[0].X;
-        //    int height = point[1].Y - point[0].Y;
-        //    RectangleFigure rectangle = new RectangleFigure(x, y, width, height);
-        //    return rectangle;
-
-        //}
-
-        //private List<Point> MakePointsForExtrenalRectangle(List<Point> point)
-        //{
-        //    List<Point> pointsListR = new List<Point> { new Point(), new Point(), new Point(), new Point() };
-        //    pointsListR[0] = startPoint;
-        //    pointsListR[1] = new Point(startPoint.X, secondPoint.Y);
-        //    pointsListR[2] = secondPoint;
-        //    pointsListR[3] = new Point(secondPoint.X, startPoint.Y);
-        //    return pointsListR;
-        //}
-
-        //public bool IsPeak(Point peak)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public override bool Equals(object obj)
-        //{
-        //    EllipseFigure ellipse = (EllipseFigure)obj;
-        //    if (!Color.Equals(ellipse.Color) || Width != ellipse.Width || !pointsList.Equals(ellipse.pointsList) || !pointsArray.Equals(ellipse.pointsArray)
-        //            || !_anglesNumber.Equals(ellipse._anglesNumber) || !Filler.Equals(ellipse.Filler) || !Reaction.Equals(ellipse.Reaction)
-        //            || !Painter.Equals(ellipse.Painter))
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
+       
     }
 }

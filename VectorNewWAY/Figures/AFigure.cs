@@ -45,7 +45,7 @@ namespace VectorNewWAY.Figures
             return false;
         }
 
-        public bool IsArea(Point touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
+        public virtual bool IsArea(Point touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
         {
             return false;
         }
@@ -103,6 +103,9 @@ namespace VectorNewWAY.Figures
         //    }
         //    _anglesNumber++;
         //}
-
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
