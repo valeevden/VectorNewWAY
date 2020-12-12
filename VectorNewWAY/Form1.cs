@@ -61,9 +61,9 @@ namespace VectorNewWAY
         {
             mouseDown = false;
               
-           _figure = _mouseMode.MouseUp(_pen, e);
+            _figure = _mouseMode.MouseUp(_pen, e);
 
-            //canvas.Save();
+            _data.Canvas.Save();
         }
 
 
