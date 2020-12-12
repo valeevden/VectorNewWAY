@@ -71,7 +71,7 @@ namespace VectorNewWAY.Mode
         }
         public AFigure MouseUp(Pen pen, MouseEventArgs e)
         {
-            SingletonFigureList _fL = SingletonFigureList.GetFigureList();
+            SingletonObj _fL = SingletonObj.GetFigureList();
             _fL.FigureList.Add(_figure);
             return _figure;
         }

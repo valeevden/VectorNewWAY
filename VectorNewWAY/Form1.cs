@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VectorNewWAY.Mode;
 using VectorNewWAY.Figures;
 using VectorNewWAY.Fabrics;
+using VectorNewWAY.FigureList;
 
 namespace VectorNewWAY
 {
@@ -27,6 +28,8 @@ namespace VectorNewWAY
         public Form1()
         {
             InitializeComponent();
+            SingletonObj PB = new SingletonObj
+            SingletonObj.PictureBox1 = pictureBox1;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -58,6 +61,8 @@ namespace VectorNewWAY
             mouseDown = false;
               
            _figure = _mouseMode.MouseUp(_pen, e);
+
+            canvas.Save();
         }
 
 

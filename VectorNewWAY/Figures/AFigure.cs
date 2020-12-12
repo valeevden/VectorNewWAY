@@ -49,11 +49,18 @@ namespace VectorNewWAY.Figures
         {
             return false;
         }
-        public abstract GraphicsPath GetPath(); //Получаем Path
-        //{
-        //    return Path;
-        //}
-        public abstract void Update(PointF startPoint, PointF endPoint); //получение точек для промежуточной прорисовки
+
+        public virtual GraphicsPath GetPath() //Получаем Path
+        {
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddLine(new Point(1,1), new Point(20,20));
+            return gp;
+        } 
+        
+        public virtual void Update(PointF startPoint, PointF endPoint)
+        {
+
+        }//получение точек для промежуточной прорисовки
 
         public void Move(Point delta)
         {
