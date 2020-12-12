@@ -33,7 +33,6 @@ namespace VectorNewWAY.Figures
         {
             RectangleF rectangle = MakeRectangleFromPointsList();
             Path = new GraphicsPath();
-            Path.StartFigure();
             Path.AddEllipse(rectangle);
             return Path;
         }

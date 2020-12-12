@@ -70,7 +70,7 @@ namespace VectorNewWAY.Figures
         {
 
         }
-        public void Zoom(Point point, Point eLocation)
+        public void Scale(Point point, Point eLocation)
         {
 
         }
