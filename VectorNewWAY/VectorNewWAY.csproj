@@ -48,8 +48,6 @@
   <ItemGroup>
     <Compile Include="Canvas.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />
-    <Compile Include="Fabrics\IModeFabric.cs" />
-    <Compile Include="Fabrics\PaintIModeFabric.cs" />
     <Compile Include="FigureList\SingletonFigureList.cs" />
     <Compile Include="Figures\AFigure.cs" />
     <Compile Include="Figures\Ellipse.cs" />
