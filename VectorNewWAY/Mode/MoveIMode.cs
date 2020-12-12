@@ -19,8 +19,8 @@ namespace VectorNewWAY.Mode
 
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
+            _singletone = SingletonData.GetData();
             figure = null;
-
             foreach (AFigure checkFigure in _singletone.FigureList)
             {
                 //if (checkFigure.IsPeak(e.Location))

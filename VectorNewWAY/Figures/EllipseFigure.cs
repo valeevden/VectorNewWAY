@@ -54,7 +54,7 @@ namespace VectorNewWAY.Figures
         }
 
 
-        public bool IsEdge(Point eLocation)
+        public override bool IsEdge(Point eLocation)
         {
             //RectangleF rectangleForGP = MakeRectangleFromPointsList(); //Создаем ректангл из листа
             //GraphicsPath EllipseGP = new GraphicsPath(); // Создаем новый график пас

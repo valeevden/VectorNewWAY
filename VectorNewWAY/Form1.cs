@@ -23,8 +23,7 @@ namespace VectorNewWAY
         bool mouseDown = false;
         IFigureFabric fabric;
         SingletonData _data;
-        int a;//чтобы мейн обогнал всех
-        int B; // все пломал
+       
 
         public Form1()
         {
@@ -204,7 +203,7 @@ namespace VectorNewWAY
         {
             if (radioButtonMoveMode.Checked)
             {
-
+                _mouseMode = new MoveIMode();
             }
         }
 
@@ -212,7 +211,7 @@ namespace VectorNewWAY
         {
             if (radioButtonPaintMode.Checked)
             {
-                _mouseMode = new PaintIMode ();
+                _mouseMode = new PaintIMode();
             }
         }
 
