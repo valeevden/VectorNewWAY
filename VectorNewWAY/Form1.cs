@@ -16,10 +16,11 @@ namespace VectorNewWAY
     public partial class Form1 : Form
     {
         IMode _mouseMode;
-        static AFigure _figure;
+        AFigure _figure;
         Pen _pen = new Pen(Color.Red, 6);
         Canvas canvas;
         bool mouseDown = false;
+        IFigureFabric fabric;
         int a;//чтобы мейн обогнал всех
         int B; // все пломал
 
@@ -31,7 +32,7 @@ namespace VectorNewWAY
         private void Form1_Load(object sender, EventArgs e)
         {
             canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
-            _figure = new RectangleFigure();
+            _figure = new EllipseFigure(_pen);
             _mouseMode = new PaintIMode();
 
         }
@@ -39,14 +40,14 @@ namespace VectorNewWAY
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
-            _mouseMode.MouseDown(_pen, e, _figure);
+            _mouseMode.MouseDown(_pen, e, _figure, fabric);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
-                _mouseMode.MouseMove(_pen, e);
+                _figure =_mouseMode.MouseMove(_pen, e);
                 pictureBox1.Image = canvas.DrawIt(_figure, _pen);
             }
         }
@@ -56,7 +57,7 @@ namespace VectorNewWAY
         {
             mouseDown = false;
               
-            _mouseMode.MouseUp(_pen, e);
+           _figure = _mouseMode.MouseUp(_pen, e);
         }
 
 
@@ -100,7 +101,8 @@ namespace VectorNewWAY
         }
         private void Ellipse_Click(object sender, EventArgs e)
         {
-
+            fabric = new EllipseIFabric();
+            _figure = fabric.CreateFigure(_pen);
             radioButtonPaintMode.Checked = true;
         }
 

@@ -28,7 +28,7 @@ namespace VectorNewWAY
         {
             _tmpBitmap = (Bitmap)_mainBitmap.Clone();
             _graphics = Graphics.FromImage(_tmpBitmap); //графикс рисует на временном битмапе
-            figure.Painter.DrawFigure(pen, _graphics, figure.GetPoints());
+            figure.Painter.DrawFigure(pen, _graphics, figure.GetPath());
 
             //if (figure.IsFilled == true)
             //{

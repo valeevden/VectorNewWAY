@@ -26,7 +26,7 @@ namespace VectorNewWAY.Mode
            
         }
 
-        public void MouseDown(Pen p, MouseEventArgs e, AFigure figure)
+        public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
             
             //if (_figure.Reaction is FreeLineIRightClickReaction
@@ -49,10 +49,10 @@ namespace VectorNewWAY.Mode
             //else
             //{
                 _startPoint = e.Location;
-                _figure = figure.ReturnItself();
+                _figure = fabric.CreateFigure(p);
             //}
         }
-        public void MouseMove(Pen pen, MouseEventArgs e)
+        public AFigure MouseMove(Pen pen, MouseEventArgs e)
         {
             //if ((_figure.Reaction is FreeLineIRightClickReaction
             //               || _figure.Reaction is FreeFigureIRightClickReaction
@@ -64,15 +64,16 @@ namespace VectorNewWAY.Mode
             _figure.Update(_startPoint, e.Location);
             _mouseMove = true; //после записи точки запись заканчивается
 
-            _figure.secondPoint = e.Location;
-            
+            _figure.SecondPoint = e.Location;
 
             GC.Collect();
+            return _figure;
         }
-        public void MouseUp(Pen pen, MouseEventArgs e)
+        public AFigure MouseUp(Pen pen, MouseEventArgs e)
         {
             SingletonFigureList _fL = SingletonFigureList.GetFigureList();
             _fL.FigureList.Add(_figure);
+            return _figure;
         }
     }
 }

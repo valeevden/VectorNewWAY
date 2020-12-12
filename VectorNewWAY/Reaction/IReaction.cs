@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VectorNewWAY.Painters;
 
-namespace VectorNewWAY.Figures
+namespace VectorNewWAY.Reaction
 {
-  //  public class RectangleFigure : AFigure
-   
+    public interface IReaction
+    {
+        void Do();
+    }
 }

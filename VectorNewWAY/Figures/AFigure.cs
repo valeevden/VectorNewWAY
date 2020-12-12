@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;//для Brush
 using VectorNewWAY.Painters;
+using VectorNewWAY.Fillers;
+using VectorNewWAY.Reaction;
 //using PaintForSchool.RightClickReaction;
 
 
@@ -16,19 +18,23 @@ namespace VectorNewWAY.Figures
 {
     public abstract class AFigure
     {
-        public Point startPoint { get; set; }//точка mouseDown
-        public Point secondPoint { get; set; }//точка mouseUp
-        public Point tmpPoint { get; set; }
-        public Point touchPoint { get; set; }//точка касания при перемещении, вращении или заливке фигуры
-        public Point[] pointsArray { get; set; }//массив точек фигуры
-        public List<Point> pointsList { get; set; }//лист точек - та же информация что и в массиве точек
+        public PointF StartPoint { get; set; }//точка mouseDown
+        public PointF SecondPoint { get; set; }//точка mouseUp
+        public PointF TmpPoint { get; set; }
+        public PointF TouchPoint { get; set; }//точка касания при перемещении, вращении или заливке фигуры
+        public PointF[] PointsArray { get; set; }//массив точек фигуры
+        public List<PointF> PointsList { get; set; }//лист точек - та же информация что и в массиве точек
         public GraphicsPath Path { get; set; }//точки кисти
         //public IRightClickReaction Reaction { get; set; }
         public IPainter Painter { get; set; }//пейнтер фигуры
         //public IFiller Filler { get; }//способ заливки фигуры (либо polygon либо ellipse)
         public Color Color { get; set; }//цвет фигуры
-        public int Width { get; set; }
-        public int _anglesNumber { get; set; }//количество углов
+        public IFiller Filler { get; set; }//Заливальщик фигуры
+        public IReaction Reaction { get; set; }//Реакция по "" фигуры
+        public int Width { get; set; } // Толщина pen
+        public int AnglesNumber { get; set; }//количество углов
+        public int RotateAngle { get; set; }//Угол поворота
+
         //public EdgeModifying edgeModifying { get; set; }
         public bool Started { get; set; }
         public bool IsFilled { get; set; }//залито/не залито
@@ -43,14 +49,12 @@ namespace VectorNewWAY.Figures
         {
             return false;
         }
-        public Point[] GetPoints()//перевод точек из листа в методы Grphics-а
-        {
-            return new Point[] {new Point(100,100), new Point(0,0) };
-        }
-        public void Update(Point startPoint, Point endPoint)//получение точек для промежуточной прорисовки
-        {
+        public abstract GraphicsPath GetPath(); //Получаем Path
+        //{
+        //    return Path;
+        //}
+        public abstract void Update(PointF startPoint, PointF endPoint); //получение точек для промежуточной прорисовки
 
-        }
         public void Move(Point delta)
         {
 
@@ -93,6 +97,5 @@ namespace VectorNewWAY.Figures
         //    _anglesNumber++;
         //}
 
-        public abstract AFigure ReturnItself();
     }
 }

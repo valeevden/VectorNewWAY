@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VectorNewWAY.Painters
 {
-    public class PolygonIPainter : IPainter
+    public class PolygonIPainter //: IPainter
     {
         public void DrawFigure(Pen pen, Graphics graphics, Point[] points)
         {
