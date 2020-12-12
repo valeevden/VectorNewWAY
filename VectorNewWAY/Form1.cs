@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +21,7 @@ namespace VectorNewWAY
         Pen _pen = new Pen(Color.Red, 6);
         Canvas canvas;
         bool mouseDown = false;
+        int a;//чтобы мейн обогнал всех
 
         public Form1()
         {
