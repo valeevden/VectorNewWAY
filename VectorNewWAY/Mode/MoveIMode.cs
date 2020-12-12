@@ -19,8 +19,8 @@ namespace VectorNewWAY.Mode
 
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
-            figure = null;
-
+            _singletone = SingletonData.GetData();
+            _movingFigure = null;
             foreach (AFigure checkFigure in _singletone.FigureList)
             {
                 //if (checkFigure.IsPeak(e.Location))
@@ -36,9 +36,8 @@ namespace VectorNewWAY.Mode
                 //}
                 if (checkFigure.IsEdge(e.Location) || (checkFigure.IsArea(e.Location) && checkFigure.IsFilled))
                 {
-                    figure = checkFigure;
                     _movingFigure = checkFigure;
-                    _singletone.FigureList.Remove(figure);
+                    _singletone.FigureList.Remove(checkFigure);
                     _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
                     foreach (AFigure figureINList in _singletone.FigureList)
                     {
@@ -51,9 +50,19 @@ namespace VectorNewWAY.Mode
             }
         }
 
-        public AFigure MouseMove(Pen pen, MouseEventArgs e)
+        public void MouseMove(Pen pen, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            if (_movingFigure != null)
+            {
+                PointF delta = new PointF(e.X - _startPoint.X, e.Y - _startPoint.Y);
+                _startPoint = e.Location;
+
+                _movingFigure.Move(delta);
+                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_movingFigure, new Pen(_movingFigure.Color, _movingFigure.Width));
+
+                GC.Collect();
+            }
+            
         }
 
         public AFigure MouseUp(Pen pen, MouseEventArgs e)

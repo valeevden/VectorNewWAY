@@ -23,8 +23,7 @@ namespace VectorNewWAY
         bool mouseDown = false;
         IFigureFabric fabric;
         SingletonData _data;
-        int a;//чтобы мейн обогнал всех
-        int B; // все пломал
+       
 
         public Form1()
         {
@@ -51,7 +50,7 @@ namespace VectorNewWAY
         {
             if (mouseDown)
             {
-                _figure =_mouseMode.MouseMove(_pen, e);
+                _mouseMode.MouseMove(_pen, e);
                 pictureBox1.Image = _data.PictureBox1.Image;
             }
         }
@@ -143,7 +142,8 @@ namespace VectorNewWAY
 
         private void trackPenWidth_Scroll(object sender, EventArgs e)
         {
-
+            _pen = new Pen(colorDialog1.Color, trackPenWidth.Value);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void colorPalete_Click(object sender, EventArgs e)
@@ -151,7 +151,8 @@ namespace VectorNewWAY
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 colorPalete.BackColor = colorDialog1.Color;
-
+                _pen = new Pen(colorDialog1.Color, trackPenWidth.Value);
+                //radioButtonPaintMode.Checked = true;
             }
         }
 
@@ -204,7 +205,7 @@ namespace VectorNewWAY
         {
             if (radioButtonMoveMode.Checked)
             {
-
+                _mouseMode = new MoveIMode();
             }
         }
 
@@ -212,7 +213,7 @@ namespace VectorNewWAY
         {
             if (radioButtonPaintMode.Checked)
             {
-                _mouseMode = new PaintIMode ();
+                _mouseMode = new PaintIMode();
             }
         }
 

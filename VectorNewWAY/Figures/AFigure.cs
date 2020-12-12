@@ -40,12 +40,12 @@ namespace VectorNewWAY.Figures
         public bool IsFilled { get; set; }//залито/не залито
         public int MovingPeakIndex;
 
-        public bool IsEdge(Point touchPoint)//метод определяет попали или не попали в грань
+        public virtual bool IsEdge(Point touchPoint)//метод определяет попали или не попали в грань
         {
             return false;
         }
 
-        public bool IsArea(Point touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
+        public virtual bool IsArea(Point touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
         {
             return false;
         }
@@ -62,7 +62,7 @@ namespace VectorNewWAY.Figures
 
         }//получение точек для промежуточной прорисовки
 
-        public void Move(Point delta)
+        public virtual void Move(PointF delta)
         {
 
         }
@@ -103,6 +103,9 @@ namespace VectorNewWAY.Figures
         //    }
         //    _anglesNumber++;
         //}
-
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

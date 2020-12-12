@@ -13,7 +13,7 @@ namespace VectorNewWAY.Mode
     public interface IMode
     {
         void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric);
-        AFigure MouseMove(Pen pen, MouseEventArgs e);
+        void MouseMove(Pen pen, MouseEventArgs e);
         AFigure MouseUp(Pen pen, MouseEventArgs e);
     }
 }
