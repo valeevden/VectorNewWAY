@@ -451,7 +451,7 @@
         private System.Windows.Forms.RadioButton radioButtonPaintMode;
         private System.Windows.Forms.RadioButton radioButtonMoveMode;
         private System.Windows.Forms.RadioButton radioButtonRotate;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RadioButton radioButtonZoom;
         private System.Windows.Forms.RadioButton radioButtonPeak;
         private System.Windows.Forms.RadioButton FILL;

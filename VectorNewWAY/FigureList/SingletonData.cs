@@ -4,26 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VectorNewWAY.Figures;
+using System.Windows.Forms;
 
 namespace VectorNewWAY.FigureList
 {
-    class SingletonFigureList
+    class SingletonData
     {
-        private static SingletonFigureList _figureList;
+        private static SingletonData _data;
+        public PictureBox PictureBox1 { get; set; }
+        public Canvas Canvas { get; set; }
         public List<AFigure> FigureList { get; set; }
-        protected SingletonFigureList()
+        protected SingletonData()
         {
             //_figureList = new SingletonFigureList();//зачем мы это написали?? вызов конструктора в конструкторе
             FigureList = new List<AFigure> { };
+
         }
 
-        public static SingletonFigureList GetFigureList()
+        public static SingletonData GetData()
         {
-            if (_figureList == null)
+            if (_data == null)
             {
-                _figureList = new SingletonFigureList();
+                _data = new SingletonData();
             }
-            return _figureList;
+            return _data;
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VectorNewWAY.Mode;
 using VectorNewWAY.Figures;
 using VectorNewWAY.Fabrics;
+using VectorNewWAY.FigureList;
 
 namespace VectorNewWAY
 {
@@ -21,6 +22,7 @@ namespace VectorNewWAY
         Canvas canvas;
         bool mouseDown = false;
         IFigureFabric fabric;
+        SingletonData _data;
         int a;//чтобы мейн обогнал всех
         int B; // все пломал
 
@@ -31,7 +33,9 @@ namespace VectorNewWAY
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
+            _data = SingletonData.GetData();
+            _data.PictureBox1 = pictureBox1;
+            _data.Canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
             _figure = new EllipseFigure(_pen);
             _mouseMode = new PaintIMode();
 
@@ -48,7 +52,7 @@ namespace VectorNewWAY
             if (mouseDown)
             {
                 _figure =_mouseMode.MouseMove(_pen, e);
-                pictureBox1.Image = canvas.DrawIt(_figure, _pen);
+                pictureBox1.Image = _data.PictureBox1.Image;
             }
         }
 
@@ -57,7 +61,9 @@ namespace VectorNewWAY
         {
             mouseDown = false;
               
-           _figure = _mouseMode.MouseUp(_pen, e);
+            _figure = _mouseMode.MouseUp(_pen, e);
+
+            _data.Canvas.Save();
         }
 
 
