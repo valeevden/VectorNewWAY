@@ -37,6 +37,9 @@ namespace VectorNewWAY.Figures
         public int RotateAngle { get; set; }//Угол поворота
         public float ScaleMultiplier { get; set; }//Угол поворота
 
+        public float SizeX { get; set; } // Размер мастшаба по Х 
+        public float SizeY { get; set; } // Размер мастшаба по Y
+
         //public EdgeModifying edgeModifying { get; set; }
         public bool Started { get; set; }
         public bool IsFilled { get; set; }//залито/не залито
@@ -68,7 +71,7 @@ namespace VectorNewWAY.Figures
         {
 
         }
-        public void Rotate(Point point)
+        public virtual void Rotate(int RotateAngle)
         {
 
         }

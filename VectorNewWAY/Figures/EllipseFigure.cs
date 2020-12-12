@@ -17,7 +17,7 @@ namespace VectorNewWAY.Figures
 
     public class EllipseFigure : AFigure
     {
-
+        float dX = 1;
         public EllipseFigure(Pen pen)
         {
             Painter = new PathIPainter();
@@ -28,17 +28,21 @@ namespace VectorNewWAY.Figures
             Width = (int)pen.Width;
             AnglesNumber = 0;
             IsFilled = false;
-            ScaleMatrix = new Matrix(); 
+            ScaleMatrix = new Matrix();
+            SizeX = 0;
+            SizeY = 0;
         }
 
         public override GraphicsPath GetPath() //Получаем Path
         {
             Path = new GraphicsPath();
             RectangleF rectangle = MakeRectangleFromPointsList();
+          
+            rectangle.Inflate(SizeX, SizeY);
             Path.AddEllipse(rectangle);
 
-            Path.Transform(ScaleMatrix);
-           // Path.Transform(RotateMatrix);
+            //Path.Transform(ScaleMatrix);
+            // Path.Transform(RotateMatrix);
             return Path;
         }
 
@@ -47,8 +51,6 @@ namespace VectorNewWAY.Figures
             PointsList = new List<PointF>();
             PointsList.Add(startP);
             PointsList.Add(endP);
-            
-           
         }
 
         private RectangleF MakeRectangleFromPointsList()
@@ -92,6 +94,17 @@ namespace VectorNewWAY.Figures
         public override void Scale(PointF point)
         {
             RectangleF rectangle = MakeRectangleFromPointsList();
+            float deltaX = (point.X - rectangle.Y);
+            float deltaY = (point.Y - rectangle.X);
+            SizeX = rectangle.Width * deltaX;
+            SizeY = rectangle.Height * deltaY;
+            dX *= 1.02f;
+        }
+
+        public override void Rotate(int RotateAngle)
+        {
+            PointF center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            RectangleF rectangle = MakeRectangleFromPointsList();
             PointF[] prgls = new PointF[]
               { new PointF(rectangle.Location.X - rectangle.Width/2, rectangle.Location.Y - rectangle.Height/2),
                new PointF(rectangle.Width*1.5f, rectangle.Location.Y - rectangle.Height/2),
@@ -99,83 +112,6 @@ namespace VectorNewWAY.Figures
             ScaleMatrix = new Matrix(rectangle, prgls);
 
         }
-
-
-
-        //    double delta;
-        //    if (point.Y < 0)
-        //    {
-        //        delta = 0.017;//если вверх, то поворачиваем на один градус влево каждый MouseMove
-        //    }
-        //    else
-        //    {
-        //        delta = -0.017;//если вниз, то поворачиваем на один градус влево каждый MouseMove
-        //    }
-
-            //    delta *= 1.5;//регулировка скорость вращения
-
-            //    List<Point> pointListR = MakePointsForExtrenalRectangle(pointsList);
-
-            //    float[] startAngle = new float[2];
-            //    Point center = pointsArray[0];
-
-            //    for (int i = 0; i < 2; i++)
-            //    {
-            //        float radius = (float)Math.Sqrt(Math.Pow(pointsArray[i].X - center.X, 2) + Math.Pow(pointsArray[i].Y - center.Y, 2));
-
-            //        //только поняв в какой четверти находит противолежщий катет можно
-            //        //правильно интерпретировать результат, т. к. например арксинусы для
-            //        //углов 10, 170, 190 и 350 градусов будет одинаковыми
-            //        if (pointsArray[i].Y < center.Y)
-            //        {
-            //            if (pointsArray[i].X < center.X)
-            //            {
-            //                startAngle[i] = (float)Math.PI - (float)Math.Asin((Math.Abs(pointsArray[i].Y - center.Y)) / radius);
-            //            }
-            //            else
-            //            {
-            //                startAngle[i] = (float)Math.Asin((Math.Abs(pointsArray[i].Y - center.Y)) / radius);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            if (pointsArray[i].X < center.X)
-            //            {
-            //                startAngle[i] = (float)Math.PI + (float)Math.Asin((Math.Abs(pointsArray[i].Y - center.Y)) / radius);
-            //            }
-            //            else
-            //            {
-            //                startAngle[i] = (float)Math.PI * 2 - (float)Math.Asin((Math.Abs(pointsArray[i].Y - center.Y)) / radius);
-            //            }
-            //        }
-            //    }
-
-            //    //поворот точек на delta радиан Против часовой
-            //    for (int i = 0; i < 2; i++)
-            //    {
-            //        //может не надо радиус заново искать?
-            //        float radius = (float)Math.Sqrt(Math.Pow(pointsArray[i].X - center.X, 2) + Math.Pow(pointsArray[i].Y - center.Y, 2));
-
-            //        float rotatedX = center.X + radius * (float)Math.Cos(startAngle[i] + delta);
-
-            //        float rotatedY = center.Y + radius * (-1 * ((float)Math.Sin(startAngle[i] + delta)));//-1*Sin для инверсии Y
-
-            //        pointListR[i] = new Point((int)Math.Round(rotatedX, 0), (int)Math.Round(rotatedY, 0));
-            //        pointsList[i] = new Point(pointListR[i].X, pointListR[i].Y);
-            //    }
-
-            //    //pointsList[0] = spointListR[1];
-            //    //pointsList[1] = pointListR[1];
-
-            //    ////return;
-
-            //}
-
-            //public void Zoom(Point point, Point eLocation)
-            //{
-            //    startPoint = this.pointsList[1];
-            //    this.Update(pointsList[1], eLocation);
-            //}
 
 
         public override void Move(PointF delta)
