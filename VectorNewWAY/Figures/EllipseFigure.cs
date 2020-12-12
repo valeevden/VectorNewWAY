@@ -18,6 +18,7 @@ namespace VectorNewWAY.Figures
     public class EllipseFigure : AFigure
     {
         float dX = 1;
+
         public EllipseFigure(Pen pen)
         {
             Painter = new PathIPainter();
@@ -29,6 +30,7 @@ namespace VectorNewWAY.Figures
             AnglesNumber = 0;
             IsFilled = false;
             ScaleMatrix = new Matrix();
+            RotateMatrix = new Matrix();
             SizeX = 0;
             SizeY = 0;
         }
@@ -40,9 +42,9 @@ namespace VectorNewWAY.Figures
           
             rectangle.Inflate(SizeX, SizeY);
             Path.AddEllipse(rectangle);
-
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             //Path.Transform(ScaleMatrix);
-            // Path.Transform(RotateMatrix);
+            Path.Transform(RotateMatrix);
             return Path;
         }
 
@@ -64,6 +66,12 @@ namespace VectorNewWAY.Figures
 
         public override bool IsEdge(PointF eLocation)
         {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddEllipse(rectangle);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.Transform(RotateMatrix);
             Pen penGP = new Pen(Color, Width);
             if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
             {
@@ -74,10 +82,17 @@ namespace VectorNewWAY.Figures
             {
                 return false;
             }
+
         }
 
         public override bool IsArea(PointF eLocation)
         {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddEllipse(rectangle);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.Transform(RotateMatrix);
             if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
             {
                 TouchPoint = eLocation;
@@ -93,24 +108,19 @@ namespace VectorNewWAY.Figures
 
         public override void Scale(PointF point)
         {
+
             RectangleF rectangle = MakeRectangleFromPointsList();
-            float deltaX = (point.X - rectangle.Y);
-            float deltaY = (point.Y - rectangle.X);
-            SizeX = rectangle.Width * deltaX;
-            SizeY = rectangle.Height * deltaY;
-            dX *= 1.02f;
+
+            SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
+            SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
 
-        public override void Rotate(int RotateAngle)
+        public override void Rotate(float rotateAngle)
         {
-            PointF center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            RectangleF rectangle = MakeRectangleFromPointsList();
-            PointF[] prgls = new PointF[]
-              { new PointF(rectangle.Location.X - rectangle.Width/2, rectangle.Location.Y - rectangle.Height/2),
-               new PointF(rectangle.Width*1.5f, rectangle.Location.Y - rectangle.Height/2),
-               new PointF(rectangle.Location.X - rectangle.Width/2, rectangle.Height*1.5f) };
-            ScaleMatrix = new Matrix(rectangle, prgls);
 
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            RotateMatrix.RotateAt((RotateAngle = RotateAngle + rotateAngle), Center);
+            Path.Transform(RotateMatrix);
         }
 
 

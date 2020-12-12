@@ -24,6 +24,7 @@ namespace VectorNewWAY.Figures
         public PointF TouchPoint { get; set; }//точка касания при перемещении, вращении или заливке фигуры
         public PointF[] PointsArray { get; set; }//массив точек фигуры
         public Matrix ScaleMatrix { get; set; }
+        public Matrix RotateMatrix { get; set; }
         public List<PointF> PointsList { get; set; }//лист точек - та же информация что и в массиве точек
         public GraphicsPath Path { get; set; }//точки кисти
         //public IRightClickReaction Reaction { get; set; }
@@ -34,9 +35,9 @@ namespace VectorNewWAY.Figures
         public IReaction Reaction { get; set; }//Реакция по "" фигуры
         public int Width { get; set; } // Толщина pen
         public int AnglesNumber { get; set; }//количество углов
-        public int RotateAngle { get; set; }//Угол поворота
+        public float RotateAngle { get; set; }//Угол поворота
         public float ScaleMultiplier { get; set; }//Угол поворота
-
+        public PointF Center { get; set; }
         public float SizeX { get; set; } // Размер мастшаба по Х 
         public float SizeY { get; set; } // Размер мастшаба по Y
 
@@ -71,7 +72,7 @@ namespace VectorNewWAY.Figures
         {
 
         }
-        public virtual void Rotate(int RotateAngle)
+        public virtual void Rotate(float RotateAngle)
         {
 
         }

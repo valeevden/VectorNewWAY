@@ -221,7 +221,7 @@ namespace VectorNewWAY
         {
             if (radioButtonRotate.Checked)
             {
-
+                _mouseMode = new RotateIMode();
             }
         }
 

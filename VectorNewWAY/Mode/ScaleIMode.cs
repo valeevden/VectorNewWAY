@@ -54,7 +54,16 @@ namespace VectorNewWAY.Mode
 
         public void MouseUp(Pen pen, MouseEventArgs e)
         {
-            
+            if (_scaleFigure != null)
+            {
+                _singletone.FigureList.Add(_scaleFigure);
+                _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
+                foreach (AFigure figureINList in _singletone.FigureList)
+                {
+                    _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(_scaleFigure.Color, _scaleFigure.Width));
+                }
+                _singletone.Canvas.Save();
+            }
         }
     }
 }
