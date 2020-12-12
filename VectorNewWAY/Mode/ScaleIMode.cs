@@ -40,12 +40,21 @@ namespace VectorNewWAY.Mode
 
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            if (_scaleFigure != null)
+            {
+                PointF delta = new PointF(e.X - _startPoint.X, e.Y - _startPoint.Y);
+                _startPoint = e.Location;
+
+                _scaleFigure.Scale(delta);
+                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_scaleFigure, new Pen(_scaleFigure.Color, _scaleFigure.Width));
+
+                GC.Collect();
+            }
         }
 
         public void MouseUp(Pen pen, MouseEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
