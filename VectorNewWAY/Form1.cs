@@ -21,6 +21,7 @@ namespace VectorNewWAY
         Canvas canvas;
         bool mouseDown = false;
         int a;//чтобы мейн обогнал всех
+        int B; // все пломал
 
         public Form1()
         {
