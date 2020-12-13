@@ -14,6 +14,7 @@ namespace VectorNewWAYTest
     public class FigureTest
     {
         RectangleFigure rectangleFigure;
+        
 
         [SetUp]
         public void Setup()

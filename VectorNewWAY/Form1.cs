@@ -84,7 +84,9 @@ namespace VectorNewWAY
 
         private void Square_Click(object sender, EventArgs e)
         {
-
+            fabric = new SquareIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
         private void Circle_Click(object sender, EventArgs e)
         {
