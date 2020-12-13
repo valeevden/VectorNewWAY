@@ -18,7 +18,6 @@ namespace VectorNewWAY.Figures
 {
     public abstract class AFigure 
     {
-        
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
         public PointF TmpPoint { get; set; }
@@ -52,6 +51,12 @@ namespace VectorNewWAY.Figures
             SizeY = 0;
             Started = false;
             IsFilled = false;
+            RotateMatrix = new Matrix();
+            Center = new PointF(0, 0);
+        }
+        public virtual PointF SetCenter()
+        {
+            return Center;
         }
 
         public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
@@ -102,8 +107,10 @@ namespace VectorNewWAY.Figures
         }
         public virtual void Rotate(float RotateAngle)
         {
-
+            RotateMatrix.RotateAt(RotateAngle, Center);
+            Path.Transform(RotateMatrix);
         }
+
         public virtual void Scale(PointF point)
         {
            
