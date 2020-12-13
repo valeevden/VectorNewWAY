@@ -46,7 +46,7 @@ namespace VectorNewWAY.Mode
                 
                 _startPoint = e.Location;
 
-                _rotateFigure.Rotate(delta.Y/18);
+                _rotateFigure.Rotate(delta.Y/5);
 
                 _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_rotateFigure, new Pen(_rotateFigure.Color, _rotateFigure.Width));
                 // pictureBox1.Image = canvas.DrawIt(movingFigure, new Pen(movingFigure.Color, movingFigure.Width));

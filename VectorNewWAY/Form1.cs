@@ -86,8 +86,9 @@ namespace VectorNewWAY
         }
         private void Circle_Click(object sender, EventArgs e)
         {
-
-
+            fabric = new CircleIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void Line2D_Click(object sender, EventArgs e)

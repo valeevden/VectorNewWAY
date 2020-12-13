@@ -17,7 +17,6 @@ namespace VectorNewWAY.Figures
 
     public class EllipseFigure : AFigure
     {
-        float dX = 1;
 
         public EllipseFigure(Pen pen)
         {
@@ -122,7 +121,7 @@ namespace VectorNewWAY.Figures
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.AddEllipse(rectangle);
 
-            RotateMatrix.RotateAt((RotateAngle = RotateAngle + rotateAngle), Center);
+            RotateMatrix.RotateAt(rotateAngle, Center);
             Path.Transform(RotateMatrix);
         }
 
