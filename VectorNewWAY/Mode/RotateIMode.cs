@@ -55,7 +55,7 @@ namespace VectorNewWAY.Mode
             }
         }
 
-        public void MouseUp(Pen pen, MouseEventArgs e)
+        public void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
             if (_rotateFigure != null)
             {
