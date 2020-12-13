@@ -24,6 +24,8 @@ namespace VectorNewWAY.Figures
             AnglesNumber = 0;
             RotateMatrix = new Matrix();
             
+            SizeX = 0;
+            SizeY = 0;
         }
 
         public override void Update(PointF startP, PointF endP)
@@ -34,47 +36,78 @@ namespace VectorNewWAY.Figures
         }
 
         private RectangleF MakeRectangleFromPointsList()
-        { 
+        {
+            float a = Math.Abs(PointsList [0].X - PointsList[1].X);
 
-            float width = PointsList[1].X - PointsList[0].X;
-            float height = width;
-            RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
+            if (PointsList[0].Y > PointsList[1].Y)
+            {
+                a = -a;
+            }
+
+            PointF[] points = new PointF[4];
+            points[0] = PointsList[0];
+            points[1] = new PointF(PointsList[0].X, PointsList[0].Y + a);
+            points[2] = new PointF(PointsList[1].X, PointsList[0].Y + a);
+            points[3] = new PointF(PointsList[1].X, PointsList[0].Y);
+            float width = points [2].X - points[0].X;
+            float height = points[2].Y - points[0].Y;
+            RectangleF rectangle = new RectangleF(points[0].X, points[0].Y, width, height);
             return rectangle;
         }
 
-        
-        //public override bool IsArea(PointF eLocation)
-        //{
-        //    Path = new GraphicsPath();
-        //    RectangleF rectangle = MakeRectangleFromPointsList();
-        //    rectangle.Inflate(SizeX, SizeY);
-        //    Path.AddRectangle(rectangle);
-        //    Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-        //    Path.Transform(RotateMatrix);
-        //    if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
-        //    {
-        //        TouchPoint = eLocation;
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-        //public override void Move(PointF delta)
-        //{
-        //    for (int i = 0; i < PointsList.Count; i++)
-        //    {
-        //        PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
-        //    }
-        //    Path = new GraphicsPath();
-        //    RectangleF rectangle = MakeRectangleFromPointsList();
-        //    rectangle.Inflate(SizeX, SizeY);
-        //    Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-        //    Path.AddRectangle(rectangle);
-        //    Path.Transform(RotateMatrix);
 
-        //}
+        public override bool IsArea(PointF eLocation)
+        {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddRectangle(rectangle);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.Transform(RotateMatrix);
+            if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
+            {
+                TouchPoint = eLocation;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public override bool IsEdge(PointF eLocation)
+        {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddRectangle(rectangle);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.Transform(RotateMatrix);
+            Pen penGP = new Pen(Color, Width);
+            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
+            {
+                TouchPoint = eLocation;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        public override void Move(PointF delta)
+        {
+            for (int i = 0; i < PointsList.Count; i++)
+            {
+                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
+            }
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.AddRectangle(rectangle);
+            Path.Transform(RotateMatrix);
+
+        }
 
         public override void Rotate(float rotateAngle)
         {
