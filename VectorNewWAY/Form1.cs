@@ -261,7 +261,7 @@ namespace VectorNewWAY
         {
             if (radioButtonPeak.Checked)
             {
-                _mouseMode = new PeakIMode();
+               
             }
         }
         private void FILL_CheckedChanged(object sender, EventArgs e)

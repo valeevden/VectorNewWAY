@@ -63,51 +63,21 @@ namespace VectorNewWAY.Figures
 
         public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
         {
-            bool result;
+           
 
             Pen penGP = new Pen(Color, Width);
 
             if (Path.IsOutlineVisible(touchPoint, penGP)) // Если точка входит в область видимости 
             {
                 TouchPoint = touchPoint;
-                result = true;
+                return  true;
             }
             else
             {
-                result = false;
+                return false;
             }
 
-            int edgeCounter = 0;
-            PointF p1 = PointsList[AnglesNumber-1];
-            PointF p2;
-            int accuracy = 10;
-
-            foreach (PointF pi in PointsList)
-            {
-                edgeCounter++;
-                p2 = pi;
-                if (Math.Abs((touchPoint.X - p1.X) * (p2.Y - p1.Y) - (touchPoint.Y - p1.Y) * (p2.X - p1.X))
-                    <= Math.Abs(25 * ((p2.Y - p1.Y) + (p2.X - p1.X))))
-                {
-                    if ((Math.Abs(p1.X - p2.X) + accuracy >= Math.Abs(p1.X - touchPoint.X)) && ((Math.Abs(p1.X - p2.X) + accuracy >= Math.Abs(p2.X - touchPoint.X)))
-                        &&
-                        ((Math.Abs(p1.Y - p2.Y) + accuracy >= Math.Abs(p1.Y - touchPoint.Y)) && ((Math.Abs(p1.Y - p2.Y) + accuracy >= Math.Abs(p2.Y - touchPoint.Y)))))
-                    {
-
-
-                        //запоминание координат и номера грани для AddPeak или MoveEdge, точки записываются по часовй стрелке
-                        Edge.p1 = p1;
-                        Edge.p2 = p2;
-                        Edge.EdgeNumber = edgeCounter;
-                        //запомнили
-
-                        this.TouchPoint = touchPoint;
-                        break;
-                    }
-                }
-                p1 = p2;
-            }
-            return result;
+            
 
         }
 
