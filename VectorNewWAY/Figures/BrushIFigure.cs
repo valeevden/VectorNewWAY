@@ -59,5 +59,13 @@ namespace VectorNewWAY.Figures
             RotateMatrix.RotateAt(rotateAngle, Center);
             Path.Transform(RotateMatrix);
         }
+
+
+
+
+
+
     }
+
+    
 }
