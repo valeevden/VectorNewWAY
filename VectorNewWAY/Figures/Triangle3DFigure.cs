@@ -23,6 +23,7 @@ namespace VectorNewWAY.Figures
             Reaction = new Triangle3DIRightClickReaction(this);
             PointsList = new List<PointF> { new PointF(0, 0) };
             Painter = new PathIPainter();
+            Filler = new PathFiller();
             Started = false;
             AnglesNumber = 1;
             IsFilled = false;
