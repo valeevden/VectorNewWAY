@@ -65,6 +65,7 @@
     <Compile Include="Figures\RectangleMaker.cs" />
     <Compile Include="Figures\RectTriangleIFigure.cs" />
     <Compile Include="Figures\Triangle3DFigure.cs" />
+    <Compile Include="Mode\ColorPickIMode.cs" />
     <Compile Include="Mode\RotateIMode.cs" />
     <Compile Include="Reaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="Reaction\FreeLineIRightClickReaction.cs" />

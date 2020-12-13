@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VectorNewWAY.Figures;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace VectorNewWAY.FigureList
 {
@@ -14,6 +15,7 @@ namespace VectorNewWAY.FigureList
         public PictureBox PictureBox1 { get; set; }
         public Canvas Canvas { get; set; }
         public List<AFigure> FigureList { get; set; }
+        public Color PickedColor { get; set; }
         protected SingletonData()
         {
             //_figureList = new SingletonFigureList();//зачем мы это написали?? вызов конструктора в конструкторе

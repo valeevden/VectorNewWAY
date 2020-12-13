@@ -19,7 +19,6 @@ namespace VectorNewWAY
         IMode _mouseMode;
         AFigure _figure;
         Pen _pen = new Pen(Color.Red, 6);
-        Canvas canvas;
         bool mouseDown = false;
         IFigureFabric fabric;
         SingletonData _data;
@@ -46,7 +45,6 @@ namespace VectorNewWAY
             if (e.Button != MouseButtons.Right)
             {
                 _mouseMode.MouseDown(_pen, e, _figure, fabric);
-
             }
         }
 
@@ -63,9 +61,7 @@ namespace VectorNewWAY
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-              
             _mouseMode.MouseUp(_pen, e, fabric);
-
             _data.Canvas.Save();
         }
 
@@ -77,6 +73,7 @@ namespace VectorNewWAY
 
         private void Brush_Click(object sender, EventArgs e)
         {
+
         }
 
         private void Rectangle_2d_Click(object sender, EventArgs e)
@@ -273,7 +270,7 @@ namespace VectorNewWAY
 
         private void colorPicker_CheckedChanged(object sender, EventArgs e)
         {
-
+            _mouseMode = new ColorPickIMode();
         }
 
         
