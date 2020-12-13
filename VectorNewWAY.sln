@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorNewWAY", "VectorNewWAY\VectorNewWAY.csproj", "{D6384560-F41B-44CB-B404-16DA795D3365}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorNewWAYTest", "VectorNewWAYTest\VectorNewWAYTest.csproj", "{19DC5F39-7111-4213-B960-65B6CA1F40F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D6384560-F41B-44CB-B404-16DA795D3365}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6384560-F41B-44CB-B404-16DA795D3365}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6384560-F41B-44CB-B404-16DA795D3365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DC5F39-7111-4213-B960-65B6CA1F40F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DC5F39-7111-4213-B960-65B6CA1F40F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DC5F39-7111-4213-B960-65B6CA1F40F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DC5F39-7111-4213-B960-65B6CA1F40F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
