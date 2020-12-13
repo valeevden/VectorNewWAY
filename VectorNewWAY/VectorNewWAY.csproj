@@ -51,8 +51,10 @@
     <Compile Include="Fabrics\EllipseIFabric.cs" />
     <Compile Include="Fabrics\FigureNDIFabric.cs" />
     <Compile Include="Fabrics\IsoscelesTriangleIFabric.cs" />
+    <Compile Include="Fabrics\NAngleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
+    <Compile Include="Figures\NAngleAFigure.cs" />
     <Compile Include="Figures\FigureNDIFigure.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />
     <Compile Include="Fabrics\LineNDIFabric.cs" />

@@ -135,13 +135,15 @@ namespace VectorNewWAY
 
         private void NanglesFigure_Click(object sender, EventArgs e)
         {
-
+            fabric = new NAngleIFabric((int)_anglesNumber.Value);
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void _anglesNumber_ValueChanged(object sender, EventArgs e)
         {
-
-
+            fabric = new NAngleIFabric((int)_anglesNumber.Value);
+            _figure = fabric.CreateFigure(_pen);
         }
 
         private void IsoscelesTriangle_Click(object sender, EventArgs e)
