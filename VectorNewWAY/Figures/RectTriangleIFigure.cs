@@ -14,10 +14,10 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class IsoscelesTriangleIFigure : AFigure
+    public class RectTriangleIFigure : AFigure
     {
         GraphicsPath FullPath;
-        public IsoscelesTriangleIFigure(Pen pen) : base(pen)
+        public RectTriangleIFigure(Pen pen) : base(pen)
         {
             //Painter = new PolygonIPainter();
             Reaction = new NoReactionIReaction();
@@ -34,7 +34,7 @@ namespace VectorNewWAY.Figures
 
         public override GraphicsPath GetPath() //Получаем Path
         {
-           
+
             Path = new GraphicsPath();
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
@@ -58,13 +58,12 @@ namespace VectorNewWAY.Figures
 
             pointsArray[0] = startP;
             pointsArray[1] = endP;
-            pointsArray[2] = new PointF((endP.X - (endP.X - startP.X) * 2), endP.Y);
+            pointsArray[2].X = startP.X;
+            pointsArray[2].Y = endP.Y;
 
             PointsList = new List<PointF> { };
             PointsList = pointsArray.ToList();
         }
-
-
 
         public override bool IsEdge(PointF eLocation)
         {
@@ -99,10 +98,7 @@ namespace VectorNewWAY.Figures
         {
             Path = new GraphicsPath();
 
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Path.AddLine(PointsList[i], PointsList[i + 1]);
-            }
+            Path.AddLine(PointsList[0], PointsList[1]);
             Center = new PointF(0, 0);
             for (int i = 0; i < 3; i++)
             {

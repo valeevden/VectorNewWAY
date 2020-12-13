@@ -151,7 +151,9 @@ namespace VectorNewWAY
 
         private void RectTriangleButton_Click(object sender, EventArgs e)
         {
-
+            fabric = new RectTriangleIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void trackPenWidth_Scroll(object sender, EventArgs e)
@@ -166,7 +168,7 @@ namespace VectorNewWAY
             {
                 colorPalete.BackColor = colorDialog1.Color;
                 _pen = new Pen(colorDialog1.Color, trackPenWidth.Value);
-                //radioButtonPaintMode.Checked = true;
+                radioButtonPaintMode.Checked = true;
             }
         }
 
