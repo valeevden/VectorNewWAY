@@ -16,13 +16,7 @@ namespace VectorNewWAY.Mode
     {
         SingletonData _singletone;
         AFigure _fillFigure;
-        MouseEventArgs _e;
-        AFigure _figure;
-        Pen _pen;
         PointF _startPoint;
-        PointF _tmpPoint;
-        bool _mouseMove;
-
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
             _singletone = SingletonData.GetData();

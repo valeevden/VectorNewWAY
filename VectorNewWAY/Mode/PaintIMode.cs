@@ -14,11 +14,8 @@ namespace VectorNewWAY.Mode
 {
     public class PaintIMode : IMode
     {
-        MouseEventArgs _e;
         AFigure _figure;
-        Pen _pen;
         PointF _startPoint;
-        PointF _tmpPoint;
         bool _mouseMove;
         SingletonData _singletone;
 

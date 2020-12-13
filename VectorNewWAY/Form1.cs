@@ -92,7 +92,9 @@ namespace VectorNewWAY
 
         private void Line2D_Click(object sender, EventArgs e)
         {
-
+            fabric = new Line2DIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void LineND_Click(object sender, EventArgs e)
@@ -221,18 +223,18 @@ namespace VectorNewWAY
         {
             if (radioButtonRotate.Checked)
             {
-
+                _mouseMode = new RotateIMode();
             }
         }
 
-
-        private void radioButtonZoom_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonScale_CheckedChanged(object sender, EventArgs e)
         {
-            if (radioButtonZoom.Checked)
+            if (radioButtonScale.Checked)
             {
-
+                _mouseMode = new ScaleIMode();
             }
         }
+
 
         private void radioButtonPeak_CheckedChanged(object sender, EventArgs e)
         {
@@ -260,5 +262,6 @@ namespace VectorNewWAY
 
         }
 
+        
     }
 }
