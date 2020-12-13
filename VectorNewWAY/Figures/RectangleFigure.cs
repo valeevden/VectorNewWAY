@@ -91,22 +91,47 @@ namespace VectorNewWAY.Figures
             SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
             SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
+        public override void Rotate(float rotateAngle)
+        {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.AddRectangle(rectangle);
+            RotateMatrix.RotateAt(rotateAngle, Center);
+            Path.Transform(RotateMatrix);
+        }
+        public override void Move(PointF delta)
+        {
+            for (int i = 0; i < PointsList.Count; i++)
+            {
+                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
+            }
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.AddRectangle(rectangle);
+            Path.Transform(RotateMatrix);
 
+        }
+        public override GraphicsPath GetPath() //Получаем Path
+        {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
 
-
-
-
-
-
-
-
-
-
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddRectangle(rectangle);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.Transform(ScaleMatrix);
+            Path.Transform(RotateMatrix);
+            return Path;
+        }
 
         public override bool Equals(object obj)
         {
             RectangleFigure rectangle = (RectangleFigure)obj;
-            if (!Color.Equals(rectangle.Color) || Width != rectangle.Width || !PointsList.Equals(rectangle.PointsList) || !PointsArray.Equals(rectangle.PointsArray)
+            if (!Color.Equals(rectangle.Color) || Width != rectangle.Width || !PointsList.Equals(rectangle.PointsList) 
                      || !AnglesNumber.Equals(rectangle.AnglesNumber) || !Filler.Equals(rectangle.Filler) || !Reaction.Equals(rectangle.Reaction)
                      || !Painter.Equals(rectangle.Painter)|| ! RotateMatrix.Equals (rectangle.RotateMatrix) || !Path.Equals (rectangle.Path))
             {
