@@ -24,12 +24,13 @@ namespace VectorNewWAY.Figures
             Started = false;
             Color = pen.Color;
             Width = (int)pen.Width;
-            AnglesNumber = 0;
+            AnglesNumber = 1;
             IsFilled = false;
             ScaleMatrix = new Matrix();
             RotateMatrix = new Matrix();
             SizeX = 0;
             SizeY = 0;
+            PointsList = new List<PointF> { };
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -44,9 +45,11 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            PointsList = new List<PointF>();
+            List<PointF> currentList = new List<PointF> { startP, endP };
             PointsList.Add(startP);
             PointsList.Add(endP);
+            PointsList[AnglesNumber - 2] = currentList[0];
+            PointsList[AnglesNumber - 1] = currentList[1];
         }
 
         

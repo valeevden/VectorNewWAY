@@ -32,6 +32,7 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             SizeX = 0;
             SizeY = 0;
+            FullPath = new GraphicsPath();
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -39,7 +40,6 @@ namespace VectorNewWAY.Figures
             //отрисовывается весь путь во время маус мува
             //последняя линяя двигается
             Path = new GraphicsPath();
-            FullPath = new GraphicsPath();
             
             Path.AddLine(PointsList[0], PointsList[1]);
             FullPath.AddPath(Path, true);

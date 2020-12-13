@@ -17,7 +17,7 @@ namespace VectorNewWAY.Mode
     {
         AFigure _figure;
         PointF _startPoint;
-        bool _mouseMove;
+        bool _mouseMove = false;;
         SingletonData _singletone;
 
         public PaintIMode()
@@ -36,13 +36,13 @@ namespace VectorNewWAY.Mode
                 //если фигура начинается то записать первую стартПоинт
                 if (_figure.Started == false)
                 {
-                    
                     _startPoint = e.Location;
                     _figure.TmpPoint = e.Location;
                     _figure.Started = true;
                 }
                 else
                 {
+                    _figure.AnglesNumber++;
                     _figure.TmpPoint = e.Location;
                     _startPoint = _figure.SecondPoint;
                 }
@@ -55,12 +55,10 @@ namespace VectorNewWAY.Mode
         }
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
-            if ((_figure.Reaction is FreeLineIRightClickReaction
-                           || _figure.Reaction is FreeFigureIRightClickReaction
-                           /*|| _figure.Reaction is TriangleIRightClickReaction) && (MouseMove == false)*/))
+            if ((_figure.Reaction is FreeLineIRightClickReaction 
+                || _figure.Reaction is FreeFigureIRightClickReaction) && (_mouseMove == false))
             {
-                _figure.AnglesNumber++;
-                _figure.PointsList.Add(_figure.TmpPoint); //точка добавляется в лист в начале движения мыши
+                //_figure.PointsList.Add(_figure.TmpPoint); //точка добавляется в лист в начале движения мыши
             }
             _figure.Update(_startPoint, e.Location);
             _mouseMove = true; //после записи точки запись заканчивается
