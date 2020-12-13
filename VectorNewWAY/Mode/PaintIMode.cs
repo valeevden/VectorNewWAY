@@ -31,7 +31,7 @@ namespace VectorNewWAY.Mode
             _singletone = SingletonData.GetData();
 
             if (fabric is LineNDIFabric
-                        /*|| fabric is FigureNDIFabric
+                        || fabric is FigureNDIFabric /*
                         || _figure.Reaction is TriangleIRightClickReaction*/)
             {
                 //если фигура начинается то записать первую стартПоинт

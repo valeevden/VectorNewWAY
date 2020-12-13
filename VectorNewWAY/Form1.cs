@@ -113,7 +113,9 @@ namespace VectorNewWAY
 
         private void FigureND_Click(object sender, EventArgs e)
         {
-
+            fabric = new FigureNDIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
         private void Ellipse_Click(object sender, EventArgs e)
         {

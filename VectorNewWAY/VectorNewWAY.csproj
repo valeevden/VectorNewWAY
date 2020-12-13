@@ -49,6 +49,8 @@
     <Compile Include="Canvas.cs" />
     <Compile Include="Fabrics\CircleIFabric.cs" />
     <Compile Include="Fabrics\EllipseIFabric.cs" />
+    <Compile Include="Fabrics\FigureNDIFabric.cs" />
+    <Compile Include="Figures\FigureNDIFigure.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />
     <Compile Include="Fabrics\LineNDIFabric.cs" />
     <Compile Include="Fabrics\Line2DIFabric.cs" />
