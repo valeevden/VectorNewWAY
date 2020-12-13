@@ -14,9 +14,9 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class Brush : AFigure
+    public class BrushIFigure : AFigure
     {
-        public Brush (Pen pen): base (pen)
+        public BrushIFigure (Pen pen): base (pen)
         {
             Reaction = new NoReactionIReaction();
             Painter = new PathIPainter();
@@ -27,8 +27,8 @@ namespace VectorNewWAY.Figures
         public override GraphicsPath GetPath() 
         {
             Path = new GraphicsPath();
-
             Path.AddLine(PointsList[0], PointsList[1]);
+            //Pen.LineJoin = LineJoin.Round;
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.Transform(RotateMatrix);
             return Path;
@@ -39,6 +39,20 @@ namespace VectorNewWAY.Figures
 
             PointsList[0] = startP;
             PointsList[1] = endP;
+
+        }
+
+        public override void Scale(PointF point)
+        {
+
+        }
+
+        public override void Rotate(float rotateAngle)
+        {
+
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            RotateMatrix.RotateAt(rotateAngle, Center);
+            Path.Transform(RotateMatrix);
         }
     }
 }
