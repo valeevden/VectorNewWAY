@@ -34,7 +34,6 @@ namespace VectorNewWAY.Figures
 
         public override GraphicsPath GetPath() //Получаем Path
         {
-
             Path = new GraphicsPath();
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
@@ -72,7 +71,7 @@ namespace VectorNewWAY.Figures
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
-
+            Path.CloseFigure();
             Center = new PointF(0, 0);
             for (int i = 0; i < 3; i++)
             {
