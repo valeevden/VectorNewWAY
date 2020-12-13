@@ -108,7 +108,6 @@ namespace VectorNewWAY.Figures
 
         public override void Scale(PointF point)
         {
-
             RectangleF rectangle = MakeRectangleFromPointsList();
 
             SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
@@ -117,8 +116,12 @@ namespace VectorNewWAY.Figures
 
         public override void Rotate(float rotateAngle)
         {
-
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.AddEllipse(rectangle);
+
             RotateMatrix.RotateAt((RotateAngle = RotateAngle + rotateAngle), Center);
             Path.Transform(RotateMatrix);
         }
@@ -130,6 +133,13 @@ namespace VectorNewWAY.Figures
             {
                 PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
             }
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.AddEllipse(rectangle);
+            Path.Transform(RotateMatrix);
+
         }
        
     }
