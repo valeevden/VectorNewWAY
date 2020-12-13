@@ -68,12 +68,14 @@ namespace VectorNewWAY.Figures
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
+
             Center = new PointF(0, 0);
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
                 Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
             }
             Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+
             Path.Transform(RotateMatrix);
             Pen penGP = new Pen(Color, Width);
             if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
