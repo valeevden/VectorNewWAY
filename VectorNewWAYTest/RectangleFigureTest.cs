@@ -39,6 +39,15 @@ namespace VectorNewWAYTest
             Assert.AreEqual(exspected, actual);
         }
 
+        [Test, TestCaseSource(typeof(IsAreaTestSource))]
+        public void IsAreaTest(Point startPoint, Point endPoint, Point delta, bool exspected)
+        {
+            rectangleFigure.Update(startPoint, endPoint);
+            bool actual = rectangleFigure.IsArea(delta);
+
+            Assert.AreEqual(exspected, actual);
+        }
+
 
 
         public class UpdateTestSource : IEnumerable
@@ -60,6 +69,16 @@ namespace VectorNewWAYTest
             {
                 yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(5, 8), true};
                 yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(10, 10), false };
+                yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(50, 100), false };
+            }
+
+        }
+        public class IsAreaTestSource : IEnumerable
+        {
+            public IEnumerator GetEnumerator()
+            {
+                yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(5, 8), true };
+                yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(10, 10), true };
                 yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(50, 100), false };
             }
 
