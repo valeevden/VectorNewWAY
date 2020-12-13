@@ -53,6 +53,7 @@
     <Compile Include="Fabrics\IsoscelesTriangleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
+    <Compile Include="Figures\Brush.cs" />
     <Compile Include="Figures\FigureNDIFigure.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />
     <Compile Include="Fabrics\LineNDIFabric.cs" />

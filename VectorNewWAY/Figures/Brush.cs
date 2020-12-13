@@ -24,5 +24,21 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
         }
+        public override GraphicsPath GetPath() 
+        {
+            Path = new GraphicsPath();
+
+            Path.AddLine(PointsList[0], PointsList[1]);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.Transform(RotateMatrix);
+            return Path;
+        }
+
+        public override void Update(PointF startP, PointF endP)
+        {
+
+            PointsList[0] = startP;
+            PointsList[1] = endP;
+        }
     }
 }
