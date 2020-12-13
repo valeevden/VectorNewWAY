@@ -42,6 +42,7 @@ namespace VectorNewWAY.Figures
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
+            Path.CloseFigure();
 
             Center = new PointF(0, 0);
             for (int i = 0; i < PointsList.Count - 1; i++)
@@ -70,6 +71,7 @@ namespace VectorNewWAY.Figures
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
+            Path.CloseFigure();
 
             Center = new PointF(0, 0);
             for (int i = 0; i < PointsList.Count - 1; i++)
@@ -95,9 +97,19 @@ namespace VectorNewWAY.Figures
         public override bool IsArea(PointF eLocation)
         {
             Path = new GraphicsPath();
+            for (int i = 0; i < PointsList.Count - 1; i++)
+            {
+                Path.AddLine(PointsList[i], PointsList[i + 1]);
+            }
+            Path.CloseFigure();
 
-            Path.AddLine(PointsList[0], PointsList[1]);
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Center = new PointF(0, 0);
+            for (int i = 0; i < PointsList.Count - 1; i++)
+            {
+                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
+            }
+            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+
             Path.Transform(RotateMatrix);
             if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
             {
@@ -123,6 +135,7 @@ namespace VectorNewWAY.Figures
                 Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
             }
             Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+
             RotateMatrix.RotateAt(rotateAngle, Center);
             Path.Transform(RotateMatrix);
         }
