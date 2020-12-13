@@ -24,7 +24,6 @@ namespace VectorNewWAY.Figures
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
             AnglesNumber = 0;
-            RotateMatrix = new Matrix();
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -33,10 +32,21 @@ namespace VectorNewWAY.Figures
             RectangleF rectangle = MakeRectangleFromPointsList();
           
             rectangle.Inflate(SizeX, SizeY);
+
+           // Center = SetCenter();
             Path.AddEllipse(rectangle);
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.Transform(RotateMatrix);
             return Path;
+        }
+
+        public override PointF SetCenter()
+        {
+            for (int i = 0; i < PointsList.Count - 1; i++)
+            {
+                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
+            }
+            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+            return Center;
         }
 
         public override void Update(PointF startP, PointF endP)
@@ -63,33 +73,18 @@ namespace VectorNewWAY.Figures
             SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
 
-        public override void Rotate(float rotateAngle)
+        public override void Rotate(float RotateAngle)
         {
             Path = new GraphicsPath();
             RectangleF rectangle = MakeRectangleFromPointsList();
             rectangle.Inflate(SizeX, SizeY);
+           
+
+
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.AddEllipse(rectangle);
-
-            RotateMatrix.RotateAt(rotateAngle, Center);
+            RotateMatrix.RotateAt(RotateAngle, Center);
             Path.Transform(RotateMatrix);
         }
-
-
-        public override void Move(PointF delta)
-        {
-            for (int i = 0; i < PointsList.Count; i++)
-            {
-                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
-            }
-            Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-            rectangle.Inflate(SizeX, SizeY);
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            Path.AddEllipse(rectangle);
-            Path.Transform(RotateMatrix);
-
-        }
-       
     }
 }
