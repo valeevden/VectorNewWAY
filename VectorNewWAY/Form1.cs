@@ -77,7 +77,9 @@ namespace VectorNewWAY
 
         private void Rectangle_2d_Click(object sender, EventArgs e)
         {
-
+            fabric = new RectangleIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void Square_Click(object sender, EventArgs e)

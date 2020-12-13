@@ -59,7 +59,27 @@ namespace VectorNewWAYTest
             bool  actual = rectangleFigure.IsArea(point);
             Assert.AreEqual (exspected, actual);
         }
-        
+
+        [Test, TestCaseSource(typeof(MoveTestSource))]
+        public void MoveTest(Point startPoint, Point endPoint,Point delta, List<PointF> expected)
+        {
+            rectangleFigure.Update(startPoint, endPoint);
+            rectangleFigure.Move(delta);
+            List<PointF> actual = rectangleFigure.PointsList;
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [Test, TestCaseSource(typeof(RotateTestSource))]
+        public void RotateTest(Point startPoint, Point endPoint,Point point, float delta,  bool expected)
+        {
+            rectangleFigure.Update(startPoint, endPoint);
+            rectangleFigure.Rotate(delta);
+            bool actual = rectangleFigure.IsEdge(point); 
+            Assert.AreEqual(expected, actual);
+
+        }
+
 
 
         public class UpdateTestSource : IEnumerable
@@ -100,11 +120,35 @@ namespace VectorNewWAYTest
         {
             public IEnumerator GetEnumerator()
             {
-                yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(20, 15), new Point(1, 1), true };
-                yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(10, 10), new Point(5, 8), true };
-                yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(50, 100), new Point(5, 8), false };
+                yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(20, 15), new Point(1, 1), false};
+                yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(10, 10), new Point(5, 8), true};
+                yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(50, 100), new Point(5, 8), false};
             }
 
+        }
+
+        public class MoveTestSource : IEnumerable
+        {
+            List<PointF> points1 = new List<PointF>() { new Point(6, 7), new Point(16, 17) };
+            List<PointF> points2 = new List<PointF>() { new Point(-4, 5), new Point(16, 25) };
+            List<PointF> points3 = new List<PointF>() { new Point(6, 6), new Point(11, 11) };
+
+            public IEnumerator GetEnumerator()
+            {
+                yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(6, 7), points1 };
+                yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(-4, 5), points2 };
+                yield return new object[] { new Point(5, 5), new Point(10, 10),new Point (1,1), points3 };
+            }
+        }
+
+        public class RotateTestSource : IEnumerable
+        {
+            List<PointF> points1 = new List<PointF>() { new Point(6, 7), new Point(16, 17) };
+            
+            public IEnumerator GetEnumerator()
+            {
+                yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(10, 10), 90, true};
+             }
         }
 
     }

@@ -8,11 +8,11 @@ using VectorNewWAY.Figures;
 
 namespace VectorNewWAY.Fabrics
 {
-    public class EllipseIFabric : IFigureFabric
+    public class RectangleIFabric : IFigureFabric 
     {
         public AFigure CreateFigure(Pen pen)
         {
-           return new EllipseFigure(pen);
+            return new RectangleFigure(pen);
         }
     }
 }
