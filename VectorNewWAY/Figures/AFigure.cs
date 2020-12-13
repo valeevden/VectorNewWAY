@@ -18,7 +18,6 @@ namespace VectorNewWAY.Figures
 {
     public abstract class AFigure 
     {
-        
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
         public PointF TmpPoint { get; set; }
