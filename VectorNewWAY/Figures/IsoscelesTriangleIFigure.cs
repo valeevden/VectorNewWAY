@@ -23,7 +23,7 @@ namespace VectorNewWAY.Figures
             PointsList = new List<PointF> { new PointF(0, 0) };
             Painter = new PathIPainter();
             Started = false;
-            AnglesNumber = 1;
+            AnglesNumber = 3;
             Filler = new PathFiller();
             IsFilled = false;
             RotateMatrix = new Matrix();
