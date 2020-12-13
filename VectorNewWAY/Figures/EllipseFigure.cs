@@ -18,14 +18,12 @@ namespace VectorNewWAY.Figures
     public class EllipseFigure : AFigure
     {
 
-        public EllipseFigure(Pen pen)
+        public EllipseFigure(Pen pen) : base(pen)
         {
             Painter = new PathIPainter();
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
             Started = false;
-            Color = pen.Color;
-            Width = (int)pen.Width;
             AnglesNumber = 0;
             IsFilled = false;
             ScaleMatrix = new Matrix();

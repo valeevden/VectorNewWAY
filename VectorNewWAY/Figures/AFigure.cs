@@ -45,6 +45,12 @@ namespace VectorNewWAY.Figures
         public bool Started { get; set; }
         public bool IsFilled { get; set; }//залито/не залито
         public int MovingPeakIndex;
+        
+        public  AFigure (Pen pen)
+        {
+            Color = pen.Color;
+            Width = (int)pen.Width; 
+        }
 
         public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
         {
