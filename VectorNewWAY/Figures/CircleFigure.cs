@@ -31,6 +31,25 @@ namespace VectorNewWAY.Figures
             SizeY = 0;
         }
 
+
+        public override GraphicsPath GetPath() //Получаем Path
+        {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddEllipse(rectangle);
+            return Path;
+        }
+
+        public override void Update(PointF startP, PointF endP)
+        {
+            float radius = endP.X - startP.X;
+            PointF startRectangleHere = new PointF(endP.X, startP.Y + radius);
+            PointsList = new List<PointF>();
+            PointsList.Add(startRectangleHere);
+            PointsList.Add(startP);
+            PointsList.Add(endP);
+        }
         private RectangleF MakeRectangleFromPointsList()
         {
             float width = 2 * (PointsList[1].X - PointsList[0].X);
@@ -39,28 +58,50 @@ namespace VectorNewWAY.Figures
             return rectangle;
         }
 
-        public override GraphicsPath GetPath() //Получаем Path
+        public override bool IsEdge(PointF eLocation)
         {
-            Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-
-            rectangle.Inflate(SizeX, SizeY);
-            Path.AddEllipse(rectangle);
-           // Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            //Path.Transform(ScaleMatrix);
-            Path.Transform(RotateMatrix);
-            return Path;
+           
+            Pen penGP = new Pen(Color, Width);
+            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
+            {
+                TouchPoint = eLocation;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public override void Update(PointF startP, PointF endP)
+        public override bool IsArea(PointF eLocation)
         {
-            float radius = endP.X - startP.X;
-            PointF startRectangleHere = new PointF(StartPoint.X, SecondPoint.Y + radius);
+           
+            if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
+            {
+                TouchPoint = eLocation;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-            PointsList = new List<PointF>();
-            PointsList.Add(startRectangleHere);
-            PointsList.Add(StartPoint);
-            PointsList.Add(SecondPoint);
+        public override void Move(PointF delta)
+        {
+            for (int i = 0; i < PointsList.Count; i++)
+            {
+                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
+            }
+           
+        }
+
+        public override void Scale(PointF point)
+        {
+            RectangleF rectangle = MakeRectangleFromPointsList();
+
+            SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
+            SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
 
 
