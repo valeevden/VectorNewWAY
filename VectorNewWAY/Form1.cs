@@ -270,7 +270,7 @@ namespace VectorNewWAY
 
         private void colorPicker_CheckedChanged(object sender, EventArgs e)
         {
-            _mouseMode = new ColorPickIMode();
+            
         }
 
         

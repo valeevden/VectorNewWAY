@@ -122,17 +122,17 @@ namespace VectorNewWAY.Figures
             return Path;
         }
 
-        public override bool Equals(object obj)
-        {
-            RectangleFigure rectangle = (RectangleFigure)obj;
-            if (!Color.Equals(rectangle.Color) || Width != rectangle.Width || !PointsList.Equals(rectangle.PointsList) 
-                     || !AnglesNumber.Equals(rectangle.AnglesNumber) || !Filler.Equals(rectangle.Filler) || !Reaction.Equals(rectangle.Reaction)
-                     || !Painter.Equals(rectangle.Painter)|| ! RotateMatrix.Equals (rectangle.RotateMatrix) || !Path.Equals (rectangle.Path))
-            {
-                return false;
-            }
-            return true;
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    RectangleFigure rectangle = (RectangleFigure)obj;
+        //    if (!Color.Equals(rectangle.Color) || Width != rectangle.Width || !PointsList.Equals(rectangle.PointsList) 
+        //             || !AnglesNumber.Equals(rectangle.AnglesNumber) || !Filler.Equals(rectangle.Filler) || !Reaction.Equals(rectangle.Reaction)
+        //             || !Painter.Equals(rectangle.Painter)|| ! RotateMatrix.Equals (rectangle.RotateMatrix) || !Path.Equals (rectangle.Path))
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
         public override int GetHashCode()
         {
