@@ -92,7 +92,9 @@ namespace VectorNewWAY
 
         private void Line2D_Click(object sender, EventArgs e)
         {
-
+            fabric = new Line2DIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void LineND_Click(object sender, EventArgs e)
