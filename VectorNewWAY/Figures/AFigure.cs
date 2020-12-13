@@ -16,7 +16,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public abstract class AFigure 
+    public abstract class AFigure
     {
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
@@ -42,8 +42,8 @@ namespace VectorNewWAY.Figures
         public bool Started { get; set; }
         public bool IsFilled { get; set; }//залито/не залито
         public int MovingPeakIndex;
-        
-        public  AFigure (Pen pen)
+
+        public AFigure(Pen pen)
         {
             Color = pen.Color;
             Width = (int)pen.Width;
@@ -89,10 +89,10 @@ namespace VectorNewWAY.Figures
         public virtual GraphicsPath GetPath() //Получаем Path
         {
             GraphicsPath gp = new GraphicsPath();
-            gp.AddLine(new Point(1,1), new Point(20,20));
+            gp.AddLine(new Point(1, 1), new Point(20, 20));
             return gp;
-        } 
-        
+        }
+
         public virtual void Update(PointF startPoint, PointF endPoint)
         {
 
@@ -113,7 +113,7 @@ namespace VectorNewWAY.Figures
 
         public virtual void Scale(PointF point)
         {
-           
+
         }
         //public void MovePeak(Point peakDelta)
         //{
@@ -147,6 +147,26 @@ namespace VectorNewWAY.Figures
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        bool IsPeak(PointF pointFromForm)
+        {
+            {
+                foreach (PointF target in PointsList)
+                {
+                    if (
+                        (target.X - 10 < pointFromForm.X) && (target.X + 10 > pointFromForm.X)
+                        &&
+                        (target.Y - 10 < pointFromForm.Y) && (target.Y + 10 > pointFromForm.Y)
+                        )
+                    {
+                        touchPoint = pointFromForm;
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return false;
         }
         
     }
