@@ -43,7 +43,7 @@ namespace VectorNewWAY
             _mainBitmap = _tmpBitmap;
         }
 
-        public Bitmap Clear() // ХЗ как это работает точно, должно заливать графику цветом фона и возвращать битмап
+        public Bitmap Clear() 
         {
             _graphics.Clear(Color.White);
 
