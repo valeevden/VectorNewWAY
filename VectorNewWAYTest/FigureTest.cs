@@ -155,7 +155,11 @@ namespace VectorNewWAYTest
     }
     public class SquareTest
     {
+
         SquareFigure squareFigure;
+
+        [SetUp]
+
         public void Setup()
         {
             squareFigure = new SquareFigure(new Pen(Color.Black, 5));
