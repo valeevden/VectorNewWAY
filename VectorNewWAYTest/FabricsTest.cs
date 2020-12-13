@@ -19,20 +19,20 @@ namespace VectorNewWAYTest
             Assert.AreEqual(typeof(SquareFigure), actual.GetType());
         }
     }
-    [Test]
-    public void EllFCreateFigureTest()
-    {
-        EllipseIFabric ellipseFabric = new EllipseIFabric();
-        AFigure actual = ellipseFabric.CreateFigure(new Pen(Color.Black, 5));
-        Assert.AreEqual(typeof(EllipseFigure), actual.GetType());
-    }
+    //[Test]
+    //public void EllFCreateFigureTest()
+    //{
+    //    EllipseIFabric ellipseFabric = new EllipseIFabric();
+    //    AFigure actual = ellipseFabric.CreateFigure(new Pen(Color.Black, 5));
+    //    Assert.AreEqual(typeof(EllipseFigure), actual.GetType());
+    //}
 
-    [Test]
-    public void RecCreateFigureTest()
-    {
-        RectangleIFabric rectangleFabric = new RectangleIFabric();
-        AFigure actual = rectangleFabric.CreateFigure(new Pen(Color.Black, 5));
-        Assert.AreEqual(typeof(RectangleFigure), actual.GetType());
-    }
+    //[Test]
+    //public void RecCreateFigureTest()
+    //{
+    //    RectangleIFabric rectangleFabric = new RectangleIFabric();
+    //    AFigure actual = rectangleFabric.CreateFigure(new Pen(Color.Black, 5));
+    //    Assert.AreEqual(typeof(RectangleFigure), actual.GetType());
+    //}
 
 }

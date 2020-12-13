@@ -116,6 +116,9 @@ namespace VectorNewWAY.Figures
             RectangleF rectangle = MakeRectangleFromPointsList();
 
             rectangle.Inflate(SizeX, SizeY);
+            Path.AddEllipse(rectangle);
+            rectangle = Path.GetBounds();
+            Path = new GraphicsPath();
             Path.AddRectangle(rectangle);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.Transform(RotateMatrix);
