@@ -144,8 +144,8 @@ namespace VectorNewWAY
 
         private void IsoscelesTriangle_Click(object sender, EventArgs e)
         {
-
-
+            fabric = new IsoscelesTriangleIFabric();
+            _figure = fabric.CreateFigure(_pen);
             radioButtonPaintMode.Checked = true;
         }
 
