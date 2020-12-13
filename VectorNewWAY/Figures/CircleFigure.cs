@@ -22,13 +22,8 @@ namespace VectorNewWAY.Figures
             Painter = new PathIPainter();
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
-            Started = false;
             AnglesNumber = 0;
-            IsFilled = false;
-            ScaleMatrix = new Matrix();
             RotateMatrix = new Matrix();
-            SizeX = 0;
-            SizeY = 0;
         }
 
 
@@ -56,44 +51,6 @@ namespace VectorNewWAY.Figures
             float height = 2 * (PointsList[1].Y - PointsList[0].Y);
             RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
             return rectangle;
-        }
-
-        public override bool IsEdge(PointF eLocation)
-        {
-           
-            Pen penGP = new Pen(Color, Width);
-            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public override bool IsArea(PointF eLocation)
-        {
-           
-            if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public override void Move(PointF delta)
-        {
-            for (int i = 0; i < PointsList.Count; i++)
-            {
-                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
-            }
-           
         }
 
         public override void Scale(PointF point)
