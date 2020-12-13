@@ -60,7 +60,7 @@ namespace VectorNewWAY
         {
             mouseDown = false;
               
-            _mouseMode.MouseUp(_pen, e);
+            _mouseMode.MouseUp(_pen, e, fabric);
 
             _data.Canvas.Save();
         }
@@ -100,7 +100,9 @@ namespace VectorNewWAY
 
         private void LineND_Click(object sender, EventArgs e)
         {
-
+            fabric = new LineNDIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void FigureND_Click(object sender, EventArgs e)

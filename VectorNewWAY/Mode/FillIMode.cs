@@ -61,7 +61,7 @@ namespace VectorNewWAY.Mode
 
         
 
-        public void MouseUp(Pen pen, MouseEventArgs e)
+        public void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
             _singletone.FigureList.Add(_fillFigure);
             _singletone.PictureBox1.Image = _singletone.Canvas.Clear();

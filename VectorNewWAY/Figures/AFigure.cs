@@ -27,7 +27,6 @@ namespace VectorNewWAY.Figures
         public Matrix RotateMatrix { get; set; }
         public List<PointF> PointsList { get; set; }//лист точек - та же информация что и в массиве точек
         public GraphicsPath Path { get; set; }//точки кисти
-        //public IRightClickReaction Reaction { get; set; }
         public IPainter Painter { get; set; }//пейнтер фигуры
         //public IFiller Filler { get; }//способ заливки фигуры (либо polygon либо ellipse)
         public Color Color { get; set; }//цвет фигуры
