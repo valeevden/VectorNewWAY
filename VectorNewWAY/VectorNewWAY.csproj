@@ -54,6 +54,7 @@
     <Compile Include="Fabrics\RectangleIFabric.cs" />
     <Compile Include="Figures\Line2DIFigure.cs" />
     <Compile Include="Figures\CircleFigure.cs" />
+    <Compile Include="Figures\RectangleMaker.cs" />
     <Compile Include="Mode\RotateIMode.cs" />
     <Compile Include="SingletonData.cs" />
     <Compile Include="Figures\AFigure.cs" />
