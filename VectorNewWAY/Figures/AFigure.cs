@@ -16,7 +16,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public abstract class AFigure
+    public abstract class AFigure 
     {
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
@@ -26,7 +26,6 @@ namespace VectorNewWAY.Figures
         public Matrix RotateMatrix { get; set; }
         public List<PointF> PointsList { get; set; }//лист точек - та же информация что и в массиве точек
         public GraphicsPath Path { get; set; }//точки кисти
-        //public IRightClickReaction Reaction { get; set; }
         public IPainter Painter { get; set; }//пейнтер фигуры
         //public IFiller Filler { get; }//способ заливки фигуры (либо polygon либо ellipse)
         public Color Color { get; set; }//цвет фигуры
@@ -52,6 +51,12 @@ namespace VectorNewWAY.Figures
             SizeY = 0;
             Started = false;
             IsFilled = false;
+            RotateMatrix = new Matrix();
+            Center = new PointF(0, 0);
+        }
+        public virtual PointF SetCenter()
+        {
+            return Center;
         }
 
         public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
@@ -102,8 +107,10 @@ namespace VectorNewWAY.Figures
         }
         public virtual void Rotate(float RotateAngle)
         {
-
+            RotateMatrix.RotateAt(RotateAngle, Center);
+            Path.Transform(RotateMatrix);
         }
+
         public virtual void Scale(PointF point)
         {
            
@@ -141,5 +148,6 @@ namespace VectorNewWAY.Figures
         {
             return base.GetHashCode();
         }
+        
     }
 }

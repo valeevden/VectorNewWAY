@@ -43,12 +43,16 @@ namespace VectorNewWAY
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
-            _mouseMode.MouseDown(_pen, e, _figure, fabric);
+            if (e.Button != MouseButtons.Right)
+            {
+                _mouseMode.MouseDown(_pen, e, _figure, fabric);
+
+            }
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mouseDown)
+            if (mouseDown && e.Button != MouseButtons.Right)
             {
                 _mouseMode.MouseMove(_pen, e);
                 pictureBox1.Image = _data.PictureBox1.Image;
@@ -60,7 +64,7 @@ namespace VectorNewWAY
         {
             mouseDown = false;
               
-            _mouseMode.MouseUp(_pen, e);
+            _mouseMode.MouseUp(_pen, e, fabric);
 
             _data.Canvas.Save();
         }
@@ -104,12 +108,16 @@ namespace VectorNewWAY
 
         private void LineND_Click(object sender, EventArgs e)
         {
-
+            fabric = new LineNDIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
 
         private void FigureND_Click(object sender, EventArgs e)
         {
-
+            fabric = new FigureNDIFabric();
+            _figure = fabric.CreateFigure(_pen);
+            radioButtonPaintMode.Checked = true;
         }
         private void Ellipse_Click(object sender, EventArgs e)
         {
@@ -120,7 +128,8 @@ namespace VectorNewWAY
 
         private void Triangle3D_Click(object sender, EventArgs e)
         {
-
+            fabric = new Triangle3DIFabric();
+            _figure = fabric.CreateFigure(_pen);
             radioButtonPaintMode.Checked = true;
         }
 
