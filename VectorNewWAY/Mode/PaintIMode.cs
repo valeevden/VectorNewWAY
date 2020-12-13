@@ -79,6 +79,7 @@ namespace VectorNewWAY.Mode
                 _figure.Reaction.Do();
                 SingletonData _fL = SingletonData.GetData();
                 _fL.FigureList.Add(_figure);
+                _figure = null;
             }
             else if (_figure != null && _figure.Reaction is Triangle3DIRightClickReaction && _figure.AnglesNumber == 3)
             {
@@ -89,7 +90,7 @@ namespace VectorNewWAY.Mode
                 _figure = null;
             }
 
-            if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right && _figure != null)
             {
                 if (_figure.Reaction is FreeLineIRightClickReaction 
                     || _figure.Reaction is FreeFigureIRightClickReaction)
