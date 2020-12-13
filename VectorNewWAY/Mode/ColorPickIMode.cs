@@ -23,7 +23,7 @@ namespace VectorNewWAY.Mode
                 if (_pickedColor.A == 0)
                 {
                     p.Color = _sigletone.PictureBox1.BackColor;
-                    colorPalete.BackColor = _sigletone.PictureBox1.BackColor;
+                    _sigletone.PickedColor = _sigletone.PictureBox1.BackColor;
                 }
                 else
                 {
@@ -34,7 +34,7 @@ namespace VectorNewWAY.Mode
             else
             {
                 p.Color = _sigletone.PictureBox1.BackColor;
-                colorPalete.BackColor = _sigletone.PictureBox1.BackColor;
+                _sigletone.PickedColor = _sigletone.PictureBox1.BackColor;
             }
         }
 
@@ -45,8 +45,8 @@ namespace VectorNewWAY.Mode
 
         public void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
-            radioButtonPaintMode.Checked = true;
-            colorPicker.Checked = false;
+            //radioButtonPaintMode.Checked = true;
+           
         }
     }
 }

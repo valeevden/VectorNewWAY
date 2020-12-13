@@ -22,7 +22,8 @@ namespace VectorNewWAY
         bool mouseDown = false;
         IFigureFabric fabric;
         SingletonData _data;
-       
+        bool _picker = false;
+        Color _pickedColor;
 
         public Form1()
         {
@@ -34,6 +35,7 @@ namespace VectorNewWAY
             _data = SingletonData.GetData();
             _data.PictureBox1 = pictureBox1;
             _data.Canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
+            _data.PickedColor = colorPalete.BackColor;
             _figure = new EllipseFigure(_pen);
             _mouseMode = new PaintIMode();
 
@@ -45,6 +47,7 @@ namespace VectorNewWAY
             if (e.Button != MouseButtons.Right)
             {
                 _mouseMode.MouseDown(_pen, e, _figure, fabric);
+                ColorPicker(e);
             }
         }
 
@@ -57,14 +60,12 @@ namespace VectorNewWAY
             }
         }
 
-
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
             _mouseMode.MouseUp(_pen, e, fabric);
             _data.Canvas.Save();
         }
-
 
         private void ClearAll_Click(object sender, EventArgs e)
         {
@@ -166,6 +167,7 @@ namespace VectorNewWAY
                 colorPalete.BackColor = colorDialog1.Color;
                 _pen = new Pen(colorDialog1.Color, trackPenWidth.Value);
                 radioButtonPaintMode.Checked = true;
+                _picker = false;
             }
         }
 
@@ -270,7 +272,36 @@ namespace VectorNewWAY
 
         private void colorPicker_CheckedChanged(object sender, EventArgs e)
         {
-            _mouseMode = new ColorPickIMode();
+            _picker = true;
+            
+        }
+
+        private void ColorPicker(MouseEventArgs e)
+        {
+            if (_picker == true)
+            {
+                if (pictureBox1.Image != null)
+                {
+                    _pickedColor = _data.Canvas._mainBitmap.GetPixel(e.X, e.Y);
+                    if (_pickedColor.A == 0)
+                    {
+                        _pen.Color = pictureBox1.BackColor;
+                        colorPalete.BackColor = pictureBox1.BackColor;
+                    }
+                    else
+                    {
+                        colorPalete.BackColor = _pickedColor;
+                        _pen.Color = _pickedColor;
+                    }
+                }
+                else
+                {
+                    _pen.Color = pictureBox1.BackColor;
+                    colorPalete.BackColor = pictureBox1.BackColor;
+                }
+            }
+            _picker = false;
+            radioButtonPaintMode.Checked = true;
         }
 
         
