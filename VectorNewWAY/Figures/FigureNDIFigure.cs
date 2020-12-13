@@ -16,7 +16,6 @@ namespace VectorNewWAY.Figures
 {
     public class FigureNDIFigure : AFigure
     {
-        GraphicsPath FullPath;
         public FigureNDIFigure(Pen pen) : base(pen)
         {
             //Painter = new PolygonIPainter();
@@ -29,7 +28,7 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             SizeX = 0;
             SizeY = 0;
-            FullPath = new GraphicsPath();
+            Filler = new PathFiller();
         }
 
         public override GraphicsPath GetPath() //Получаем Path

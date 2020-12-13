@@ -16,7 +16,6 @@ namespace VectorNewWAY.Figures
 {
     public class IsoscelesTriangleIFigure : AFigure
     {
-        GraphicsPath FullPath;
         public IsoscelesTriangleIFigure(Pen pen) : base(pen)
         {
             //Painter = new PolygonIPainter();
@@ -25,11 +24,11 @@ namespace VectorNewWAY.Figures
             Painter = new PathIPainter();
             Started = false;
             AnglesNumber = 1;
+            Filler = new PathFiller();
             IsFilled = false;
             RotateMatrix = new Matrix();
             SizeX = 0;
             SizeY = 0;
-            FullPath = new GraphicsPath();
         }
 
         public override GraphicsPath GetPath() //Получаем Path
