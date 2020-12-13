@@ -16,14 +16,12 @@ namespace VectorNewWAY.Figures
 {
     public class Line2DIFigure : AFigure
     {
-        public Line2DIFigure(Pen pen)
+        public Line2DIFigure(Pen pen): base (pen)
         {
             //Painter = new PolygonIPainter();
             Reaction = new NoReactionIReaction();
             Painter = new PathIPainter();
             Started = false;
-            Color = pen.Color;
-            Width = (int)pen.Width;
             AnglesNumber = 0;
             IsFilled = false;
             ScaleMatrix = new Matrix();
