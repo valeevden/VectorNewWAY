@@ -36,6 +36,35 @@ namespace VectorNewWAY.Figures
             PointsList.Add(startP);
             PointsList.Add(endP);
         }
+
+        private RectangleF MakeRectangleFromPointsList()
+        {
+            float width = PointsList[1].X - PointsList[0].X;
+            float height = PointsList[1].Y - PointsList[0].Y;
+            RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
+            return rectangle;
+        }
+
+        public override bool IsEdge(PointF eLocation)
+        {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddRectangle(rectangle);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            Path.Transform(RotateMatrix);
+            Pen penGP = new Pen(Color, Width);
+            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
+            {
+                TouchPoint = eLocation;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
    
 }

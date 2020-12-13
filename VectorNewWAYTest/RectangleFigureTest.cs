@@ -30,6 +30,16 @@ namespace VectorNewWAYTest
 
         }
 
+        [Test, TestCaseSource(typeof(IsEdgeTestSource))]
+        public void IsEdgeTest(Point startPoint, Point endPoint, Point delta, bool exspected)
+        {
+            rectangleFigure.Update(startPoint, endPoint);
+            bool actual = rectangleFigure.IsEdge(delta);
+
+            Assert.AreEqual(exspected, actual);
+        }
+
+
         public class UpdateTestSource : IEnumerable
         {
             List<PointF> points1 = new List<PointF>() { new Point(0, 0), new Point(10, 10)};
@@ -43,6 +53,17 @@ namespace VectorNewWAYTest
                 yield return new object[] { new Point(5, 5), new Point(10, 10), points3 };
             }
         }
+        public class IsEdgeTestSource : IEnumerable
+        {
+            public IEnumerator GetEnumerator()
+            {
+                yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(5, 8), true};
+                yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(10, 10), false };
+                yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(50, 100), false };
+            }
+
+        }
+
     }
 }
         
