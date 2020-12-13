@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Canvas.cs" />
+    <Compile Include="Fabrics\BrushFabric.cs" />
     <Compile Include="Fabrics\CircleIFabric.cs" />
     <Compile Include="Fabrics\EllipseIFabric.cs" />
     <Compile Include="Fabrics\FigureNDIFabric.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Fabrics\NAngleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
+    <Compile Include="Figures\BrushIFigure.cs" />
     <Compile Include="Figures\NAngleAFigure.cs" />
     <Compile Include="Figures\FigureNDIFigure.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />

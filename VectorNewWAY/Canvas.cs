@@ -50,6 +50,8 @@ namespace VectorNewWAY
             return _mainBitmap;
 
         }
+
+
     }
 }
 
