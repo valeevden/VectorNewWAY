@@ -37,34 +37,15 @@ namespace VectorNewWAY.Figures
             PointsList.Add(endP);
         }
 
-        //private squareF MakeSquareFromPointsList()
-        //{
-        //    float width = PointsList[1].X - PointsList[0].X;
-        //    float height = PointsList[1].Y - PointsList[0].Y;
-        //    squareF square = new squareF(PointsList[0].X, PointsList[0].Y, width, height);
-        //    return square;
-        //}  
-
-        public override bool IsEdge(PointF eLocation)
+        private RectangleF MakeRectangleFromPointsList()
         {
-            Path = new GraphicsPath();
-            SquareF square = MakesquareFromPointsList();
-            square.Inflate(SizeX, SizeY);
-            Path.AddSquare(square);
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            Path.Transform(RotateMatrix);
-            Pen penGP = new Pen(Color, Width);
-            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            float width = PointsList[1].X - PointsList[0].X;
+            float height = PointsList[1].Y - PointsList[0].Y;
+            RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
+            return rectangle;
         }
+
+        
         public override bool IsArea(PointF eLocation)
         {
             Path = new GraphicsPath();

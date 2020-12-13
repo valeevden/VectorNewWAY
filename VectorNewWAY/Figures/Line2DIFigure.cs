@@ -70,6 +70,7 @@ namespace VectorNewWAY.Figures
 
         }
 
+
         public override bool IsArea(PointF eLocation)
         {
             Path = new GraphicsPath();
