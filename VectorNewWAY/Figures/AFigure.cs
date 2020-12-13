@@ -16,8 +16,9 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public abstract class AFigure 
+    public abstract class AFigure
     {
+        public EdgeMod Edge;
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
         public PointF TmpPoint { get; set; }
@@ -42,8 +43,8 @@ namespace VectorNewWAY.Figures
         public bool Started { get; set; }
         public bool IsFilled { get; set; }//залито/не залито
         public int MovingPeakIndex;
-        
-        public  AFigure (Pen pen)
+
+        public AFigure(Pen pen)
         {
             Color = pen.Color;
             Width = (int)pen.Width;
@@ -53,6 +54,7 @@ namespace VectorNewWAY.Figures
             IsFilled = false;
             RotateMatrix = new Matrix();
             Center = new PointF(0, 0);
+            Edge = new EdgeMod();
         }
         public virtual PointF SetCenter()
         {
@@ -61,16 +63,22 @@ namespace VectorNewWAY.Figures
 
         public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
         {
+           
+
             Pen penGP = new Pen(Color, Width);
+
             if (Path.IsOutlineVisible(touchPoint, penGP)) // Если точка входит в область видимости 
             {
                 TouchPoint = touchPoint;
-                return true;
+                return  true;
             }
             else
             {
                 return false;
             }
+
+            
+
         }
 
         public virtual bool IsArea(PointF touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
@@ -89,10 +97,10 @@ namespace VectorNewWAY.Figures
         public virtual GraphicsPath GetPath() //Получаем Path
         {
             GraphicsPath gp = new GraphicsPath();
-            gp.AddLine(new Point(1,1), new Point(20,20));
+            gp.AddLine(new Point(1, 1), new Point(20, 20));
             return gp;
-        } 
-        
+        }
+
         public virtual void Update(PointF startPoint, PointF endPoint)
         {
 
@@ -107,13 +115,22 @@ namespace VectorNewWAY.Figures
         }
         public virtual void Rotate(float RotateAngle)
         {
-            RotateMatrix.RotateAt(RotateAngle, Center);
-            Path.Transform(RotateMatrix);
+            {
+                Center = new PointF(0, 0);
+                for (int i = 0; i < PointsList.Count - 1; i++)
+                {
+                    Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
+                }
+                Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+
+                RotateMatrix.RotateAt(RotateAngle, Center);
+                Path.Transform(RotateMatrix);
+            }
         }
 
         public virtual void Scale(PointF point)
         {
-           
+
         }
         //public void MovePeak(Point peakDelta)
         //{
@@ -148,6 +165,37 @@ namespace VectorNewWAY.Figures
         {
             return base.GetHashCode();
         }
-        
+
+        public bool IsPeak(PointF pointFromForm)
+        {
+            foreach (PointF target in PointsList)
+            {
+                if (
+                    (target.X - 10 < pointFromForm.X) && (target.X + 10 > pointFromForm.X)
+                    &&
+                    (target.Y - 10 < pointFromForm.Y) && (target.Y + 10 > pointFromForm.Y)
+                    )
+                {
+                    TouchPoint = pointFromForm;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void AddPeak()
+        {
+            if (Edge.EdgeNumber == 1)
+            {
+                PointsList.Add(TouchPoint);
+            }
+            else
+            {
+                PointsList.Insert(Edge.EdgeNumber - 1, TouchPoint);
+
+            }
+            AnglesNumber++;
+        }
+
     }
 }

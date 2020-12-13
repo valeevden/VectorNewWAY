@@ -16,20 +16,13 @@ namespace VectorNewWAY.Figures
 {
     public class Triangle3DFigure : AFigure
     {
-        GraphicsPath FullPath;
         public Triangle3DFigure(Pen pen) : base(pen)
         {
-            //Painter = new PolygonIPainter();
             Reaction = new Triangle3DIRightClickReaction(this);
             PointsList = new List<PointF> { new PointF(0, 0) };
             Painter = new PathIPainter();
-            Started = false;
+            Filler = new PathFiller();
             AnglesNumber = 1;
-            IsFilled = false;
-            RotateMatrix = new Matrix();
-            SizeX = 0;
-            SizeY = 0;
-            FullPath = new GraphicsPath();
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -41,13 +34,7 @@ namespace VectorNewWAY.Figures
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
-
-            Center = new PointF(0, 0);
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-            }
-            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+            Path.CloseFigure();
 
             Path.Transform(RotateMatrix);
             return Path;
@@ -59,79 +46,12 @@ namespace VectorNewWAY.Figures
             PointsList[AnglesNumber - 2] = startP;
             PointsList[AnglesNumber - 1] = endP;
         }
-
-
-
-        public override bool IsEdge(PointF eLocation)
-        {
-            Path = new GraphicsPath();
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Path.AddLine(PointsList[i], PointsList[i + 1]);
-            }
-
-            Center = new PointF(0, 0);
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-            }
-            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
-
-            Path.Transform(RotateMatrix);
-            Pen penGP = new Pen(Color, Width);
-            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
-        public override bool IsArea(PointF eLocation)
-        {
-            Path = new GraphicsPath();
-
-            Path.AddLine(PointsList[0], PointsList[1]);
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            Path.Transform(RotateMatrix);
-            if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+       
 
         public override void Scale(PointF point)
         {
 
         }
-
-        public override void Rotate(float rotateAngle)
-        {
-            Center = new PointF(0, 0);
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-            }
-            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
-            RotateMatrix.RotateAt(rotateAngle, Center);
-            Path.Transform(RotateMatrix);
-        }
-
-        public override void Move(PointF delta)
-        {
-            for (int i = 0; i < PointsList.Count; i++)
-            {
-                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
-            }
-        }
+      
     }
 }

@@ -24,7 +24,8 @@ namespace VectorNewWAY.Figures
             PointsList = new List<PointF> { new PointF(0, 0) };
             Painter = new PathIPainter();
             Started = false;
-            AnglesNumber = 1;
+            Filler = new PathFiller();
+            AnglesNumber = 3;
             IsFilled = false;
             RotateMatrix = new Matrix();
             SizeX = 0;
@@ -72,6 +73,7 @@ namespace VectorNewWAY.Figures
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
             Path.CloseFigure();
+
             Center = new PointF(0, 0);
             for (int i = 0; i < 3; i++)
             {
@@ -97,13 +99,20 @@ namespace VectorNewWAY.Figures
         {
             Path = new GraphicsPath();
 
-            Path.AddLine(PointsList[0], PointsList[1]);
+            for (int i = 0; i < PointsList.Count - 1; i++)
+            {
+                Path.AddLine(PointsList[i], PointsList[i + 1]);
+            }
+            Path.CloseFigure();
+
+
             Center = new PointF(0, 0);
             for (int i = 0; i < 3; i++)
             {
                 Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
             }
             Center = new PointF(Center.X / 3, Center.Y / 3);
+
             Path.Transform(RotateMatrix);
             if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
             {

@@ -21,9 +21,11 @@ namespace VectorNewWAY.Figures
             Painter = new PathIPainter();
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
+            Started = false;
             AnglesNumber = 0;
+            IsFilled = false;
+
             RotateMatrix = new Matrix();
-            
             SizeX = 0;
             SizeY = 0;
         }
@@ -52,6 +54,12 @@ namespace VectorNewWAY.Figures
             float width = points [2].X - points[0].X;
             float height = points[2].Y - points[0].Y;
             RectangleF rectangle = new RectangleF(points[0].X, points[0].Y, width, height);
+
+            Path = new GraphicsPath();
+            Path.AddEllipse(rectangle);
+            rectangle = Path.GetBounds();
+            Path = new GraphicsPath();
+
             return rectangle;
         }
 

@@ -56,6 +56,7 @@
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
     <Compile Include="Figures\BrushIFigure.cs" />
+    <Compile Include="Figures\EdgeMod.cs" />
     <Compile Include="Figures\NAngleAFigure.cs" />
     <Compile Include="Figures\FigureNDIFigure.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Figures\RectangleMaker.cs" />
     <Compile Include="Figures\RectTriangleIFigure.cs" />
     <Compile Include="Figures\Triangle3DFigure.cs" />
+    <Compile Include="Mode\PeakIMode.cs" />
     <Compile Include="Mode\RotateIMode.cs" />
     <Compile Include="Reaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="Reaction\FreeLineIRightClickReaction.cs" />

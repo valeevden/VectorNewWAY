@@ -35,7 +35,8 @@ namespace VectorNewWAY
             _data = SingletonData.GetData();
             _data.PictureBox1 = pictureBox1;
             _data.Canvas = new Canvas(pictureBox1.Width, pictureBox1.Height);
-            _figure = new EllipseFigure(_pen);
+            fabric = new BrushFabric();
+            _figure = fabric.CreateFigure(_pen);
             _mouseMode = new PaintIMode();
 
         }
@@ -261,7 +262,7 @@ namespace VectorNewWAY
         {
             if (radioButtonPeak.Checked)
             {
-
+               
             }
         }
         private void FILL_CheckedChanged(object sender, EventArgs e)

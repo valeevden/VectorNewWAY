@@ -16,7 +16,6 @@ namespace VectorNewWAY.Figures
 {
     public class FigureNDIFigure : AFigure
     {
-        GraphicsPath FullPath;
         public FigureNDIFigure(Pen pen) : base(pen)
         {
             //Painter = new PolygonIPainter();
@@ -29,7 +28,20 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             SizeX = 0;
             SizeY = 0;
-            FullPath = new GraphicsPath();
+            Filler = new PathFiller();
+        }
+        public FigureNDIFigure(AFigure deadFigureFromForm, Pen pen): base (pen)
+        {
+            Reaction = deadFigureFromForm.Reaction;
+            PointsList = deadFigureFromForm.PointsList;
+            Painter = deadFigureFromForm.Painter;
+            AnglesNumber = deadFigureFromForm.AnglesNumber;
+            IsFilled = deadFigureFromForm.IsFilled;
+            RotateMatrix = deadFigureFromForm.RotateMatrix;
+            Started = false;
+            SizeX = 0;
+            SizeY = 0;
+            //FullPath = new GraphicsPath();
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -83,6 +95,7 @@ namespace VectorNewWAY.Figures
                 TouchPoint = eLocation;
                 return true;
             }
+
             else
             {
                 return false;

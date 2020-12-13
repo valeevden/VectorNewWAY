@@ -22,6 +22,7 @@ namespace VectorNewWAY.Figures
             //Painter = new PolygonIPainter();
             Reaction = new FreeLineIRightClickReaction();
             PointsList = new List<PointF> { new PointF(0,0)};
+            Filler = new PathFiller();
             Painter = new PathIPainter();
             Started = false;
             AnglesNumber = 1;

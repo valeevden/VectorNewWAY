@@ -20,6 +20,7 @@ namespace VectorNewWAY.Figures
         {
             Reaction = new NoReactionIReaction();
             Painter = new PathIPainter();
+            Filler = new PathFiller();
             AnglesNumber = 1;
             RotateMatrix = new Matrix();
             PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
@@ -47,17 +48,25 @@ namespace VectorNewWAY.Figures
             AnglesNumber++;
          }
 
-        public override void Scale(PointF point)
-        {
+        //public override void Scale(PointF point)
+        //{
 
-        }
+        //}
 
-        public override void Rotate(float rotateAngle)
-        {
+        //public override void Rotate(float rotateAngle)
+        //{
 
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            RotateMatrix.RotateAt(rotateAngle, Center);
-            Path.Transform(RotateMatrix);
-        }
+        //    Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+        //    RotateMatrix.RotateAt(rotateAngle, Center);
+        //    Path.Transform(RotateMatrix);
+        //}
+
+
+
+
+
+
     }
+
+    
 }
