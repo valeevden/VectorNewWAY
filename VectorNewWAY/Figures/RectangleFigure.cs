@@ -29,6 +29,13 @@ namespace VectorNewWAY.Figures
             SizeX = 0;
             SizeY = 0;
         }
+
+        public override void Update(PointF startP, PointF endP)
+        {
+            PointsList = new List<PointF>();
+            PointsList.Add(startP);
+            PointsList.Add(endP);
+        }
     }
    
 }

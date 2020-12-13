@@ -5,19 +5,49 @@ using NUnit.Framework;
 using System.Drawing;
 using VectorNewWAY.Fabrics;
 using VectorNewWAY.Figures;
+using System.Collections;
 
 
 
 namespace VectorNewWAYTest
 {
-    public class RectangleFigureTest
+    public class FigureTest
     {
         RectangleFigure rectangleFigure;
 
         [SetUp]
         public void Setup()
         {
-            rectangleFigure = new RectangleFigure (new Pen (Color.Black, 5));
+            rectangleFigure = new RectangleFigure(new Pen(Color.Black, 5));
+        }
+
+        [Test, TestCaseSource(typeof(UpdateTestSource))]
+        public void UpdateTest(Point startPoint, Point endPoint, List<PointF> expected)
+        {
+            rectangleFigure.Update(startPoint, endPoint);
+            List<PointF> actual = rectangleFigure.PointsList;
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        public class UpdateTestSource : IEnumerable
+        {
+            List<PointF> points1 = new List<PointF>() { new Point(0, 0), new Point(10, 10)};
+            List<PointF> points2 = new List<PointF>() { new Point(0, 0), new Point(20, 20)};
+            List<PointF> points3 = new List<PointF>() { new Point(5, 5), new Point(10, 10)};
+
+            public IEnumerator GetEnumerator()
+            {
+                yield return new object[] { new Point(0, 0), new Point(10, 10), points1 };
+                yield return new object[] { new Point(0, 0), new Point(20, 20), points2 };
+                yield return new object[] { new Point(5, 5), new Point(10, 10), points3 };
+            }
         }
     }
 }
+        
+
+
+        
+
+    
