@@ -47,10 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Canvas.cs" />
+    <Compile Include="Fabrics\CircleIFabric.cs" />
     <Compile Include="Fabrics\EllipseIFabric.cs" />
     <Compile Include="Fabrics\IFigureFabric.cs" />
     <Compile Include="Fabrics\Line2DIFabric.cs" />
     <Compile Include="Figures\Line2DIFigure.cs" />
+    <Compile Include="Figures\CircleFigure.cs" />
     <Compile Include="Mode\RotateIMode.cs" />
     <Compile Include="SingletonData.cs" />
     <Compile Include="Figures\AFigure.cs" />
