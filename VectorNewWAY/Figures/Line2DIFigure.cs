@@ -14,16 +14,13 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-
-    public class EllipseFigure : AFigure
+    public class Line2DIFigure : AFigure
     {
-        float dX = 1;
-
-        public EllipseFigure(Pen pen)
+        public Line2DIFigure(Pen pen)
         {
-            Painter = new PathIPainter();
+            //Painter = new PolygonIPainter();
             Reaction = new NoReactionIReaction();
-            Filler = new PathFiller();
+            Painter = new PathIPainter();
             Started = false;
             Color = pen.Color;
             Width = (int)pen.Width;
@@ -38,12 +35,9 @@ namespace VectorNewWAY.Figures
         public override GraphicsPath GetPath() //Получаем Path
         {
             Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-          
-            rectangle.Inflate(SizeX, SizeY);
-            Path.AddEllipse(rectangle);
+            
+            Path.AddLine(PointsList[0], PointsList[1]);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            //Path.Transform(ScaleMatrix);
             Path.Transform(RotateMatrix);
             return Path;
         }
@@ -55,21 +49,14 @@ namespace VectorNewWAY.Figures
             PointsList.Add(endP);
         }
 
-        private RectangleF MakeRectangleFromPointsList()
-        {
-            float width = PointsList[1].X - PointsList[0].X;
-            float height = PointsList[1].Y - PointsList[0].Y;
-            RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
-            return rectangle;
-        }
-
+        
 
         public override bool IsEdge(PointF eLocation)
         {
             Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-            rectangle.Inflate(SizeX, SizeY);
-            Path.AddEllipse(rectangle);
+            
+            
+            Path.AddLine(PointsList[0], PointsList[1]);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.Transform(RotateMatrix);
             Pen penGP = new Pen(Color, Width);
@@ -88,9 +75,8 @@ namespace VectorNewWAY.Figures
         public override bool IsArea(PointF eLocation)
         {
             Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-            rectangle.Inflate(SizeX, SizeY);
-            Path.AddEllipse(rectangle);
+            
+            Path.AddLine(PointsList[0], PointsList[1]);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.Transform(RotateMatrix);
             if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
@@ -104,15 +90,9 @@ namespace VectorNewWAY.Figures
             }
         }
 
-
-
         public override void Scale(PointF point)
         {
 
-            RectangleF rectangle = MakeRectangleFromPointsList();
-
-            SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
-            SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
 
         public override void Rotate(float rotateAngle)
@@ -123,7 +103,6 @@ namespace VectorNewWAY.Figures
             Path.Transform(RotateMatrix);
         }
 
-
         public override void Move(PointF delta)
         {
             for (int i = 0; i < PointsList.Count; i++)
@@ -131,6 +110,5 @@ namespace VectorNewWAY.Figures
                 PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
             }
         }
-       
     }
 }
