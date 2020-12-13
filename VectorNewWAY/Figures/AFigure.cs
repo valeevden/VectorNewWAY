@@ -16,7 +16,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public abstract class AFigure
+    public abstract class AFigure 
     {
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
@@ -148,5 +148,6 @@ namespace VectorNewWAY.Figures
         {
             return base.GetHashCode();
         }
+        
     }
 }

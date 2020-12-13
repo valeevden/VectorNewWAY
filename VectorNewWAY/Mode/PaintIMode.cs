@@ -31,8 +31,8 @@ namespace VectorNewWAY.Mode
             _singletone = SingletonData.GetData();
 
             if (fabric is LineNDIFabric
-                        /*|| fabric is FigureNDIFabric
-                        || _figure.Reaction is TriangleIRightClickReaction*/)
+                        || fabric is FigureNDIFabric
+                        || fabric is Triangle3DIFabric)
             {
                 //если фигура начинается то записать первую стартПоинт
                 if (_figure == null)
@@ -58,7 +58,8 @@ namespace VectorNewWAY.Mode
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
             if ((_figure.Reaction is FreeLineIRightClickReaction 
-                || _figure.Reaction is FreeFigureIRightClickReaction) && (_mouseMove == false))
+                || _figure.Reaction is FreeFigureIRightClickReaction 
+                || _figure.Reaction is Triangle3DIRightClickReaction) && (_mouseMove == false))
             {
                 _figure.AnglesNumber++;
                 _figure.PointsList.Add(_figure.TmpPoint); //точка добавляется в лист в начале движения мыши
@@ -75,26 +76,28 @@ namespace VectorNewWAY.Mode
             _mouseMove = false;
             if (_figure != null && _figure.Reaction is NoReactionIReaction)
             {
+                _figure.Reaction.Do();
                 SingletonData _fL = SingletonData.GetData();
                 _fL.FigureList.Add(_figure);
             }
-            //else if (_figure != null && _figure.Reaction is TriangleIRightClickReaction && _figure._anglesNumber == 3)
-            //{
-            //    //ничего не происходит для фигур с FreeLineIRightClickReaction и FreeFigureIRightClickReaction
-            //    _figure.Reaction.Do();
-            //    figuresList.Add(_figure);
-            //    pictureBox1.Image = canvas.DrawIt(_figure, _pen);
-            //    _figure = fabrica.CreateFigure(_pen);
-            //}
+            else if (_figure != null && _figure.Reaction is Triangle3DIRightClickReaction && _figure.AnglesNumber == 3)
+            {
+                //ничего не происходит для фигур с FreeLineIRightClickReaction и FreeFigureIRightClickReaction
+                _figure.Reaction.Do();
+                SingletonData _fL = SingletonData.GetData();
+                _fL.FigureList.Add(_figure);
+                _figure = null;
+            }
 
             if (e.Button == MouseButtons.Right)
             {
-                if (_figure.Reaction is FreeLineIRightClickReaction || _figure.Reaction is FreeFigureIRightClickReaction)
+                if (_figure.Reaction is FreeLineIRightClickReaction 
+                    || _figure.Reaction is FreeFigureIRightClickReaction)
                 {
                     _figure.Reaction.Do();
                     SingletonData _fL = SingletonData.GetData();
                     _fL.FigureList.Add(_figure);
-                    //_singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
+                    
                     _figure = null;
                 }
                 else

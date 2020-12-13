@@ -14,14 +14,14 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class LineNDIFigure : AFigure
+    public class FigureNDIFigure : AFigure
     {
         GraphicsPath FullPath;
-        public LineNDIFigure(Pen pen):base(pen)
+        public FigureNDIFigure(Pen pen) : base(pen)
         {
             //Painter = new PolygonIPainter();
-            Reaction = new FreeLineIRightClickReaction();
-            PointsList = new List<PointF> { new PointF(0,0)};
+            Reaction = new FreeFigureIRightClickReaction(this);
+            PointsList = new List<PointF> { new PointF(0, 0) };
             Painter = new PathIPainter();
             Started = false;
             AnglesNumber = 1;
@@ -37,10 +37,11 @@ namespace VectorNewWAY.Figures
             //отрисовывается весь путь во время маус мува
             //последняя линяя двигается
             Path = new GraphicsPath();
-            for (int i = 0; i < PointsList.Count-1; i++)
+            for (int i = 0; i < PointsList.Count - 1; i++)
             {
-                Path.AddLine(PointsList[i], PointsList[i+1]);
+                Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
+
             Center = new PointF(0, 0);
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
@@ -58,7 +59,7 @@ namespace VectorNewWAY.Figures
             PointsList[AnglesNumber - 1] = endP;
         }
 
-        
+
 
         public override bool IsEdge(PointF eLocation)
         {
@@ -67,12 +68,14 @@ namespace VectorNewWAY.Figures
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
+
             Center = new PointF(0, 0);
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
                 Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
             }
             Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+
             Path.Transform(RotateMatrix);
             Pen penGP = new Pen(Color, Width);
             if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
@@ -90,6 +93,7 @@ namespace VectorNewWAY.Figures
         public override bool IsArea(PointF eLocation)
         {
             Path = new GraphicsPath();
+
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
