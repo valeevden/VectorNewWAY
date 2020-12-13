@@ -107,8 +107,17 @@ namespace VectorNewWAY.Figures
         }
         public virtual void Rotate(float RotateAngle)
         {
-            RotateMatrix.RotateAt(RotateAngle, Center);
-            Path.Transform(RotateMatrix);
+            {
+                Center = new PointF(0, 0);
+                for (int i = 0; i < PointsList.Count - 1; i++)
+                {
+                    Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
+                }
+                Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+
+                RotateMatrix.RotateAt(RotateAngle, Center);
+                Path.Transform(RotateMatrix);
+            }
         }
 
         public virtual void Scale(PointF point)
