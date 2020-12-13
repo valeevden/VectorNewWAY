@@ -126,7 +126,8 @@ namespace VectorNewWAY
 
         private void Triangle3D_Click(object sender, EventArgs e)
         {
-
+            fabric = new Triangle3DIFabric();
+            _figure = fabric.CreateFigure(_pen);
             radioButtonPaintMode.Checked = true;
         }
 
