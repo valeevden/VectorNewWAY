@@ -84,6 +84,14 @@ namespace VectorNewWAY.Figures
                 return false;
             }
         }
+        public override void Scale(PointF point)
+        {
+            RectangleF rectangle = MakeRectangleFromPointsList();
+
+            SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
+            SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
+        }
+
 
 
 

@@ -48,6 +48,18 @@ namespace VectorNewWAYTest
             Assert.AreEqual(exspected, actual);
         }
 
+        [Test, TestCaseSource(typeof(ScaleTestSource))]
+        public void ScaleTest(Point startPoint, Point endPoint, Point point, Point delta, bool exspected)
+        {
+            rectangleFigure.Update(startPoint, endPoint);
+            for (int i = 0; i< 20; i++)
+            {
+                rectangleFigure.Scale(delta);
+            }
+            bool  actual = rectangleFigure.IsArea(point);
+            Assert.AreEqual (exspected, actual);
+        }
+        
 
 
         public class UpdateTestSource : IEnumerable
@@ -80,6 +92,17 @@ namespace VectorNewWAYTest
                 yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(5, 8), true };
                 yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(10, 10), true };
                 yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(50, 100), false };
+            }
+
+        }
+
+        public class ScaleTestSource : IEnumerable
+        {
+            public IEnumerator GetEnumerator()
+            {
+                yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(20, 15), new Point(1, 1), true };
+                yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(10, 10), new Point(5, 8), true };
+                yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(50, 100), new Point(5, 8), false };
             }
 
         }
