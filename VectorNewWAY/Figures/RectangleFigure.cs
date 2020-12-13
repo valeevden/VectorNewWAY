@@ -65,6 +65,28 @@ namespace VectorNewWAY.Figures
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+        public override bool Equals(object obj)
+        {
+            RectangleFigure rectangle = (RectangleFigure)obj;
+            if (!Color.Equals(rectangle.Color) || Width != rectangle.Width || !PointsList.Equals(rectangle.PointsList) || !PointsArray.Equals(rectangle.PointsArray)
+                     || !AnglesNumber.Equals(rectangle.AnglesNumber) || !Filler.Equals(rectangle.Filler) || !Reaction.Equals(rectangle.Reaction)
+                     || !Painter.Equals(rectangle.Painter)|| ! RotateMatrix.Equals (rectangle.RotateMatrix) || !Path.Equals (rectangle.Path))
+            {
+                return false;
+            }
+            return true;
+        }
     }
    
 }

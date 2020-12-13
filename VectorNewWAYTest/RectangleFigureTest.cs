@@ -40,6 +40,7 @@ namespace VectorNewWAYTest
         }
 
 
+
         public class UpdateTestSource : IEnumerable
         {
             List<PointF> points1 = new List<PointF>() { new Point(0, 0), new Point(10, 10)};
