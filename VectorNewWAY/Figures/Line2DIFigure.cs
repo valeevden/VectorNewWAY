@@ -23,6 +23,7 @@ namespace VectorNewWAY.Figures
             Painter = new PathIPainter();
             AnglesNumber = 0;
             RotateMatrix = new Matrix();
+            PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -37,11 +38,9 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            List<PointF> currentList = new List<PointF> { startP, endP };
-            PointsList.Add(startP);
-            PointsList.Add(endP);
-            PointsList[AnglesNumber - 2] = currentList[0];
-            PointsList[AnglesNumber - 1] = currentList[1];
+            
+            PointsList[0] = startP;
+            PointsList[1] = endP;
         }
 
         
