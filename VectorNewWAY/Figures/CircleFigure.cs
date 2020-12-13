@@ -17,22 +17,34 @@ namespace VectorNewWAY.Figures
 {
     public class CircleFigure : AFigure
     {
-        public CircleFigure(Pen pen)
+        public CircleFigure(Pen pen) : base (pen)
         {
             Painter = new PathIPainter();
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
-            Started = false;
-            Color = pen.Color;
-            Width = (int)pen.Width;
             AnglesNumber = 0;
-            IsFilled = false;
-            ScaleMatrix = new Matrix();
             RotateMatrix = new Matrix();
-            SizeX = 0;
-            SizeY = 0;
         }
 
+
+        public override GraphicsPath GetPath() //Получаем Path
+        {
+            Path = new GraphicsPath();
+            RectangleF rectangle = MakeRectangleFromPointsList();
+            rectangle.Inflate(SizeX, SizeY);
+            Path.AddEllipse(rectangle);
+            return Path;
+        }
+
+        public override void Update(PointF startP, PointF endP)
+        {
+            float radius = endP.X - startP.X;
+            PointF startRectangleHere = new PointF(endP.X, startP.Y + radius);
+            PointsList = new List<PointF>();
+            PointsList.Add(startRectangleHere);
+            PointsList.Add(startP);
+            PointsList.Add(endP);
+        }
         private RectangleF MakeRectangleFromPointsList()
         {
             float width = 2 * (PointsList[1].X - PointsList[0].X);
@@ -41,28 +53,12 @@ namespace VectorNewWAY.Figures
             return rectangle;
         }
 
-        public override GraphicsPath GetPath() //Получаем Path
+        public override void Scale(PointF point)
         {
-            Path = new GraphicsPath();
             RectangleF rectangle = MakeRectangleFromPointsList();
 
-            rectangle.Inflate(SizeX, SizeY);
-            Path.AddEllipse(rectangle);
-           // Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            //Path.Transform(ScaleMatrix);
-            Path.Transform(RotateMatrix);
-            return Path;
-        }
-
-        public override void Update(PointF startP, PointF endP)
-        {
-            float radius = endP.X - startP.X;
-            PointF startRectangleHere = new PointF(StartPoint.X, SecondPoint.Y + radius);
-
-            PointsList = new List<PointF>();
-            PointsList.Add(startRectangleHere);
-            PointsList.Add(StartPoint);
-            PointsList.Add(SecondPoint);
+            SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
+            SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
 
 

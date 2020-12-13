@@ -52,9 +52,11 @@
     <Compile Include="Fabrics\IFigureFabric.cs" />
     <Compile Include="Fabrics\LineNDIFabric.cs" />
     <Compile Include="Fabrics\Line2DIFabric.cs" />
+    <Compile Include="Fabrics\RectangleIFabric.cs" />
     <Compile Include="Figures\LineNDIFigure.cs" />
     <Compile Include="Figures\Line2DIFigure.cs" />
     <Compile Include="Figures\CircleFigure.cs" />
+    <Compile Include="Figures\RectangleMaker.cs" />
     <Compile Include="Mode\RotateIMode.cs" />
     <Compile Include="Reaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="Reaction\FreeLineIRightClickReaction.cs" />

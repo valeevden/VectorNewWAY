@@ -23,7 +23,6 @@ namespace VectorNewWAY.Figures
         public PointF TmpPoint { get; set; }
         public PointF TouchPoint { get; set; }//точка касания при перемещении, вращении или заливке фигуры
         public PointF[] PointsArray { get; set; }//массив точек фигуры
-        public Matrix ScaleMatrix { get; set; }
         public Matrix RotateMatrix { get; set; }
         public List<PointF> PointsList { get; set; }//лист точек - та же информация что и в массиве точек
         public GraphicsPath Path { get; set; }//точки кисти
@@ -35,7 +34,6 @@ namespace VectorNewWAY.Figures
         public int Width { get; set; } // Толщина pen
         public int AnglesNumber { get; set; }//количество углов
         public float RotateAngle { get; set; }//Угол поворота
-        public float ScaleMultiplier { get; set; }//Угол поворота
         public PointF Center { get; set; }
         public float SizeX { get; set; } // Размер мастшаба по Х 
         public float SizeY { get; set; } // Размер мастшаба по Y
@@ -44,15 +42,42 @@ namespace VectorNewWAY.Figures
         public bool Started { get; set; }
         public bool IsFilled { get; set; }//залито/не залито
         public int MovingPeakIndex;
+        
+        public  AFigure (Pen pen)
+        {
+            Color = pen.Color;
+            Width = (int)pen.Width;
+            SizeX = 0;
+            SizeY = 0;
+            Started = false;
+            IsFilled = false;
+        }
 
         public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
         {
-            return false;
+            Pen penGP = new Pen(Color, Width);
+            if (Path.IsOutlineVisible(touchPoint, penGP)) // Если точка входит в область видимости 
+            {
+                TouchPoint = touchPoint;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public virtual bool IsArea(PointF touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
         {
-            return false;
+            if (Path.IsVisible(touchPoint)) // Если точка входит в область видимости 
+            {
+                TouchPoint = touchPoint;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public virtual GraphicsPath GetPath() //Получаем Path
@@ -69,7 +94,10 @@ namespace VectorNewWAY.Figures
 
         public virtual void Move(PointF delta)
         {
-
+            for (int i = 0; i < PointsList.Count; i++)
+            {
+                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
+            }
         }
         public virtual void Rotate(float RotateAngle)
         {
@@ -77,7 +105,7 @@ namespace VectorNewWAY.Figures
         }
         public virtual void Scale(PointF point)
         {
-
+           
         }
         //public void MovePeak(Point peakDelta)
         //{

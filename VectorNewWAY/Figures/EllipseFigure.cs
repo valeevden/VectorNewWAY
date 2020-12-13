@@ -18,20 +18,13 @@ namespace VectorNewWAY.Figures
     public class EllipseFigure : AFigure
     {
 
-        public EllipseFigure(Pen pen)
+        public EllipseFigure(Pen pen) : base(pen)
         {
             Painter = new PathIPainter();
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
-            Started = false;
-            Color = pen.Color;
-            Width = (int)pen.Width;
             AnglesNumber = 0;
-            IsFilled = false;
-            ScaleMatrix = new Matrix();
             RotateMatrix = new Matrix();
-            SizeX = 0;
-            SizeY = 0;
         }
 
         public override GraphicsPath GetPath() //Получаем Path
@@ -42,7 +35,6 @@ namespace VectorNewWAY.Figures
             rectangle.Inflate(SizeX, SizeY);
             Path.AddEllipse(rectangle);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            //Path.Transform(ScaleMatrix);
             Path.Transform(RotateMatrix);
             return Path;
         }
@@ -61,48 +53,6 @@ namespace VectorNewWAY.Figures
             RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
             return rectangle;
         }
-
-
-        public override bool IsEdge(PointF eLocation)
-        {
-            Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-            rectangle.Inflate(SizeX, SizeY);
-            Path.AddEllipse(rectangle);
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            Path.Transform(RotateMatrix);
-            Pen penGP = new Pen(Color, Width);
-            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
-        public override bool IsArea(PointF eLocation)
-        {
-            Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-            rectangle.Inflate(SizeX, SizeY);
-            Path.AddEllipse(rectangle);
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            Path.Transform(RotateMatrix);
-            if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
 
 
         public override void Scale(PointF point)
