@@ -43,12 +43,16 @@ namespace VectorNewWAY
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
-            _mouseMode.MouseDown(_pen, e, _figure, fabric);
+            if (e.Button != MouseButtons.Right)
+            {
+                _mouseMode.MouseDown(_pen, e, _figure, fabric);
+
+            }
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mouseDown)
+            if (mouseDown && e.Button != MouseButtons.Right)
             {
                 _mouseMode.MouseMove(_pen, e);
                 pictureBox1.Image = _data.PictureBox1.Image;

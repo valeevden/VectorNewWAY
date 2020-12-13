@@ -17,18 +17,15 @@ namespace VectorNewWAY.Figures
     public class LineNDIFigure : AFigure
     {
         GraphicsPath FullPath;
-        public LineNDIFigure(Pen pen)
+        public LineNDIFigure(Pen pen):base(pen)
         {
             //Painter = new PolygonIPainter();
             Reaction = new FreeLineIRightClickReaction();
-            PointsList = new List<PointF> { };
+            PointsList = new List<PointF> { new PointF(0,0)};
             Painter = new PathIPainter();
             Started = false;
-            Color = pen.Color;
-            Width = (int)pen.Width;
-            AnglesNumber = 0;
+            AnglesNumber = 1;
             IsFilled = false;
-            ScaleMatrix = new Matrix();
             RotateMatrix = new Matrix();
             SizeX = 0;
             SizeY = 0;
@@ -40,19 +37,21 @@ namespace VectorNewWAY.Figures
             //отрисовывается весь путь во время маус мува
             //последняя линяя двигается
             Path = new GraphicsPath();
+            for (int i = 0; i < PointsList.Count-1; i++)
+            {
+                Path.AddLine(PointsList[i], PointsList[i+1]);
+            }
             
-            Path.AddLine(PointsList[0], PointsList[1]);
-            FullPath.AddPath(Path, true);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
             Path.Transform(RotateMatrix);
-            return FullPath;
+            return Path;
         }
 
         public override void Update(PointF startP, PointF endP)
         {
-            PointsList = new List<PointF>();
-            PointsList.Add(startP);
-            PointsList.Add(endP);
+            //PointsList = new List<PointF>();
+            PointsList[AnglesNumber - 2] = startP;
+            PointsList[AnglesNumber - 1] = endP;
         }
 
         

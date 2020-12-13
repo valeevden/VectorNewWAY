@@ -17,7 +17,7 @@ namespace VectorNewWAY.Mode
     {
         AFigure _figure;
         PointF _startPoint;
-        bool _mouseMove = false;;
+        bool _mouseMove = false;
         SingletonData _singletone;
 
         public PaintIMode()
@@ -27,22 +27,24 @@ namespace VectorNewWAY.Mode
 
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
+            
             _singletone = SingletonData.GetData();
-            _figure = fabric.CreateFigure(p);
-            if (_figure.Reaction is FreeLineIRightClickReaction
-                        || _figure.Reaction is FreeFigureIRightClickReaction
-                        /*|| _figure.Reaction is TriangleIRightClickReaction*/)
+
+            if (fabric is LineNDIFabric
+                        /*|| fabric is FigureNDIFabric
+                        || _figure.Reaction is TriangleIRightClickReaction*/)
             {
                 //если фигура начинается то записать первую стартПоинт
-                if (_figure.Started == false)
+                if (_figure == null)
                 {
+                    _figure = fabric.CreateFigure(p);
                     _startPoint = e.Location;
                     _figure.TmpPoint = e.Location;
                     _figure.Started = true;
+                    
                 }
                 else
                 {
-                    _figure.AnglesNumber++;
                     _figure.TmpPoint = e.Location;
                     _startPoint = _figure.SecondPoint;
                 }
@@ -58,7 +60,8 @@ namespace VectorNewWAY.Mode
             if ((_figure.Reaction is FreeLineIRightClickReaction 
                 || _figure.Reaction is FreeFigureIRightClickReaction) && (_mouseMove == false))
             {
-                //_figure.PointsList.Add(_figure.TmpPoint); //точка добавляется в лист в начале движения мыши
+                _figure.AnglesNumber++;
+                _figure.PointsList.Add(_figure.TmpPoint); //точка добавляется в лист в начале движения мыши
             }
             _figure.Update(_startPoint, e.Location);
             _mouseMove = true; //после записи точки запись заканчивается
@@ -69,6 +72,7 @@ namespace VectorNewWAY.Mode
         }
         public void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
+            _mouseMove = false;
             if (_figure != null && _figure.Reaction is NoReactionIReaction)
             {
                 SingletonData _fL = SingletonData.GetData();
@@ -90,8 +94,8 @@ namespace VectorNewWAY.Mode
                     _figure.Reaction.Do();
                     SingletonData _fL = SingletonData.GetData();
                     _fL.FigureList.Add(_figure);
-                    _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
-                    _figure = fabric.CreateFigure(pen);
+                    //_singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
+                    _figure = null;
                 }
                 else
                 {
