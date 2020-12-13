@@ -68,6 +68,7 @@ namespace VectorNewWAY.Mode
             _mouseMove = true; //после записи точки запись заканчивается
             _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
             _figure.SecondPoint = e.Location;
+            _startPoint = e.Location;
 
             GC.Collect();
         }
