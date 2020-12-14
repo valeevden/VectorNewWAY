@@ -20,7 +20,7 @@ namespace VectorNewWAY.Figures
         {
             Reaction = new NoReactionIReaction();
             Painter = new PathIPainter();
-            Filler = new PathFiller();
+            Filler = new LineIFiller();
             AnglesNumber = 1;
             RotateMatrix = new Matrix();
             PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
