@@ -28,7 +28,6 @@ namespace VectorNewWAY.Figures
         public List<PointF> PointsList { get; set; }//лист точек - та же информация что и в массиве точек
         public GraphicsPath Path { get; set; }//точки кисти
         public IPainter Painter { get; set; }//пейнтер фигуры
-        //public IFiller Filler { get; }//способ заливки фигуры (либо polygon либо ellipse)
         public Color Color { get; set; }//цвет фигуры
         public IFiller Filler { get; set; }//Заливальщик фигуры
         public IReaction Reaction { get; set; }//Реакция по "" фигуры
@@ -39,7 +38,6 @@ namespace VectorNewWAY.Figures
         public float SizeX { get; set; } // Размер мастшаба по Х 
         public float SizeY { get; set; } // Размер мастшаба по Y
 
-        //public EdgeModifying edgeModifying { get; set; }
         public bool Started { get; set; }
         public bool IsFilled { get; set; }//залито/не залито
         public int MovingPeakIndex;
@@ -63,8 +61,6 @@ namespace VectorNewWAY.Figures
 
         public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
         {
-           
-
             Pen penGP = new Pen(Color, Width);
 
             if (Path.IsOutlineVisible(touchPoint, penGP)) // Если точка входит в область видимости 
@@ -76,12 +72,9 @@ namespace VectorNewWAY.Figures
             {
                 return false;
             }
-
-            
-
         }
 
-        public virtual bool IsArea(PointF touchPoint)//метод определяет попали или не попали в грань - ЕЩЁ НЕ ДОПИСАН
+        public virtual bool IsArea(PointF touchPoint)//метод определяет попали или не попали в площадь
         {
             if (Path.IsVisible(touchPoint)) // Если точка входит в область видимости 
             {
@@ -97,7 +90,6 @@ namespace VectorNewWAY.Figures
         public virtual GraphicsPath GetPath() //Получаем Path
         {
             GraphicsPath gp = new GraphicsPath();
-            gp.AddLine(new Point(1, 1), new Point(20, 20));
             return gp;
         }
 
@@ -132,35 +124,7 @@ namespace VectorNewWAY.Figures
         {
 
         }
-        //public void MovePeak(Point peakDelta)
-        //{
-        //    if (edgeModifying.edgeNumber == 1)
-        //    {
-        //        pointsList[_anglesNumber - 1] = new Point(pointsList[_anglesNumber - 1].X + peakDelta.X,
-        //            pointsList[_anglesNumber - 1].Y + peakDelta.Y);
-        //    }
-        //    else
-        //    {
-
-        //        pointsList[edgeModifying.edgeNumber - 1] =
-        //        new Point(
-        //        pointsList[edgeModifying.edgeNumber - 1].X + peakDelta.X,
-        //        pointsList[edgeModifying.edgeNumber - 1].Y + peakDelta.Y);
-        //    }
-        //}
-        //public void AddPeak()
-        //{
-        //    if (edgeModifying.edgeNumber == 1)
-        //    {
-        //        pointsList.Add(touchPoint);
-        //    }
-        //    else
-        //    {
-        //        pointsList.Insert(edgeModifying.edgeNumber - 1, touchPoint);
-
-        //    }
-        //    _anglesNumber++;
-        //}
+        
         public override int GetHashCode()
         {
             return base.GetHashCode();

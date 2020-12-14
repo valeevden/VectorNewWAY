@@ -27,8 +27,7 @@ namespace VectorNewWAY.Figures
 
         public override GraphicsPath GetPath() //Получаем Path
         {
-            //отрисовывается весь путь во время маус мува
-            //последняя линяя двигается
+           
             Path = new GraphicsPath();
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
@@ -42,7 +41,6 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            //PointsList = new List<PointF>();
             PointsList[AnglesNumber - 2] = startP;
             PointsList[AnglesNumber - 1] = endP;
         }

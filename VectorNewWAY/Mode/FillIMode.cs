@@ -23,17 +23,7 @@ namespace VectorNewWAY.Mode
             _fillFigure = null;
             foreach (AFigure checkFigure in _singletone.FigureList)
             {
-                //if (checkFigure.IsPeak(e.Location))
-                //{
-                //    _figure = checkFigure;
-                //    movingFigure = checkFigure;
-                //    figuresList.Remove(_figure);
-                //    pictureBox1.Image = canvas.Clear();
-                //    DrawAll();
-                //    startPoint = checkFigure.touchPoint;
-                //    mode = "PEAK";
-                //    break;
-                //}
+               
                 if (checkFigure.IsEdge(e.Location) || (checkFigure.IsArea(e.Location)))
                 {
                     _fillFigure = checkFigure;
