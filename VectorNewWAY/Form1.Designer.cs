@@ -240,8 +240,8 @@
             // NanglesFigure
             // 
             this.NanglesFigure.BackColor = System.Drawing.Color.White;
-            this.NanglesFigure.Image = global::VectorNewWAY.Properties.Resources.yield;
-            this.NanglesFigure.Location = new System.Drawing.Point(75, 343);
+            this.NanglesFigure.Image = global::VectorNewWAY.Properties.Resources.hexagon;
+            this.NanglesFigure.Location = new System.Drawing.Point(75, 499);
             this.NanglesFigure.Margin = new System.Windows.Forms.Padding(4);
             this.NanglesFigure.Name = "NanglesFigure";
             this.NanglesFigure.Size = new System.Drawing.Size(70, 70);
@@ -290,8 +290,8 @@
             // IsoscelesTriangle
             // 
             this.IsoscelesTriangle.BackColor = System.Drawing.Color.White;
-            this.IsoscelesTriangle.Image = global::VectorNewWAY.Properties.Resources.hexagon;
-            this.IsoscelesTriangle.Location = new System.Drawing.Point(75, 499);
+            this.IsoscelesTriangle.Image = global::VectorNewWAY.Properties.Resources.plain_triangle;
+            this.IsoscelesTriangle.Location = new System.Drawing.Point(75, 343);
             this.IsoscelesTriangle.Margin = new System.Windows.Forms.Padding(4);
             this.IsoscelesTriangle.Name = "IsoscelesTriangle";
             this.IsoscelesTriangle.Size = new System.Drawing.Size(70, 70);
