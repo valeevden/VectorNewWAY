@@ -173,5 +173,23 @@
   <ItemGroup>
     <None Include="Resources\garbage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shapepolygon_120487.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\triangle_cherished_4071.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\triangle_icon_126819.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trigonometry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diskette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
