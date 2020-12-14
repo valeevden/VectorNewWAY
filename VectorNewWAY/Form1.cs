@@ -198,7 +198,7 @@ namespace VectorNewWAY
                     SaveFileDialog tpm = new SaveFileDialog();
                     tpm.Title = "Сохранить картинку как..";
                     tpm.OverwritePrompt = true;
-                    tpm.Filter = "Image Files (*.BMP)|*.BMP| Image Files(*.JPG)|*.JPG|; Image Files(*.PNG)|*.PNG|; All Files (*.*)|*.*";
+                    tpm.Filter = "Image Files(*.PNG)|*.PNG";
 
                     if (tpm.ShowDialog() == DialogResult.OK)
                     {

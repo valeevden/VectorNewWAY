@@ -113,6 +113,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -129,6 +130,48 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FigureList\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diagonal-line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dry-clean.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ellipse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\graph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hexagon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paint-brush %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plain-triangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\polygon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotating-arrow-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\garbage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
