@@ -22,7 +22,8 @@ namespace VectorNewWAY
         bool mouseDown = false;
         IFigureFabric fabric;
         SingletonData _data;
-       
+        bool _picker = false;
+        Color _pickedColor;
 
         public Form1()
         {
@@ -42,11 +43,15 @@ namespace VectorNewWAY
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            if (_picker == true)
+            {
+                ColorPicker(e);
+            }
             mouseDown = true;
             if (e.Button != MouseButtons.Right)
             {
                 _mouseMode.MouseDown(_pen, e, _figure, fabric);
-
+                
             }
         }
 
@@ -65,6 +70,13 @@ namespace VectorNewWAY
             mouseDown = false;
             _mouseMode.MouseUp(_pen, e, fabric);
             _data.Canvas.Save();
+            if (_picker == true)
+            {
+                _picker = false;
+                radioButtonPaintMode.Checked = true;
+                colorPicker.Checked = false;
+                _mouseMode = new PaintIMode();
+            }
         }
 
 
@@ -276,7 +288,37 @@ namespace VectorNewWAY
 
         private void colorPicker_CheckedChanged(object sender, EventArgs e)
         {
+            if (colorPicker.Checked)
+            {
+                _picker = true;
 
+            }
+
+        }
+
+        private void ColorPicker(MouseEventArgs e)
+        {
+            if (pictureBox1.Image != null)
+            {
+                _pickedColor = _data.Canvas._mainBitmap.GetPixel(e.X, e.Y);
+                if (_pickedColor.A == 0)
+                {
+                    _pen.Color = pictureBox1.BackColor;
+                    colorPalete.BackColor = pictureBox1.BackColor;
+                }
+                else
+                {
+                    colorPalete.BackColor = _pickedColor;
+                    _pen.Color = _pickedColor;
+                }
+            }
+            else
+            {
+                _pen.Color = pictureBox1.BackColor;
+                colorPalete.BackColor = pictureBox1.BackColor;
+            }
+            
+            
         }
 
         
