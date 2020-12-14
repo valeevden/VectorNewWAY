@@ -21,6 +21,7 @@ namespace VectorNewWAY.Figures
             //Painter = new PolygonIPainter();
             Reaction = new NoReactionIReaction();
             Painter = new PathIPainter();
+            Filler = new LineIFiller();
             AnglesNumber = 0;
             RotateMatrix = new Matrix();
             PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
