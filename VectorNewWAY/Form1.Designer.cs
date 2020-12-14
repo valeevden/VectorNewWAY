@@ -445,7 +445,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
-            this.Text = "Calculator";
+            this.Text = "SharpAss Paint";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackPenWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._anglesNumber)).EndInit();
