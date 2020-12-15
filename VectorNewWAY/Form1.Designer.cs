@@ -29,28 +29,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Brush = new System.Windows.Forms.Button();
-            this.LineND = new System.Windows.Forms.Button();
-            this.Rectangle_2d = new System.Windows.Forms.Button();
-            this.Square = new System.Windows.Forms.Button();
-            this.Circle_2d = new System.Windows.Forms.Button();
-            this.Ellipse = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.RectTriangleButton = new System.Windows.Forms.Button();
-            this.IsoscelesTriangle = new System.Windows.Forms.Button();
-            this.FigureND = new System.Windows.Forms.Button();
-            this.Line2D = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
             this.trackPenWidth = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.colorPalete = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this._anglesNumber = new System.Windows.Forms.NumericUpDown();
-            this.NanglesFigure = new System.Windows.Forms.Button();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.uploadButton = new System.Windows.Forms.Button();
             this.radioButtonPaintMode = new System.Windows.Forms.RadioButton();
             this.radioButtonMoveMode = new System.Windows.Forms.RadioButton();
             this.radioButtonRotate = new System.Windows.Forms.RadioButton();
@@ -58,166 +42,36 @@
             this.radioButtonPeak = new System.Windows.Forms.RadioButton();
             this.FILL = new System.Windows.Forms.RadioButton();
             this.colorPicker = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.uploadButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.NanglesFigure = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.Line2D = new System.Windows.Forms.Button();
+            this.FigureND = new System.Windows.Forms.Button();
+            this.IsoscelesTriangle = new System.Windows.Forms.Button();
+            this.RectTriangleButton = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.Ellipse = new System.Windows.Forms.Button();
+            this.Circle_2d = new System.Windows.Forms.Button();
+            this.Square = new System.Windows.Forms.Button();
+            this.Rectangle_2d = new System.Windows.Forms.Button();
+            this.LineND = new System.Windows.Forms.Button();
+            this.Brush = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackPenWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._anglesNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(644, 188);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(974, 804);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
-            // 
-            // Brush
-            // 
-            this.Brush.Location = new System.Drawing.Point(98, 188);
-            this.Brush.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Brush.Name = "Brush";
-            this.Brush.Size = new System.Drawing.Size(248, 92);
-            this.Brush.TabIndex = 1;
-            this.Brush.Text = "Brush (Pencil)";
-            this.Brush.UseVisualStyleBackColor = true;
-            this.Brush.Click += new System.EventHandler(this.Brush_Click);
-            // 
-            // LineND
-            // 
-            this.LineND.Location = new System.Drawing.Point(98, 392);
-            this.LineND.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.LineND.Name = "LineND";
-            this.LineND.Size = new System.Drawing.Size(248, 92);
-            this.LineND.TabIndex = 2;
-            this.LineND.Text = "LineND";
-            this.LineND.UseVisualStyleBackColor = true;
-            this.LineND.Click += new System.EventHandler(this.LineND_Click);
-            // 
-            // Rectangle_2d
-            // 
-            this.Rectangle_2d.Location = new System.Drawing.Point(358, 188);
-            this.Rectangle_2d.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Rectangle_2d.Name = "Rectangle_2d";
-            this.Rectangle_2d.Size = new System.Drawing.Size(248, 92);
-            this.Rectangle_2d.TabIndex = 3;
-            this.Rectangle_2d.Text = "Rectangle";
-            this.Rectangle_2d.UseVisualStyleBackColor = true;
-            this.Rectangle_2d.Click += new System.EventHandler(this.Rectangle_2d_Click);
-            // 
-            // Square
-            // 
-            this.Square.Location = new System.Drawing.Point(358, 292);
-            this.Square.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Square.Name = "Square";
-            this.Square.Size = new System.Drawing.Size(248, 92);
-            this.Square.TabIndex = 4;
-            this.Square.Text = "Square";
-            this.Square.UseVisualStyleBackColor = true;
-            this.Square.Click += new System.EventHandler(this.Square_Click);
-            // 
-            // Circle_2d
-            // 
-            this.Circle_2d.Location = new System.Drawing.Point(358, 490);
-            this.Circle_2d.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Circle_2d.Name = "Circle_2d";
-            this.Circle_2d.Size = new System.Drawing.Size(248, 92);
-            this.Circle_2d.TabIndex = 5;
-            this.Circle_2d.Text = "Circle";
-            this.Circle_2d.UseVisualStyleBackColor = true;
-            this.Circle_2d.Click += new System.EventHandler(this.Circle_Click);
-            // 
-            // Ellipse
-            // 
-            this.Ellipse.Location = new System.Drawing.Point(358, 392);
-            this.Ellipse.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Ellipse.Name = "Ellipse";
-            this.Ellipse.Size = new System.Drawing.Size(248, 92);
-            this.Ellipse.TabIndex = 6;
-            this.Ellipse.Text = "Ellipse";
-            this.Ellipse.UseVisualStyleBackColor = true;
-            this.Ellipse.Click += new System.EventHandler(this.Ellipse_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(98, 896);
-            this.button7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(248, 92);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Triangle_3d";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.Triangle3D_Click);
-            // 
-            // RectTriangleButton
-            // 
-            this.RectTriangleButton.Location = new System.Drawing.Point(98, 692);
-            this.RectTriangleButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.RectTriangleButton.Name = "RectTriangleButton";
-            this.RectTriangleButton.Size = new System.Drawing.Size(248, 92);
-            this.RectTriangleButton.TabIndex = 8;
-            this.RectTriangleButton.Text = "RectTriangle";
-            this.RectTriangleButton.UseVisualStyleBackColor = true;
-            this.RectTriangleButton.Click += new System.EventHandler(this.RectTriangleButton_Click);
-            // 
-            // IsoscelesTriangle
-            // 
-            this.IsoscelesTriangle.Location = new System.Drawing.Point(98, 792);
-            this.IsoscelesTriangle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.IsoscelesTriangle.Name = "IsoscelesTriangle";
-            this.IsoscelesTriangle.Size = new System.Drawing.Size(248, 92);
-            this.IsoscelesTriangle.TabIndex = 9;
-            this.IsoscelesTriangle.Text = "Isosceles Triangle";
-            this.IsoscelesTriangle.UseVisualStyleBackColor = true;
-            this.IsoscelesTriangle.Click += new System.EventHandler(this.IsoscelesTriangle_Click);
-            // 
-            // FigureND
-            // 
-            this.FigureND.Location = new System.Drawing.Point(98, 490);
-            this.FigureND.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.FigureND.Name = "FigureND";
-            this.FigureND.Size = new System.Drawing.Size(248, 92);
-            this.FigureND.TabIndex = 10;
-            this.FigureND.Text = "FigureND";
-            this.FigureND.UseVisualStyleBackColor = true;
-            this.FigureND.Click += new System.EventHandler(this.FigureND_Click);
-            // 
-            // Line2D
-            // 
-            this.Line2D.Location = new System.Drawing.Point(98, 292);
-            this.Line2D.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.Line2D.Name = "Line2D";
-            this.Line2D.Size = new System.Drawing.Size(248, 92);
-            this.Line2D.TabIndex = 12;
-            this.Line2D.Text = "Line2D";
-            this.Line2D.UseVisualStyleBackColor = true;
-            this.Line2D.Click += new System.EventHandler(this.Line2D_Click);
-            // 
-            // button23
-            // 
-            this.button23.Location = new System.Drawing.Point(128, 63);
-            this.button23.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(446, 92);
-            this.button23.TabIndex = 24;
-            this.button23.Text = "Clear ALL";
-            this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.ClearAll_Click);
             // 
             // trackPenWidth
             // 
-            this.trackPenWidth.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.trackPenWidth.Location = new System.Drawing.Point(1082, 50);
-            this.trackPenWidth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackPenWidth.BackColor = System.Drawing.Color.DimGray;
+            this.trackPenWidth.Location = new System.Drawing.Point(580, 26);
+            this.trackPenWidth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.trackPenWidth.Maximum = 30;
             this.trackPenWidth.Minimum = 1;
             this.trackPenWidth.Name = "trackPenWidth";
-            this.trackPenWidth.Size = new System.Drawing.Size(534, 90);
+            this.trackPenWidth.Size = new System.Drawing.Size(227, 45);
             this.trackPenWidth.TabIndex = 25;
             this.trackPenWidth.Value = 6;
             this.trackPenWidth.Scroll += new System.EventHandler(this.trackPenWidth_Scroll);
@@ -225,30 +79,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1012, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(532, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 25);
+            this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 26;
             this.label1.Text = "Color";
             // 
             // colorPalete
             // 
             this.colorPalete.BackColor = System.Drawing.Color.Red;
-            this.colorPalete.Location = new System.Drawing.Point(1010, 54);
-            this.colorPalete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.colorPalete.Location = new System.Drawing.Point(532, 26);
+            this.colorPalete.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.colorPalete.Name = "colorPalete";
-            this.colorPalete.Size = new System.Drawing.Size(80, 77);
+            this.colorPalete.Size = new System.Drawing.Size(44, 46);
             this.colorPalete.TabIndex = 27;
             this.colorPalete.Click += new System.EventHandler(this.colorPalete_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1222, 23);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(580, 12);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 25);
+            this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 28;
             this.label2.Text = "Size";
             // 
@@ -258,15 +112,14 @@
             // 
             // _anglesNumber
             // 
-            this._anglesNumber.Location = new System.Drawing.Point(366, 627);
-            this._anglesNumber.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this._anglesNumber.Location = new System.Drawing.Point(120, 379);
             this._anglesNumber.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
             this._anglesNumber.Name = "_anglesNumber";
-            this._anglesNumber.Size = new System.Drawing.Size(238, 31);
+            this._anglesNumber.Size = new System.Drawing.Size(52, 20);
             this._anglesNumber.TabIndex = 29;
             this._anglesNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._anglesNumber.Value = new decimal(new int[] {
@@ -276,47 +129,14 @@
             0});
             this._anglesNumber.ValueChanged += new System.EventHandler(this._anglesNumber_ValueChanged);
             // 
-            // NanglesFigure
-            // 
-            this.NanglesFigure.Location = new System.Drawing.Point(98, 590);
-            this.NanglesFigure.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.NanglesFigure.Name = "NanglesFigure";
-            this.NanglesFigure.Size = new System.Drawing.Size(248, 92);
-            this.NanglesFigure.TabIndex = 30;
-            this.NanglesFigure.Text = "NanglesFigure";
-            this.NanglesFigure.UseVisualStyleBackColor = true;
-            this.NanglesFigure.Click += new System.EventHandler(this.NanglesFigure_Click);
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(358, 792);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(248, 92);
-            this.saveButton.TabIndex = 31;
-            this.saveButton.Text = "SAVE";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // uploadButton
-            // 
-            this.uploadButton.Location = new System.Drawing.Point(358, 896);
-            this.uploadButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.uploadButton.Name = "uploadButton";
-            this.uploadButton.Size = new System.Drawing.Size(248, 92);
-            this.uploadButton.TabIndex = 32;
-            this.uploadButton.Text = "UPLOAD";
-            this.uploadButton.UseVisualStyleBackColor = true;
-            this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
-            // 
             // radioButtonPaintMode
             // 
             this.radioButtonPaintMode.AutoSize = true;
             this.radioButtonPaintMode.Checked = true;
-            this.radioButtonPaintMode.Location = new System.Drawing.Point(648, 50);
-            this.radioButtonPaintMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonPaintMode.Location = new System.Drawing.Point(324, 26);
+            this.radioButtonPaintMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButtonPaintMode.Name = "radioButtonPaintMode";
-            this.radioButtonPaintMode.Size = new System.Drawing.Size(104, 29);
+            this.radioButtonPaintMode.Size = new System.Drawing.Size(57, 17);
             this.radioButtonPaintMode.TabIndex = 33;
             this.radioButtonPaintMode.TabStop = true;
             this.radioButtonPaintMode.Text = "PAINT";
@@ -326,10 +146,10 @@
             // radioButtonMoveMode
             // 
             this.radioButtonMoveMode.AutoSize = true;
-            this.radioButtonMoveMode.Location = new System.Drawing.Point(648, 87);
-            this.radioButtonMoveMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonMoveMode.Location = new System.Drawing.Point(324, 46);
+            this.radioButtonMoveMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButtonMoveMode.Name = "radioButtonMoveMode";
-            this.radioButtonMoveMode.Size = new System.Drawing.Size(105, 29);
+            this.radioButtonMoveMode.Size = new System.Drawing.Size(56, 17);
             this.radioButtonMoveMode.TabIndex = 34;
             this.radioButtonMoveMode.Text = "MOVE";
             this.radioButtonMoveMode.UseVisualStyleBackColor = true;
@@ -338,10 +158,10 @@
             // radioButtonRotate
             // 
             this.radioButtonRotate.AutoSize = true;
-            this.radioButtonRotate.Location = new System.Drawing.Point(648, 125);
-            this.radioButtonRotate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonRotate.Location = new System.Drawing.Point(324, 65);
+            this.radioButtonRotate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButtonRotate.Name = "radioButtonRotate";
-            this.radioButtonRotate.Size = new System.Drawing.Size(128, 29);
+            this.radioButtonRotate.Size = new System.Drawing.Size(69, 17);
             this.radioButtonRotate.TabIndex = 35;
             this.radioButtonRotate.Text = "ROTATE";
             this.radioButtonRotate.UseVisualStyleBackColor = true;
@@ -350,10 +170,10 @@
             // radioButtonScale
             // 
             this.radioButtonScale.AutoSize = true;
-            this.radioButtonScale.Location = new System.Drawing.Point(802, 125);
-            this.radioButtonScale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonScale.Location = new System.Drawing.Point(401, 65);
+            this.radioButtonScale.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButtonScale.Name = "radioButtonScale";
-            this.radioButtonScale.Size = new System.Drawing.Size(112, 29);
+            this.radioButtonScale.Size = new System.Drawing.Size(59, 17);
             this.radioButtonScale.TabIndex = 36;
             this.radioButtonScale.TabStop = true;
             this.radioButtonScale.Text = "SCALE";
@@ -363,10 +183,10 @@
             // radioButtonPeak
             // 
             this.radioButtonPeak.AutoSize = true;
-            this.radioButtonPeak.Location = new System.Drawing.Point(802, 50);
-            this.radioButtonPeak.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButtonPeak.Location = new System.Drawing.Point(401, 26);
+            this.radioButtonPeak.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButtonPeak.Name = "radioButtonPeak";
-            this.radioButtonPeak.Size = new System.Drawing.Size(140, 29);
+            this.radioButtonPeak.Size = new System.Drawing.Size(75, 17);
             this.radioButtonPeak.TabIndex = 37;
             this.radioButtonPeak.TabStop = true;
             this.radioButtonPeak.Text = "ADD peak";
@@ -376,10 +196,10 @@
             // FILL
             // 
             this.FILL.AutoSize = true;
-            this.FILL.Location = new System.Drawing.Point(802, 87);
-            this.FILL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FILL.Location = new System.Drawing.Point(401, 46);
+            this.FILL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FILL.Name = "FILL";
-            this.FILL.Size = new System.Drawing.Size(85, 29);
+            this.FILL.Size = new System.Drawing.Size(46, 17);
             this.FILL.TabIndex = 38;
             this.FILL.TabStop = true;
             this.FILL.Text = "FILL";
@@ -389,21 +209,206 @@
             // colorPicker
             // 
             this.colorPicker.AutoSize = true;
-            this.colorPicker.Location = new System.Drawing.Point(988, 131);
-            this.colorPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.colorPicker.Location = new System.Drawing.Point(528, 76);
+            this.colorPicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.colorPicker.Name = "colorPicker";
-            this.colorPicker.Size = new System.Drawing.Size(160, 29);
+            this.colorPicker.Size = new System.Drawing.Size(82, 17);
             this.colorPicker.TabIndex = 39;
             this.colorPicker.TabStop = true;
             this.colorPicker.Text = "Color Picker";
             this.colorPicker.UseVisualStyleBackColor = true;
             this.colorPicker.CheckedChanged += new System.EventHandler(this.colorPicker_CheckedChanged);
             // 
+            // uploadButton
+            // 
+            this.uploadButton.BackColor = System.Drawing.Color.White;
+            this.uploadButton.Image = global::VectorNewWAY.Properties.Resources.upload;
+            this.uploadButton.Location = new System.Drawing.Point(162, 432);
+            this.uploadButton.Name = "uploadButton";
+            this.uploadButton.Size = new System.Drawing.Size(68, 57);
+            this.uploadButton.TabIndex = 32;
+            this.uploadButton.Text = "Upload";
+            this.uploadButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.uploadButton.UseVisualStyleBackColor = false;
+            this.uploadButton.Click += new System.EventHandler(this.uploadButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.BackColor = System.Drawing.Color.White;
+            this.saveButton.Image = global::VectorNewWAY.Properties.Resources.diskette;
+            this.saveButton.Location = new System.Drawing.Point(89, 432);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(68, 57);
+            this.saveButton.TabIndex = 31;
+            this.saveButton.Text = "Save";
+            this.saveButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // NanglesFigure
+            // 
+            this.NanglesFigure.BackColor = System.Drawing.Color.White;
+            this.NanglesFigure.Image = global::VectorNewWAY.Properties.Resources.hexagon;
+            this.NanglesFigure.Location = new System.Drawing.Point(61, 359);
+            this.NanglesFigure.Name = "NanglesFigure";
+            this.NanglesFigure.Size = new System.Drawing.Size(52, 57);
+            this.NanglesFigure.TabIndex = 30;
+            this.NanglesFigure.UseVisualStyleBackColor = false;
+            this.NanglesFigure.Click += new System.EventHandler(this.NanglesFigure_Click);
+            // 
+            // button23
+            // 
+            this.button23.BackColor = System.Drawing.Color.White;
+            this.button23.Image = global::VectorNewWAY.Properties.Resources.garbage;
+            this.button23.Location = new System.Drawing.Point(89, 30);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(111, 65);
+            this.button23.TabIndex = 24;
+            this.button23.Text = "Clear";
+            this.button23.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.ClearAll_Click);
+            // 
+            // Line2D
+            // 
+            this.Line2D.BackColor = System.Drawing.Color.White;
+            this.Line2D.Image = global::VectorNewWAY.Properties.Resources.diagonal_line;
+            this.Line2D.Location = new System.Drawing.Point(120, 107);
+            this.Line2D.Name = "Line2D";
+            this.Line2D.Size = new System.Drawing.Size(52, 57);
+            this.Line2D.TabIndex = 12;
+            this.Line2D.UseVisualStyleBackColor = false;
+            this.Line2D.Click += new System.EventHandler(this.Line2D_Click);
+            // 
+            // FigureND
+            // 
+            this.FigureND.BackColor = System.Drawing.Color.White;
+            this.FigureND.Image = global::VectorNewWAY.Properties.Resources.shapepolygon_120487;
+            this.FigureND.Location = new System.Drawing.Point(178, 170);
+            this.FigureND.Name = "FigureND";
+            this.FigureND.Size = new System.Drawing.Size(52, 57);
+            this.FigureND.TabIndex = 10;
+            this.FigureND.UseVisualStyleBackColor = false;
+            this.FigureND.Click += new System.EventHandler(this.FigureND_Click);
+            // 
+            // IsoscelesTriangle
+            // 
+            this.IsoscelesTriangle.BackColor = System.Drawing.Color.White;
+            this.IsoscelesTriangle.Image = global::VectorNewWAY.Properties.Resources.plain_triangle;
+            this.IsoscelesTriangle.Location = new System.Drawing.Point(120, 296);
+            this.IsoscelesTriangle.Name = "IsoscelesTriangle";
+            this.IsoscelesTriangle.Size = new System.Drawing.Size(52, 57);
+            this.IsoscelesTriangle.TabIndex = 9;
+            this.IsoscelesTriangle.UseVisualStyleBackColor = false;
+            this.IsoscelesTriangle.Click += new System.EventHandler(this.IsoscelesTriangle_Click);
+            // 
+            // RectTriangleButton
+            // 
+            this.RectTriangleButton.BackColor = System.Drawing.Color.White;
+            this.RectTriangleButton.Image = global::VectorNewWAY.Properties.Resources.trigonometry;
+            this.RectTriangleButton.Location = new System.Drawing.Point(178, 297);
+            this.RectTriangleButton.Name = "RectTriangleButton";
+            this.RectTriangleButton.Size = new System.Drawing.Size(52, 57);
+            this.RectTriangleButton.TabIndex = 8;
+            this.RectTriangleButton.UseVisualStyleBackColor = false;
+            this.RectTriangleButton.Click += new System.EventHandler(this.RectTriangleButton_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Image = global::VectorNewWAY.Properties.Resources.triangle_cherished_4071;
+            this.button7.Location = new System.Drawing.Point(61, 296);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(52, 57);
+            this.button7.TabIndex = 7;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.Triangle3D_Click);
+            // 
+            // Ellipse
+            // 
+            this.Ellipse.BackColor = System.Drawing.Color.White;
+            this.Ellipse.Image = global::VectorNewWAY.Properties.Resources.ellipse;
+            this.Ellipse.Location = new System.Drawing.Point(119, 233);
+            this.Ellipse.Name = "Ellipse";
+            this.Ellipse.Size = new System.Drawing.Size(52, 57);
+            this.Ellipse.TabIndex = 6;
+            this.Ellipse.UseVisualStyleBackColor = false;
+            this.Ellipse.Click += new System.EventHandler(this.Ellipse_Click);
+            // 
+            // Circle_2d
+            // 
+            this.Circle_2d.BackColor = System.Drawing.Color.White;
+            this.Circle_2d.Image = global::VectorNewWAY.Properties.Resources.dry_clean;
+            this.Circle_2d.Location = new System.Drawing.Point(61, 233);
+            this.Circle_2d.Name = "Circle_2d";
+            this.Circle_2d.Size = new System.Drawing.Size(52, 57);
+            this.Circle_2d.TabIndex = 5;
+            this.Circle_2d.UseVisualStyleBackColor = false;
+            this.Circle_2d.Click += new System.EventHandler(this.Circle_Click);
+            // 
+            // Square
+            // 
+            this.Square.BackColor = System.Drawing.Color.White;
+            this.Square.Image = global::VectorNewWAY.Properties.Resources.square;
+            this.Square.Location = new System.Drawing.Point(61, 170);
+            this.Square.Name = "Square";
+            this.Square.Size = new System.Drawing.Size(52, 57);
+            this.Square.TabIndex = 4;
+            this.Square.UseVisualStyleBackColor = false;
+            this.Square.Click += new System.EventHandler(this.Square_Click);
+            // 
+            // Rectangle_2d
+            // 
+            this.Rectangle_2d.BackColor = System.Drawing.Color.White;
+            this.Rectangle_2d.Image = global::VectorNewWAY.Properties.Resources.rectangle;
+            this.Rectangle_2d.Location = new System.Drawing.Point(119, 170);
+            this.Rectangle_2d.Name = "Rectangle_2d";
+            this.Rectangle_2d.Size = new System.Drawing.Size(52, 57);
+            this.Rectangle_2d.TabIndex = 3;
+            this.Rectangle_2d.UseVisualStyleBackColor = false;
+            this.Rectangle_2d.Click += new System.EventHandler(this.Rectangle_2d_Click);
+            // 
+            // LineND
+            // 
+            this.LineND.BackColor = System.Drawing.Color.White;
+            this.LineND.Image = global::VectorNewWAY.Properties.Resources.graph;
+            this.LineND.Location = new System.Drawing.Point(178, 107);
+            this.LineND.Name = "LineND";
+            this.LineND.Size = new System.Drawing.Size(52, 57);
+            this.LineND.TabIndex = 2;
+            this.LineND.UseVisualStyleBackColor = false;
+            this.LineND.Click += new System.EventHandler(this.LineND_Click);
+            // 
+            // Brush
+            // 
+            this.Brush.BackColor = System.Drawing.Color.White;
+            this.Brush.Image = global::VectorNewWAY.Properties.Resources.paint_brush__2_;
+            this.Brush.Location = new System.Drawing.Point(61, 107);
+            this.Brush.Name = "Brush";
+            this.Brush.Size = new System.Drawing.Size(52, 57);
+            this.Brush.TabIndex = 1;
+            this.Brush.UseVisualStyleBackColor = false;
+            this.Brush.Click += new System.EventHandler(this.Brush_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Pane;
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Location = new System.Drawing.Point(282, 98);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(686, 538);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1642, 1015);
+            this.BackColor = System.Drawing.Color.LightSlateGray;
+            this.ClientSize = new System.Drawing.Size(990, 648);
             this.Controls.Add(this.colorPicker);
             this.Controls.Add(this.FILL);
             this.Controls.Add(this.radioButtonPeak);
@@ -432,13 +437,12 @@
             this.Controls.Add(this.LineND);
             this.Controls.Add(this.Brush);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
-            this.Text = "RastPaint";
+            this.Text = "SharpAss Paint";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackPenWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._anglesNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

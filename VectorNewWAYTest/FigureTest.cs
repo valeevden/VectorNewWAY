@@ -14,6 +14,7 @@ namespace VectorNewWAYTest
     public class FigureTest
     {
         RectangleFigure rectangleFigure;
+        AFigure aFigure;
         
 
         [SetUp]
@@ -32,25 +33,25 @@ namespace VectorNewWAYTest
         }
 
         [Test, TestCaseSource(typeof(IsEdgeTestSource))]
-        public void IsEdgeTest(Point startPoint, Point endPoint, Point delta, bool exspected)
+        public void IsEdgeTest(Point startPoint, Point endPoint, Point delta, bool expected)
         {
-            rectangleFigure.Update(startPoint, endPoint);
+           // rectangleFigure.Update(startPoint, endPoint);
             bool actual = rectangleFigure.IsEdge(delta);
 
-            Assert.AreEqual(exspected, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test, TestCaseSource(typeof(IsAreaTestSource))]
-        public void IsAreaTest(Point startPoint, Point endPoint, Point delta, bool exspected)
+        public void IsAreaTest(Point startPoint, Point endPoint, Point delta, bool expected)
         {
             rectangleFigure.Update(startPoint, endPoint);
             bool actual = rectangleFigure.IsArea(delta);
 
-            Assert.AreEqual(exspected, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test, TestCaseSource(typeof(ScaleTestSource))]
-        public void ScaleTest(Point startPoint, Point endPoint, Point point, Point delta, bool exspected)
+        public void ScaleTest(Point startPoint, Point endPoint, Point point, Point delta, bool expected)
         {
             rectangleFigure.Update(startPoint, endPoint);
             for (int i = 0; i< 20; i++)
@@ -58,7 +59,7 @@ namespace VectorNewWAYTest
                 rectangleFigure.Scale(delta);
             }
             bool  actual = rectangleFigure.IsArea(point);
-            Assert.AreEqual (exspected, actual);
+            Assert.AreEqual (expected, actual);
         }
 
         [Test, TestCaseSource(typeof(MoveTestSource))]

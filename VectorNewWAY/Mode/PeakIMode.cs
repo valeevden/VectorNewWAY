@@ -28,7 +28,7 @@ namespace VectorNewWAY.Mode
                     _movingFigure = checkFigure;
                     _singletone.FigureList.Remove(_figure);//это удаление первой по значению?
                     _figure.AddPeak();
-                    fabric = new FigureNDIFabric(figure);
+                    fabric = new FigureNDIFabric();
                     _figure = fabric.CreateFigure(p);
                     _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
                     foreach (AFigure figureINList in _singletone.FigureList)

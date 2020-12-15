@@ -195,21 +195,15 @@ namespace VectorNewWAY
             {
                 if (pictureBox1 != null)
                 {
-                    SaveFileDialog tpm = new SaveFileDialog();
-                    tpm.Title = "Сохранить картинку как..";
-                    tpm.OverwritePrompt = true;
-                    tpm.Filter = "Image Files (*.BMP)|*.BMP| Image Files(*.JPG)|*.JPG|; Image Files(*.PNG)|*.PNG|; All Files (*.*)|*.*";
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Title = "Save as...";
+                    saveFileDialog.Filter = "Image Files (*.PNG)|*.PNG|Image Files (*.JPG)|*.JPG| All files (*.*)|*.*";
 
-                    if (tpm.ShowDialog() == DialogResult.OK)
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        try
-                        {
-                            pictureBox1.Image.Save(tpm.FileName);
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Ошибка, MessageBoxButtons.OK");
-                        }
+                        pictureBox1.Image.Save(saveFileDialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                        MessageBox.Show("Save Complete", "ОК", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                     }
                 }
             }
@@ -240,6 +234,7 @@ namespace VectorNewWAY
             if (radioButtonMoveMode.Checked)
             {
                 _mouseMode = new MoveIMode();
+
             }
         }
 

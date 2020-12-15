@@ -20,17 +20,11 @@ namespace VectorNewWAY.Figures
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
         }
-        public override GraphicsPath GetPath() //Получаем Path
-        {
-            
-            Path = new GraphicsPath();
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Path.AddLine(PointsList[i], PointsList[i + 1]);
-            }
-            Path.CloseFigure();
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
 
+        public override GraphicsPath GetPath() 
+        {
+            MakePathFromLine();
+            Path.CloseFigure();
             Path.Transform(RotateMatrix);
             return Path;
         }
@@ -46,84 +40,19 @@ namespace VectorNewWAY.Figures
 
             for (int i = 0; i < AnglesNumber; i++)
             {
-
                 PointsList.Add(new PointF(startPoint.X + (((float)Math.Round(externalRadius, 0)) * (float)Math.Sin(sector * (i + 1))), startPoint.Y + (float)((Math.Round(externalRadius, 0)) * Math.Cos(sector * (i + 1)))));
             }
-            Center = new PointF(0, 0);
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-            }
-            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
-        }
-        public override bool IsEdge(PointF eLocation)
-        {
-            Path = new GraphicsPath();
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Path.AddLine(PointsList[i], PointsList[i + 1]);
-            }
-            Center = new PointF(0, 0);
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-            }
-            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
-            Path.Transform(RotateMatrix);
-            Pen penGP = new Pen(Color, Width);
-            if (Path.IsOutlineVisible(eLocation, penGP)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
         }
 
-        public override bool IsArea(PointF eLocation)
+        public override PointF SetCenter()
         {
-            Path = new GraphicsPath();
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Path.AddLine(PointsList[i], PointsList[i + 1]);
-            }
             Center = new PointF(0, 0);
-            for (int i = 0; i < PointsList.Count - 1; i++)
+            for (int i = 0; i < AnglesNumber; i++)
             {
                 Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
             }
             Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
-            Path.Transform(RotateMatrix);
-            if (Path.IsVisible(eLocation)) // Если точка входит в область видимости 
-            {
-                TouchPoint = eLocation;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public override void Move(PointF delta)
-        {
-            for (int i = 0; i < PointsList.Count; i++)
-            {
-                PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
-            }
-        }
-        public override void Rotate(float rotateAngle)
-        {
-            Center = new PointF(0, 0);
-            for (int i = 0; i < PointsList.Count; i++)//у Лилии из PointsList.Count вычиталась 1, наверное для незамкнутого построения
-            {
-                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-            }
-            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
-            RotateMatrix.RotateAt(rotateAngle, Center);
-            Path.Transform(RotateMatrix);
+            return Center;
         }
     }
 }
