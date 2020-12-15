@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;//для Brush
+using System.Drawing.Drawing2D;
 using VectorNewWAY.Painters;
 using VectorNewWAY.Fillers;
 using VectorNewWAY.Reaction;
@@ -24,10 +24,8 @@ namespace VectorNewWAY.Figures
             AnglesNumber = 2;
         }
 
-        public override GraphicsPath GetPath() //Получаем Path
+        public override GraphicsPath GetPath()
         {
-            //Path = new GraphicsPath();
-            //Path.AddLine(PointsList[0], PointsList[1]);
             MakePathFromLine();
             Path.Transform(RotateMatrix);
             return Path;
@@ -35,6 +33,7 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
+            PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
             PointsList[0] = startP;
             PointsList[1] = endP;
         }
