@@ -29,9 +29,9 @@ namespace VectorNewWAY.Figures
         public GraphicsPath Path { get; set; }//точки кисти
         public IPainter Painter { get; set; }//пейнтер фигуры
         public Color Color { get; set; }//цвет фигуры
+        public int Width { get; set; } // Толщина pen
         public IFiller Filler { get; set; }//Заливальщик фигуры
         public IReaction Reaction { get; set; }//Реакция по "" фигуры
-        public int Width { get; set; } // Толщина pen
         public int AnglesNumber { get; set; }//количество углов
         public float RotateAngle { get; set; }//Угол поворота
         public PointF Center { get; set; }
@@ -54,6 +54,12 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
+        }
+        public virtual GraphicsPath GetPath() 
+        {
+            MakePathFromLine();
+            Path.Transform(RotateMatrix);
+            return Path;
         }
 
         public virtual PointF SetCenter()
@@ -95,12 +101,6 @@ namespace VectorNewWAY.Figures
             }
         }
 
-        public virtual GraphicsPath GetPath() 
-        {
-            MakePathFromLine();
-            Path.Transform(RotateMatrix);
-            return Path;
-        }
 
         public virtual void Update(PointF startPoint, PointF endPoint)
         {
@@ -119,7 +119,6 @@ namespace VectorNewWAY.Figures
         {
             {
                 Center = SetCenter();
-
                 RotateMatrix.RotateAt(RotateAngle, Center);
                 Path.Transform(RotateMatrix);
             }
@@ -128,7 +127,6 @@ namespace VectorNewWAY.Figures
         public virtual void Scale(PointF point)
         {
             RectangleF rectangle = MakeRectangleFromPointsList();
-
             SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
             SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }

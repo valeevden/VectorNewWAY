@@ -48,11 +48,11 @@ namespace VectorNewWAY.Figures
         public override PointF SetCenter()
         {
             Center = new PointF(0, 0);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < AnglesNumber; i++)
             {
                 Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
             }
-            Center = new PointF(Center.X / 3, Center.Y / 3);
+            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
             return Center;
         }
     }
