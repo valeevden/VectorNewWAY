@@ -51,18 +51,7 @@ namespace VectorNewWAY.Figures
             Path = new GraphicsPath();
             return rectangle;
         }
-
-
-        //public override void Rotate(float rotateAngle)
-        //{
-        //    Path = new GraphicsPath();
-        //    RectangleF rectangle = MakeRectangleFromPointsList();
-        //    rectangle.Inflate(SizeX, SizeY);
-        //    Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-        //    Path.AddRectangle(rectangle);
-        //    RotateMatrix.RotateAt(rotateAngle, Center);
-        //    Path.Transform(RotateMatrix);
-        //}
+       
         public override  PointF SetCenter()
         {
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
