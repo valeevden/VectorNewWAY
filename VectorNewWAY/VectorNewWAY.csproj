@@ -69,7 +69,6 @@
     <Compile Include="Figures\Line2DIFigure.cs" />
     <Compile Include="Figures\CircleFigure.cs" />
     <Compile Include="Figures\SquareFigure.cs" />
-    <Compile Include="Figures\RectangleMaker.cs" />
     <Compile Include="Figures\RectTriangleIFigure.cs" />
     <Compile Include="Figures\Triangle3DFigure.cs" />
     <Compile Include="Fillers\LineIFiller.cs" />

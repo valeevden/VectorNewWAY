@@ -44,7 +44,7 @@ namespace VectorNewWAY.Figures
 
         public AFigure(Pen pen)
         {
-            PointsList = new List<PointF> { new PointF(0, 0) };
+            PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
             Color = pen.Color;
             Width = (int)pen.Width;
             SizeX = 0;
