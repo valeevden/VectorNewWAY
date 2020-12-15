@@ -40,9 +40,7 @@ namespace VectorNewWAY.Figures
 
         public override PointF SetCenter()
         {
-            Center = new PointF(0, 0);
             Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-
             return Center;
         }
 
