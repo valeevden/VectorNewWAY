@@ -45,17 +45,6 @@ namespace VectorNewWAY.Figures
             PointsList = pointsArray.ToList();
         }
 
-        //public override void Rotate(float rotateAngle)
-        //{
-        //    Center = new PointF(0, 0);
-        //    for (int i = 0; i < 3; i++)
-        //    {
-        //        Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-        //    }
-        //    Center = new PointF(Center.X / 3, Center.Y / 3);
-        //    RotateMatrix.RotateAt(rotateAngle, Center);
-        //    Path.Transform(RotateMatrix);
-        //}
 
         public override PointF SetCenter()
         {

@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;//для Brush
-using VectorNewWAY.Painters;
+using System.Drawing.Drawing2D;
 using VectorNewWAY.Fillers;
 using VectorNewWAY.Reaction;
+using VectorNewWAY.Painters;
 //using PaintForSchool.RightClickReaction;
 
 
@@ -55,8 +55,6 @@ namespace VectorNewWAY.Figures
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
         }
-
-       
 
         public virtual PointF SetCenter()
         {
@@ -110,7 +108,6 @@ namespace VectorNewWAY.Figures
 
         public virtual void Move(PointF delta)
         {
-
             for (int i = 0; i < PointsList.Count; i++)
             {
                 PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
