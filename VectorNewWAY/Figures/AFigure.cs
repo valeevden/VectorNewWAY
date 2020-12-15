@@ -54,16 +54,23 @@ namespace VectorNewWAY.Figures
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
         }
+
         public virtual PointF SetCenter()
         {
+            Center = new PointF(0, 0);
+            for (int i = 0; i < PointsList.Count - 1; i++)
+            {
+                Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
+            }
+            Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
             return Center;
         }
 
-        public virtual bool IsEdge(PointF touchPoint)//метод определяет попали или не попали в грань
+        public virtual bool IsEdge(PointF touchPoint)
         {
-            Pen penGP = new Pen(Color, Width);
+            Pen penForEdge = new Pen(Color, Width);
 
-            if (Path.IsOutlineVisible(touchPoint, penGP)) // Если точка входит в область видимости 
+            if (Path.IsOutlineVisible(touchPoint, penForEdge)) 
             {
                 TouchPoint = touchPoint;
                 return  true;
@@ -74,9 +81,9 @@ namespace VectorNewWAY.Figures
             }
         }
 
-        public virtual bool IsArea(PointF touchPoint)//метод определяет попали или не попали в площадь
+        public virtual bool IsArea(PointF touchPoint)
         {
-            if (Path.IsVisible(touchPoint)) // Если точка входит в область видимости 
+            if (Path.IsVisible(touchPoint)) 
             {
                 TouchPoint = touchPoint;
                 return true;
@@ -87,7 +94,7 @@ namespace VectorNewWAY.Figures
             }
         }
 
-        public virtual GraphicsPath GetPath() //Получаем Path
+        public virtual GraphicsPath GetPath() 
         {
             GraphicsPath gp = new GraphicsPath();
             return gp;
@@ -96,24 +103,21 @@ namespace VectorNewWAY.Figures
         public virtual void Update(PointF startPoint, PointF endPoint)
         {
 
-        }//получение точек для промежуточной прорисовки
+        }
 
         public virtual void Move(PointF delta)
         {
+
             for (int i = 0; i < PointsList.Count; i++)
             {
                 PointsList[i] = new PointF(PointsList[i].X + delta.X, PointsList[i].Y + delta.Y);
             }
         }
+
         public virtual void Rotate(float RotateAngle)
         {
             {
-                Center = new PointF(0, 0);
-                for (int i = 0; i < PointsList.Count - 1; i++)
-                {
-                    Center = new PointF(Center.X + PointsList[i].X, Center.Y + PointsList[i].Y);
-                }
-                Center = new PointF(Center.X / AnglesNumber, Center.Y / AnglesNumber);
+                Center = SetCenter();
 
                 RotateMatrix.RotateAt(RotateAngle, Center);
                 Path.Transform(RotateMatrix);
@@ -125,10 +129,6 @@ namespace VectorNewWAY.Figures
 
         }
         
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
 
         public bool IsPeak(PointF pointFromForm)
         {
@@ -159,6 +159,10 @@ namespace VectorNewWAY.Figures
 
             }
             AnglesNumber++;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
     }

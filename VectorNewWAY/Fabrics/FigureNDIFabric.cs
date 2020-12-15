@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VectorNewWAY.Figures;
-using VectorNewWAY.Figures;
 
 namespace VectorNewWAY.Fabrics
 {

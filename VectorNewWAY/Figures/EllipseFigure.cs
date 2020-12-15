@@ -38,6 +38,13 @@ namespace VectorNewWAY.Figures
             return Path;
         }
 
+        public override PointF SetCenter()
+        {
+            Center = new PointF(0, 0);
+            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+
+            return Center;
+        }
 
         public override void Update(PointF startP, PointF endP)
         {
@@ -62,17 +69,6 @@ namespace VectorNewWAY.Figures
             SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
             SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
-
-        public override void Rotate(float RotateAngle)
-        {
-            Path = new GraphicsPath();
-            RectangleF rectangle = MakeRectangleFromPointsList();
-            rectangle.Inflate(SizeX, SizeY);
-
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-            Path.AddEllipse(rectangle);
-            RotateMatrix.RotateAt(RotateAngle, Center);
-            Path.Transform(RotateMatrix);
-        }
+        
     }
 }

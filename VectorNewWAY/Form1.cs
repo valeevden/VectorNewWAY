@@ -234,6 +234,7 @@ namespace VectorNewWAY
             if (radioButtonMoveMode.Checked)
             {
                 _mouseMode = new MoveIMode();
+
             }
         }
 
