@@ -23,12 +23,6 @@ namespace VectorNewWAY.Figures
             Filler = new LineIFiller();
             AnglesNumber = 1;
         }
-        public override GraphicsPath GetPath() 
-        {
-            MakePathFromLine();
-            Path.Transform(RotateMatrix);
-            return Path;
-        }
 
         public override void Update(PointF startP, PointF endP)
         {

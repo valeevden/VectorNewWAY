@@ -97,8 +97,9 @@ namespace VectorNewWAY.Figures
 
         public virtual GraphicsPath GetPath() 
         {
-            GraphicsPath gp = new GraphicsPath();
-            return gp;
+            MakePathFromLine();
+            Path.Transform(RotateMatrix);
+            return Path;
         }
 
         public virtual void Update(PointF startPoint, PointF endPoint)

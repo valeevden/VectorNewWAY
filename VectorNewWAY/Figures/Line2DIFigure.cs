@@ -24,12 +24,6 @@ namespace VectorNewWAY.Figures
             AnglesNumber = 2;
         }
 
-        public override GraphicsPath GetPath()
-        {
-            MakePathFromLine();
-            Path.Transform(RotateMatrix);
-            return Path;
-        }
 
         public override void Update(PointF startP, PointF endP)
         {
