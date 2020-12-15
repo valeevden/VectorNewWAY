@@ -19,7 +19,6 @@ namespace VectorNewWAY.Figures
         public Triangle3DFigure(Pen pen) : base(pen)
         {
             Reaction = new Triangle3DIRightClickReaction(this);
-            PointsList = new List<PointF> { new PointF(0, 0) };
             Painter = new PathIPainter();
             Filler = new PathFiller();
             AnglesNumber = 1;
@@ -27,14 +26,7 @@ namespace VectorNewWAY.Figures
 
         public override GraphicsPath GetPath() //Получаем Path
         {
-           
-            Path = new GraphicsPath();
-            for (int i = 0; i < PointsList.Count - 1; i++)
-            {
-                Path.AddLine(PointsList[i], PointsList[i + 1]);
-            }
-            Path.CloseFigure();
-
+            MakePathFromLine();
             Path.Transform(RotateMatrix);
             return Path;
         }
@@ -50,6 +42,7 @@ namespace VectorNewWAY.Figures
         {
 
         }
+
       
     }
 }

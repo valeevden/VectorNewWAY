@@ -23,7 +23,6 @@ namespace VectorNewWAY.Figures
             Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
             AnglesNumber = 0;
-            RotateMatrix = new Matrix();
         }
 
 

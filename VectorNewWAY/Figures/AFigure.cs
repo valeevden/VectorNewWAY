@@ -44,6 +44,7 @@ namespace VectorNewWAY.Figures
 
         public AFigure(Pen pen)
         {
+            PointsList = new List<PointF> { new PointF(0, 0) };
             Color = pen.Color;
             Width = (int)pen.Width;
             SizeX = 0;
@@ -54,6 +55,8 @@ namespace VectorNewWAY.Figures
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
         }
+
+       
 
         public virtual PointF SetCenter()
         {
@@ -126,7 +129,10 @@ namespace VectorNewWAY.Figures
 
         public virtual void Scale(PointF point)
         {
+            RectangleF rectangle = MakeRectangleFromPointsList();
 
+            SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
+            SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
         }
         
 
@@ -160,10 +166,29 @@ namespace VectorNewWAY.Figures
             }
             AnglesNumber++;
         }
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
+        public GraphicsPath MakePathFromLine()
+        {
+            Path = new GraphicsPath();
+            for (int i = 0; i < PointsList.Count - 1; i++)
+            {
+                Path.AddLine(PointsList[i], PointsList[i + 1]);
+            }
+            Path.CloseFigure();
+            return Path;
+        }
+
+        public RectangleF MakeRectangleFromPointsList()
+        {
+            float width = PointsList[1].X - PointsList[0].X;
+            float height = PointsList[1].Y - PointsList[0].Y;
+            RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
+            return rectangle;
+        }
     }
 }

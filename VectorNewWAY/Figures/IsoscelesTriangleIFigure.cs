@@ -18,23 +18,17 @@ namespace VectorNewWAY.Figures
     {
         public IsoscelesTriangleIFigure(Pen pen) : base(pen)
         {
-            //Painter = new PolygonIPainter();
             Reaction = new NoReactionIReaction();
-            PointsList = new List<PointF> { new PointF(0, 0) };
             Painter = new PathIPainter();
-            Started = false;
-            AnglesNumber = 3;
             Filler = new PathFiller();
-            IsFilled = false;
-            RotateMatrix = new Matrix();
-            SizeX = 0;
-            SizeY = 0;
+            AnglesNumber = 3;
         }
 
         public override GraphicsPath GetPath() //Получаем Path
         {
            
             Path = new GraphicsPath();
+
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
