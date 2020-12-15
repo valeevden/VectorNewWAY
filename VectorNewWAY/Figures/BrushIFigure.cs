@@ -22,20 +22,10 @@ namespace VectorNewWAY.Figures
             Painter = new PathIPainter();
             Filler = new LineIFiller();
             AnglesNumber = 1;
-            RotateMatrix = new Matrix();
-            PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
         }
         public override GraphicsPath GetPath() 
         {
-            Path = new GraphicsPath();
-            Path.StartFigure();
-            for (int i=0;i<AnglesNumber; i++ )
-            {
-                Path.AddLine(PointsList[i], PointsList[i+1]);
-                
-            }
-            //Pen.LineJoin = LineJoin.Round;
-            Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
+            MakePathFromLine();
             Path.Transform(RotateMatrix);
             return Path;
         }
@@ -46,27 +36,6 @@ namespace VectorNewWAY.Figures
             PointsList[AnglesNumber - 1] = startP;
             PointsList[AnglesNumber] = endP;
             AnglesNumber++;
-         }
-
-        //public override void Scale(PointF point)
-        //{
-
-        //}
-
-        //public override void Rotate(float rotateAngle)
-        //{
-
-        //    Center = new PointF(Math.Abs((PointsList[0].X + PointsList[1].X) / 2), Math.Abs((PointsList[0].Y + PointsList[1].Y) / 2));
-        //    RotateMatrix.RotateAt(rotateAngle, Center);
-        //    Path.Transform(RotateMatrix);
-        //}
-
-
-
-
-
-
+        }
     }
-
-    
 }

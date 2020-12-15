@@ -26,7 +26,7 @@ namespace VectorNewWAY.Figures
             AnglesNumber = 0;
         }
 
-        public override GraphicsPath GetPath() //Получаем Path
+        public override GraphicsPath GetPath() 
         {
             Path = new GraphicsPath();
             RectangleF rectangle = MakeRectangleFromPointsList();
@@ -52,23 +52,6 @@ namespace VectorNewWAY.Figures
             PointsList.Add(startP);
             PointsList.Add(endP);
         }
-
-        //private RectangleF MakeRectangleFromPointsList()
-        //{
-        //    float width = PointsList[1].X - PointsList[0].X;
-        //    float height = PointsList[1].Y - PointsList[0].Y;
-        //    RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
-        //    return rectangle;
-        //}
-
-
-        //public override void Scale(PointF point)
-        //{
-        //    RectangleF rectangle = MakeRectangleFromPointsList();
-
-        //    SizeX = SizeX - point.X / 2 * rectangle.Width * 0.008f;
-        //    SizeY = SizeY - point.X / 2 * rectangle.Height * 0.008f;
-        //}
         
     }
 }

@@ -172,18 +172,18 @@ namespace VectorNewWAY.Figures
             return base.GetHashCode();
         }
 
-        public GraphicsPath MakePathFromLine()
+        protected GraphicsPath MakePathFromLine()
         {
             Path = new GraphicsPath();
+            Path.StartFigure();
             for (int i = 0; i < PointsList.Count - 1; i++)
             {
                 Path.AddLine(PointsList[i], PointsList[i + 1]);
             }
-            Path.CloseFigure();
             return Path;
         }
 
-        public RectangleF MakeRectangleFromPointsList()
+        public virtual RectangleF MakeRectangleFromPointsList()
         {
             float width = PointsList[1].X - PointsList[0].X;
             float height = PointsList[1].Y - PointsList[0].Y;

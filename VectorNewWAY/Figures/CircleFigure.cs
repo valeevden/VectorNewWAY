@@ -44,7 +44,7 @@ namespace VectorNewWAY.Figures
             PointsList.Add(startP);
             PointsList.Add(endP);
         }
-        private RectangleF MakeRectangleFromPointsList()
+        public override RectangleF MakeRectangleFromPointsList()
         {
             float width = 2 * (PointsList[1].X - PointsList[0].X);
             float height = 2 * (PointsList[1].Y - PointsList[0].Y);

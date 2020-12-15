@@ -24,7 +24,7 @@ namespace VectorNewWAY.Figures
             AnglesNumber = 1;
         }
 
-        public override GraphicsPath GetPath() //Получаем Path
+        public override GraphicsPath GetPath() 
         {
             MakePathFromLine();
             Path.Transform(RotateMatrix);
@@ -37,12 +37,5 @@ namespace VectorNewWAY.Figures
             PointsList[AnglesNumber - 1] = endP;
         }
        
-
-        public override void Scale(PointF point)
-        {
-
-        }
-
-      
     }
 }
