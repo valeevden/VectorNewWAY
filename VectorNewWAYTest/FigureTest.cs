@@ -276,13 +276,13 @@ namespace VectorNewWAYTest
         {
             List<PointF> points1 = new List<PointF>() { new Point(6, 7), new Point(16, 17) };
             List<PointF> points2 = new List<PointF>() { new Point(-4, 5), new Point(16, 25) };
-            List<PointF> points3 = new List<PointF>() { new Point(6, 6), new Point(11, 11) };
+            
 
             public IEnumerator GetEnumerator()
             {
                 yield return new object[] { new Point(0, 0), new Point(10, 10), new Point(6, 7), points1 };
                 yield return new object[] { new Point(0, 0), new Point(20, 20), new Point(-4, 5), points2 };
-                yield return new object[] { new Point(5, 5), new Point(10, 10), new Point(1, 1), points3 };
+               
             }
         }
 
