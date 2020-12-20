@@ -35,7 +35,7 @@ namespace VectorNewWAY.Figures
         public override void Update(PointF startP, PointF endP)
         {
             PointsList = new List<PointF>();
-            PointsList.Add(startP);
+            PointsList.Add(MouseDownPoint);
             PointsList.Add(endP);
         }
 

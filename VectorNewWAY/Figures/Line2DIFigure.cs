@@ -27,7 +27,7 @@ namespace VectorNewWAY.Figures
         public override void Update(PointF startP, PointF endP)
         {
             PointsList = new List<PointF>() { new PointF(0, 0), new PointF(0, 0) };
-            PointsList[0] = startP;
+            PointsList[0] = MouseDownPoint;
             PointsList[1] = endP;
         }
 

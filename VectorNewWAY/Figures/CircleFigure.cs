@@ -17,6 +17,7 @@ namespace VectorNewWAY.Figures
 {
     public class CircleFigure : AOneMoveFigure
     {
+        List<PointF> RPointsList;
         public CircleFigure(Pen pen) : base (pen)
         {
             Painter = new PathIPainter();
@@ -37,18 +38,18 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            float radius = endP.X - startP.X;
-            PointF startRectangleHere = new PointF(endP.X, startP.Y + radius);
-            PointsList = new List<PointF>();
-            PointsList.Add(startRectangleHere);
-            PointsList.Add(startP);
-            PointsList.Add(endP);
+            float radius = endP.X - PointsList[0].X;
+            PointF startRectangleHere = new PointF(endP.X, PointsList[0].Y + radius);
+            RPointsList = new List<PointF>();
+            RPointsList.Add(startRectangleHere);
+            RPointsList.Add(PointsList[0]);
+            RPointsList.Add(endP);
         }
         public override RectangleF MakeRectangleFromPointsList()
         {
-            float width = 2 * (PointsList[1].X - PointsList[0].X);
-            float height = 2 * (PointsList[1].Y - PointsList[0].Y);
-            RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
+            float width = 2 * (RPointsList[1].X - RPointsList[0].X);
+            float height = 2 * (RPointsList[1].Y - RPointsList[0].Y);
+            RectangleF rectangle = new RectangleF(RPointsList[0].X, RPointsList[0].Y, width, height);
             return rectangle;
         }
 

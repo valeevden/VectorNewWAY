@@ -12,7 +12,6 @@ namespace VectorNewWAY.FigureFinalizer
     {
         public void FinalizeFigure(AFigure figure)
         {
-            
         }
     }
 }

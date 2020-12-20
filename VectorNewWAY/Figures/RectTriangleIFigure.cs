@@ -34,9 +34,9 @@ namespace VectorNewWAY.Figures
         public override void Update(PointF startP, PointF endP)
         {
             PointF[] pointsArray = new PointF[3];
-            pointsArray[0] = startP;
+            pointsArray[0] = MouseDownPoint;
             pointsArray[1] = endP;
-            pointsArray[2].X = startP.X;
+            pointsArray[2].X = MouseDownPoint.X;
             pointsArray[2].Y = endP.Y;
 
             PointsList = new List<PointF> { };

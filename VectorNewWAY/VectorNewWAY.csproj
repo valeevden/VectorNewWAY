@@ -55,9 +55,9 @@
     <Compile Include="Fabrics\NAngleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
-    <Compile Include="FigureFinalizer\FreeBuildIFinalizer.cs" />
+    <Compile Include="FigureFinalizer\InActiveIFinalizer.cs" />
     <Compile Include="FigureFinalizer\IFinalizer.cs" />
-    <Compile Include="FigureFinalizer\OneMoveFigureIFinalizer.cs" />
+    <Compile Include="FigureFinalizer\ActiveIFinalizer.cs" />
     <Compile Include="FigureState\FinishedIFigureState.cs" />
     <Compile Include="FigureState\IFigureState.cs" />
     <Compile Include="FigureState\InProgressIFigureState.cs" />
@@ -87,7 +87,6 @@
     <Compile Include="MouseDownSetter\OneMoveSetter.cs" />
     <Compile Include="Reaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="Reaction\FreeLineIRightClickReaction.cs" />
-    <Compile Include="Reaction\Triangle3DIRightClickReaction.cs" />
     <Compile Include="SingletonData.cs" />
     <Compile Include="Figures\AFigure.cs" />
     <Compile Include="Figures\EllipseFigure.cs" />

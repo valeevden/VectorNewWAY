@@ -11,6 +11,7 @@ using VectorNewWAY.FigureList;
 using VectorNewWAY.Fabrics;
 using VectorNewWAY.Reaction;
 using VectorNewWAY.FigureFinalizer;
+using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.Mode
 {
@@ -30,38 +31,18 @@ namespace VectorNewWAY.Mode
         {
             
             _singletone = SingletonData.GetData();
-
-            if (fabric is LineNDIFabric
-                        || fabric is FigureNDIFabric
-                        || fabric is Triangle3DIFabric)
+            if (_figure == null || _figure.State is FinishedIFigureState)
             {
-                //если фигура начинается то записать первую стартПоинт
-                if (_figure == null)
-                {
-                    _figure = fabric.CreateFigure(p);
-                    _startPoint = e.Location;
-                    _figure.TmpPoint = e.Location;
-                    
-                }
-                else
-                {
-                    _figure.TmpPoint = e.Location;
-                    _startPoint = _figure.SecondPoint;
-                }
-            }
-            else
-            {
-                _startPoint = e.Location;
                 _figure = fabric.CreateFigure(p);
-                _figure.Set();
             }
+            _figure.Set(e.Location);
         }
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
             if ((_figure is AFreeBuild) && (_mouseMove == false))
             {
                 _figure.AnglesNumber++;
-                _figure.PointsList.Add(_figure.TmpPoint);
+                _figure.PointsList.Add(_figure.MouseDownPoint);
             }
             
             _figure.Update(_startPoint, e.Location);
@@ -81,6 +62,7 @@ namespace VectorNewWAY.Mode
 
             if (e.Button == MouseButtons.Right && _figure is AFreeBuild)
             {
+                _figure.Reaction.Do();
                 _figure.Finalizer = new ActiveIFinalizer();
                 _figure.ApplyFinalizer();
             }

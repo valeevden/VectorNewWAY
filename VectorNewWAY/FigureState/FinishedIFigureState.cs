@@ -16,9 +16,10 @@ namespace VectorNewWAY.FigureState
         {
             _singletone = SingletonData.GetData();
         }
-        public void Set(PointF e, AFigure figure)
+        public void Set(PointF firstMouseDown, AFigure figure)
         {
-
+            figure.PointsList[0] = firstMouseDown;
+            figure.State = new InProgressIFigureState();
         }
         public void FinalizeFigure(AFigure figure)
         {

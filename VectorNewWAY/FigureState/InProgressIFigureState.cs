@@ -10,9 +10,9 @@ namespace VectorNewWAY.FigureState
 {
     public class InProgressIFigureState: IFigureState
     {
-        public void Set(PointF e, AFigure figure)
+        public void Set(PointF eLocation, AFigure figure)
         {
-
+          
         }
         public void FinalizeFigure(AFigure figure)
         {

@@ -16,12 +16,12 @@ namespace VectorNewWAY.Reaction
         public FreeFigureIRightClickReaction(AFigure figure) : base(figure)
         {
             _figure = figure;
+            _singletone = SingletonData.GetData();
         }
 
         public override void Do()
         {
             _figure.PointsList.Add(new PointF(_figure.PointsList[0].X, _figure.PointsList[0].Y));
-            _figure.ApplyFinalizer();
             _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, new Pen(_figure.Color, _figure.Width));
         }
     }

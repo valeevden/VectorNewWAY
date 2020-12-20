@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using VectorNewWAY.MouseDownSetter;
+using VectorNewWAY.FigureFinalizer;
+using VectorNewWAY.Reaction;
+using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.Figures
 {
@@ -12,7 +15,11 @@ namespace VectorNewWAY.Figures
     {
         public AOneMoveFigure(Pen pen):base(pen)
         {
+            Finalizer = new ActiveIFinalizer();
+            Reaction = new NoReactionIReaction(this);
             Setter = new OneMoveSetter();
+            State = new FinishedIFigureState();
         }
+
     }
 }

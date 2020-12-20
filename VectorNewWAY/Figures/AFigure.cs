@@ -25,7 +25,7 @@ namespace VectorNewWAY.Figures
         public IMouseDownSetter Setter;
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
-        public PointF TmpPoint { get; set; }
+        public PointF MouseDownPoint { get; set; }
         public PointF TouchPoint { get; set; }//точка касания при перемещении, вращении или заливке фигуры
         public PointF[] PointsArray { get; set; }//массив точек фигуры
         public Matrix RotateMatrix { get; set; }
@@ -58,8 +58,8 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
-            Reaction = new NoReactionIReaction(this);
-            State = new InProgressIFigureState;
+            
+            
             
         }
         public void Set(PointF e)
