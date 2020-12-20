@@ -8,11 +8,11 @@ using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.FigureFinalizer
 {
-    public class FreeBuildIFinalizer: IFinalizer
+    public class InActiveIFinalizer: IFinalizer
     {
         public void FinalizeFigure(AFigure figure)
         {
-            figure.State.FinalizeFigure(figure);
+            
         }
     }
 }

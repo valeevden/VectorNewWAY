@@ -14,7 +14,7 @@ namespace VectorNewWAY.Figures
         public AFreeBuild(Pen pen):base(pen)
         {
             Setter = new FreeBuildSetter();
-            Finalizer = new FreeBuildIFinalizer();
+            Finalizer = new InActiveIFinalizer();
         }
     }
 }

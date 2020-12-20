@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VectorNewWAY.Figures;
+using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.FigureFinalizer
 {
-    public class OneMoveFigureIFinalizer : IFinalizer
+    public class ActiveIFinalizer : IFinalizer
     {
         public void FinalizeFigure(AFigure figure)
         {
-            throw new NotImplementedException();
+            figure.State.FinalizeFigure(figure);
         }
     }
 }

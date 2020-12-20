@@ -59,8 +59,8 @@ namespace VectorNewWAY.Figures
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
             Reaction = new NoReactionIReaction(this);
-            State = new FinishedIFigureState();
-            Finalizer = new OneMoveFigureIFinalizer();
+            State = new InProgressIFigureState;
+            
         }
         public void Set(PointF e)
         {
@@ -198,7 +198,7 @@ namespace VectorNewWAY.Figures
             RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
             return rectangle;
         }
-        public virtual void FinalizeFigure()
+        public virtual void ApplyFinalizer()
         {
             Finalizer.FinalizeFigure(this);
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VectorNewWAY.Figures;
+using System.Drawing;
 
 namespace VectorNewWAY.FigureState
 {
@@ -16,7 +17,7 @@ namespace VectorNewWAY.FigureState
         public void FinalizeFigure(AFigure figure)
         {
             figure.State = new FinishedIFigureState();
-            figure.FinalizeFigure();
+            figure.ApplyFinalizer();
         }
     }
 }

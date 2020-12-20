@@ -10,6 +10,7 @@ using VectorNewWAY.Figures;
 using VectorNewWAY.FigureList;
 using VectorNewWAY.Fabrics;
 using VectorNewWAY.Reaction;
+using VectorNewWAY.FigureFinalizer;
 
 namespace VectorNewWAY.Mode
 {
@@ -57,17 +58,17 @@ namespace VectorNewWAY.Mode
         }
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
-            if ((_figure.Reaction is FreeLineIRightClickReaction 
-                || _figure.Reaction is FreeFigureIRightClickReaction 
-                || _figure.Reaction is Triangle3DIRightClickReaction) && (_mouseMove == false))
+            if ((_figure is AFreeBuild) && (_mouseMove == false))
             {
                 _figure.AnglesNumber++;
-                _figure.PointsList.Add(_figure.TmpPoint); //точка добавляется в лист в начале движения мыши
+                _figure.PointsList.Add(_figure.TmpPoint);
             }
+            
             _figure.Update(_startPoint, e.Location);
-            _mouseMove = true; //после записи точки запись заканчивается
+            _mouseMove = true;
             _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
             _figure.SecondPoint = e.Location;
+            
             if (_figure is BrushIFigure) _startPoint = e.Location;
 
             GC.Collect();
@@ -76,23 +77,12 @@ namespace VectorNewWAY.Mode
         {
             _mouseMove = false;
 
-            ((AOneMoveFigure)_figure).FinalizeFigure();
+            _figure.ApplyFinalizer();
 
-            if (e.Button == MouseButtons.Right && _figure != null)
+            if (e.Button == MouseButtons.Right && _figure is AFreeBuild)
             {
-                if (_figure.Reaction is FreeLineIRightClickReaction 
-                    || _figure.Reaction is FreeFigureIRightClickReaction)
-                {
-                    _figure.Reaction.Do();
-                    SingletonData _fL = SingletonData.GetData();
-                    _fL.FigureList.Add(_figure);
-                    
-                    _figure = null;
-                }
-                else
-                {
-                    _figure.Reaction.Do();
-                }
+                _figure.Finalizer = new ActiveIFinalizer();
+                _figure.ApplyFinalizer();
             }
         }
     }
