@@ -15,7 +15,7 @@ using VectorNewWAY.Reaction;
 namespace VectorNewWAY.Figures
 {
 
-    public class EllipseFigure : AFigure
+    public class EllipseFigure : AOneMoveFigure
     {
 
         public EllipseFigure(Pen pen) : base(pen)

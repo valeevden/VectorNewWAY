@@ -14,7 +14,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class RectangleFigure : AFigure
+    public class RectangleFigure : AOneMoveFigure
     {
         public RectangleFigure(Pen pen) : base(pen)
         {

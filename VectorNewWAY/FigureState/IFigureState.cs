@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VectorNewWAY.Figures;
+using System.Drawing;
 
 namespace VectorNewWAY.FigureState
 {
-    interface IFigureState
+    public interface IFigureState
     {
+        void Set(PointF e, AFigure figure);
+        void FinalizeFigure(AFigure figure);
     }
 }

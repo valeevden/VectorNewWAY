@@ -14,7 +14,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class Triangle3DFigure : AFigure
+    public class Triangle3DFigure : AFreeBuild
     {
         public Triangle3DFigure(Pen pen) : base(pen)
         {

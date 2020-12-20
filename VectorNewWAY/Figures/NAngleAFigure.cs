@@ -11,7 +11,7 @@ using VectorNewWAY.Fillers;
 
 namespace VectorNewWAY.Figures
 {
-    class NAngleAFigure: AFigure
+    class NAngleAFigure: AOneMoveFigure
     {
         public NAngleAFigure(int numberFromNumeric, Pen pen): base(pen)
         {

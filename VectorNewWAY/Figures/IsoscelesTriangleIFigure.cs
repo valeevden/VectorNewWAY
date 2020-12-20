@@ -14,7 +14,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class IsoscelesTriangleIFigure : AFigure
+    public class IsoscelesTriangleIFigure : AOneMoveFigure
     {
         public IsoscelesTriangleIFigure(Pen pen) : base(pen)
         {

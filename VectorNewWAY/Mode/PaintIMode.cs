@@ -40,7 +40,6 @@ namespace VectorNewWAY.Mode
                     _figure = fabric.CreateFigure(p);
                     _startPoint = e.Location;
                     _figure.TmpPoint = e.Location;
-                    _figure.Started = true;
                     
                 }
                 else
@@ -53,6 +52,7 @@ namespace VectorNewWAY.Mode
             {
                 _startPoint = e.Location;
                 _figure = fabric.CreateFigure(p);
+                _figure.Set();
             }
         }
         public void MouseMove(Pen pen, MouseEventArgs e)
@@ -76,7 +76,7 @@ namespace VectorNewWAY.Mode
         {
             _mouseMove = false;
 
-            _figure.Reaction.Do();
+            ((AOneMoveFigure)_figure).FinalizeFigure();
 
             if (e.Button == MouseButtons.Right && _figure != null)
             {

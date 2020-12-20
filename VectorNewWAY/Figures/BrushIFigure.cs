@@ -14,7 +14,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class BrushIFigure : AFigure
+    public class BrushIFigure : AOneMoveFigure
     {
         public BrushIFigure (Pen pen): base (pen)
         {

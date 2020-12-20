@@ -14,7 +14,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class LineNDIFigure : AFigure
+    public class LineNDIFigure : AFreeBuild
     {
         public LineNDIFigure(Pen pen):base(pen)
         {

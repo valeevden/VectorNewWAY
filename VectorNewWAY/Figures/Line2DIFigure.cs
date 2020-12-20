@@ -14,7 +14,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class Line2DIFigure : AFigure
+    public class Line2DIFigure : AOneMoveFigure
     {
         public Line2DIFigure(Pen pen): base (pen)
         {

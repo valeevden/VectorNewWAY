@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VectorNewWAY.Figures;
 
 namespace VectorNewWAY.FigureState
 {
-    class InProgressIFigureState
+    public class InProgressIFigureState: IFigureState
     {
+        public void Set(PointF e, AFigure figure)
+        {
+
+        }
+        public void FinalizeFigure(AFigure figure)
+        {
+            figure.State = new FinishedIFigureState();
+            figure.FinalizeFigure();
+        }
     }
 }

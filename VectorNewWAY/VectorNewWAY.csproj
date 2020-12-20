@@ -55,7 +55,15 @@
     <Compile Include="Fabrics\NAngleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
+    <Compile Include="FigureFinalizer\FreeBuildIFinalizer.cs" />
+    <Compile Include="FigureFinalizer\IFinalizer.cs" />
+    <Compile Include="FigureFinalizer\OneMoveFigureIFinalizer.cs" />
+    <Compile Include="FigureState\FinishedIFigureState.cs" />
+    <Compile Include="FigureState\IFigureState.cs" />
+    <Compile Include="FigureState\InProgressIFigureState.cs" />
+    <Compile Include="Figures\AOneMoveFigure.cs" />
     <Compile Include="Figures\BrushIFigure.cs" />
+    <Compile Include="Figures\AFreeBuild.cs" />
     <Compile Include="Figures\EdgeMod.cs" />
     <Compile Include="Figures\NAngleAFigure.cs" />
     <Compile Include="Figures\FigureNDIFigure.cs" />
@@ -74,6 +82,9 @@
     <Compile Include="Fillers\LineIFiller.cs" />
     <Compile Include="Mode\PeakIMode.cs" />
     <Compile Include="Mode\RotateIMode.cs" />
+    <Compile Include="MouseDownSetter\FreeBuildSetter.cs" />
+    <Compile Include="MouseDownSetter\IMouseDownSetter.cs" />
+    <Compile Include="MouseDownSetter\OneMoveSetter.cs" />
     <Compile Include="Reaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="Reaction\FreeLineIRightClickReaction.cs" />
     <Compile Include="Reaction\Triangle3DIRightClickReaction.cs" />

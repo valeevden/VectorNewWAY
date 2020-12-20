@@ -15,7 +15,7 @@ using VectorNewWAY.Reaction;
 
 namespace VectorNewWAY.Figures
 {
-    public class CircleFigure : AFigure
+    public class CircleFigure : AOneMoveFigure
     {
         public CircleFigure(Pen pen) : base (pen)
         {

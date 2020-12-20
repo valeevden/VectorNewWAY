@@ -11,14 +11,18 @@ using System.Drawing.Drawing2D;
 using VectorNewWAY.Fillers;
 using VectorNewWAY.Reaction;
 using VectorNewWAY.Painters;
-//using PaintForSchool.RightClickReaction;
-
+using VectorNewWAY.FigureState;
+using VectorNewWAY.FigureFinalizer;
+using VectorNewWAY.MouseDownSetter;
 
 namespace VectorNewWAY.Figures
 {
     public abstract class AFigure
     {
         public EdgeMod Edge;
+        public IFigureState State;
+        public IFinalizer Finalizer;
+        public IMouseDownSetter Setter;
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
         public PointF TmpPoint { get; set; }
@@ -55,7 +59,14 @@ namespace VectorNewWAY.Figures
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
             Reaction = new NoReactionIReaction(this);
+            State = new FinishedIFigureState();
+            Finalizer = new OneMoveFigureIFinalizer();
         }
+        public void Set(PointF e)
+        {
+            Setter.Set(e, this);
+        }
+
         public virtual GraphicsPath GetPath() 
         {
             MakePathFromLine();
@@ -186,6 +197,10 @@ namespace VectorNewWAY.Figures
             float height = PointsList[1].Y - PointsList[0].Y;
             RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
             return rectangle;
+        }
+        public virtual void FinalizeFigure()
+        {
+            Finalizer.FinalizeFigure(this);
         }
     }
 }

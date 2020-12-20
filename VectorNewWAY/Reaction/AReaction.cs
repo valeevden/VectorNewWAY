@@ -19,7 +19,7 @@ namespace VectorNewWAY.Reaction
         }
         public virtual void Do()
         {
-            Singletone.FigureList.Add(Figure);
+            
         }
     }
 }

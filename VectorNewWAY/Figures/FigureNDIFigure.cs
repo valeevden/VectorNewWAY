@@ -11,10 +11,11 @@ using System.Drawing.Drawing2D;
 using VectorNewWAY.Painters;
 using VectorNewWAY.Fillers;
 using VectorNewWAY.Reaction;
+using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.Figures
 {
-    public class FigureNDIFigure : AFigure
+    public class FigureNDIFigure : AFreeBuild
     {
         public FigureNDIFigure(Pen pen) : base(pen)
         {
@@ -22,6 +23,7 @@ namespace VectorNewWAY.Figures
             Painter = new PathIPainter();
             Filler = new PathFiller();
             AnglesNumber = 1;
+            State = new InProgressIFigureState();
         }
 
         public override void Update(PointF startP, PointF endP)
