@@ -19,7 +19,6 @@ namespace VectorNewWAY.Figures
         public SquareFigure(Pen pen) : base(pen)
         {
             Painter = new PathIPainter();
-            Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
             AnglesNumber = 4;
         }

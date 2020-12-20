@@ -18,7 +18,7 @@ namespace VectorNewWAY.Figures
     {
         public LineNDIFigure(Pen pen):base(pen)
         {
-            Reaction = new FreeLineIRightClickReaction();
+            Reaction = new FreeLineIRightClickReaction(this);
             Filler = new LineIFiller();
             Painter = new PathIPainter();
             AnglesNumber = 1;

@@ -18,7 +18,6 @@ namespace VectorNewWAY.Figures
     {
         public RectTriangleIFigure(Pen pen) : base(pen)
         {
-            Reaction = new NoReactionIReaction();
             Painter = new PathIPainter();
             Filler = new PathFiller();
             AnglesNumber = 3;

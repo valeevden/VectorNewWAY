@@ -17,7 +17,6 @@ namespace VectorNewWAY.Figures
         {
             AnglesNumber = numberFromNumeric;
             Painter = new PathIPainter();
-            Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
         }
 

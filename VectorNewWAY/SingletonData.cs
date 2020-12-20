@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace VectorNewWAY.FigureList
 {
-    class SingletonData
+    public class SingletonData
     {
         private static SingletonData _data;
         public PictureBox PictureBox1 { get; set; }

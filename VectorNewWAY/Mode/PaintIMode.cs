@@ -75,21 +75,8 @@ namespace VectorNewWAY.Mode
         public void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
             _mouseMove = false;
-            if (_figure != null && _figure.Reaction is NoReactionIReaction)
-            {
-                _figure.Reaction.Do();
-                SingletonData _fL = SingletonData.GetData();
-                _fL.FigureList.Add(_figure);
-                _figure = null;
-            }
-            else if (_figure != null && _figure.Reaction is Triangle3DIRightClickReaction && _figure.AnglesNumber == 3)
-            {
-                //ничего не происходит для фигур с FreeLineIRightClickReaction и FreeFigureIRightClickReaction
-                _figure.Reaction.Do();
-                SingletonData _fL = SingletonData.GetData();
-                _fL.FigureList.Add(_figure);
-                _figure = null;
-            }
+
+            _figure.Reaction.Do();
 
             if (e.Button == MouseButtons.Right && _figure != null)
             {

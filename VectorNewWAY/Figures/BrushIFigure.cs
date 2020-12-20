@@ -18,7 +18,7 @@ namespace VectorNewWAY.Figures
     {
         public BrushIFigure (Pen pen): base (pen)
         {
-            Reaction = new NoReactionIReaction();
+            Reaction = new NoReactionIReaction(this);
             Painter = new PathIPainter();
             Filler = new LineIFiller();
             AnglesNumber = 1;

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VectorNewWAY.Reaction
+namespace VectorNewWAY.FigureState
 {
-    public interface IReaction
+    interface IFigureState
     {
-        void Do();
     }
 }

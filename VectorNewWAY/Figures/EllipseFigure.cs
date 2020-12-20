@@ -21,7 +21,6 @@ namespace VectorNewWAY.Figures
         public EllipseFigure(Pen pen) : base(pen)
         {
             Painter = new PathIPainter();
-            Reaction = new NoReactionIReaction();
             Filler = new PathFiller();
             AnglesNumber = 0;
         }

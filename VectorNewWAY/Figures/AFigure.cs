@@ -31,7 +31,7 @@ namespace VectorNewWAY.Figures
         public Color Color { get; set; }//цвет фигуры
         public int Width { get; set; } // Толщина pen
         public IFiller Filler { get; set; }//Заливальщик фигуры
-        public IReaction Reaction { get; set; }//Реакция по "" фигуры
+        public AReaction Reaction { get; set; }//Реакция по "" фигуры
         public int AnglesNumber { get; set; }//количество углов
         public float RotateAngle { get; set; }//Угол поворота
         public PointF Center { get; set; }
@@ -54,6 +54,7 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
+            Reaction = new NoReactionIReaction(this);
         }
         public virtual GraphicsPath GetPath() 
         {

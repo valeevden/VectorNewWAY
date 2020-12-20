@@ -18,7 +18,6 @@ namespace VectorNewWAY.Figures
     {
         public Line2DIFigure(Pen pen): base (pen)
         {
-            Reaction = new NoReactionIReaction();
             Painter = new PathIPainter();
             Filler = new LineIFiller();
             AnglesNumber = 2;

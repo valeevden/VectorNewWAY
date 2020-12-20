@@ -20,7 +20,7 @@ namespace VectorNewWAY.Figures
         public CircleFigure(Pen pen) : base (pen)
         {
             Painter = new PathIPainter();
-            Reaction = new NoReactionIReaction();
+            Reaction = new NoReactionIReaction(this);
             Filler = new PathFiller();
             AnglesNumber = 0;
         }

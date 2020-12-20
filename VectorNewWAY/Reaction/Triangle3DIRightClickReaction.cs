@@ -9,22 +9,22 @@ using System.Drawing;
 
 namespace VectorNewWAY.Reaction
 {
-    public class Triangle3DIRightClickReaction : IReaction
+    public class Triangle3DIRightClickReaction : AReaction
     {
-        SingletonData _singletone;
-        AFigure _figure;
-        public Triangle3DIRightClickReaction(AFigure figure)
+  
+        
+        public Triangle3DIRightClickReaction(AFigure figure):base(figure)
         {
-            _figure = figure;
+            
         }
-        public void Do()
+        public override void Do()
         {
-            if (_figure.AnglesNumber == 3)
+            if (Figure.AnglesNumber == 3)
             {
-                _figure.PointsList.Add(new PointF(_figure.PointsList[0].X, _figure.PointsList[0].Y));
-                _singletone = SingletonData.GetData();
-                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, new Pen(_figure.Color, _figure.Width));
-                
+                Figure.PointsList.Add(new PointF(Figure.PointsList[0].X, Figure.PointsList[0].Y));
+                Singletone = SingletonData.GetData();
+                Singletone.PictureBox1.Image = Singletone.Canvas.DrawIt(Figure, new Pen(Figure.Color, Figure.Width));
+                Singletone.FigureList.Add(Figure);
             }
 
         }
