@@ -20,6 +20,5 @@ namespace VectorNewWAY.Mode
             Modifier = new MoveIModifier();
         }
 
-        
     }
 }

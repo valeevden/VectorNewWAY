@@ -30,11 +30,7 @@ namespace VectorNewWAY.Mode
                     _modifyingFigure = checkFigure;
                     _singletone.FigureList.Remove(checkFigure);
                     _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
-                    foreach (AFigure figureINList in _singletone.FigureList)
-                    {
-                        _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(figureINList.Color, figureINList.Width));
-                        _singletone.Canvas.Save();
-                    }
+                    DrawAll();
                     _startPoint = checkFigure.TouchPoint;
                     break;
                 }
@@ -64,10 +60,15 @@ namespace VectorNewWAY.Mode
             {
                 _singletone.FigureList.Add(_modifyingFigure);
                 _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
-                foreach (AFigure figureINList in _singletone.FigureList)
-                {
-                    _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(_modifyingFigure.Color, _modifyingFigure.Width));
-                }
+                DrawAll();
+            }
+        }
+
+        private void DrawAll()
+        {
+            foreach (AFigure figureINList in _singletone.FigureList)
+            {
+                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(_modifyingFigure.Color, _modifyingFigure.Width));
                 _singletone.Canvas.Save();
             }
         }
