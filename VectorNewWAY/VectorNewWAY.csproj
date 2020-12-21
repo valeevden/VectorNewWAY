@@ -59,6 +59,7 @@
     <Compile Include="Mode\Modifier\IModifier.cs" />
     <Compile Include="Mode\Modifier\MoveIModifier.cs" />
     <Compile Include="Mode\Modifier\RotateIModifier.cs" />
+    <Compile Include="Mode\Modifier\ScaleIModifier.cs" />
     <Compile Include="Saver\InActiveISaver.cs" />
     <Compile Include="Saver\ISaver.cs" />
     <Compile Include="Saver\ActiveISaver.cs" />
@@ -107,7 +108,7 @@
     <Compile Include="Mode\IMode.cs" />
     <Compile Include="Mode\MoveAMode.cs" />
     <Compile Include="Mode\PaintIMode.cs" />
-    <Compile Include="Mode\ScaleIMode.cs" />
+    <Compile Include="Mode\ScaleAMode.cs" />
     <Compile Include="Painters\IPainter.cs" />
     <Compile Include="Painters\PathIPainter.cs" />
     <Compile Include="Painters\PolygonIPainter.cs" />

@@ -19,7 +19,7 @@ namespace VectorNewWAY.Mode
         public SingletonData _singletone;
         public AFigure _modifyingFigure;
         public PointF _previousPoint;
-        public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
+        public virtual void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
             _singletone = SingletonData.GetData();
             _modifyingFigure = null;
@@ -36,7 +36,7 @@ namespace VectorNewWAY.Mode
             }
         }
 
-        public void MouseMove(Pen pen, MouseEventArgs e)
+        public virtual void MouseMove(Pen pen, MouseEventArgs e)
         {
             if (_modifyingFigure != null)
             {
@@ -52,7 +52,7 @@ namespace VectorNewWAY.Mode
             }
         }
 
-        public void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
+        public virtual void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
             if (_modifyingFigure != null)
             {

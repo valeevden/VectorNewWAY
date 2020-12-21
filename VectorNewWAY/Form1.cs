@@ -258,7 +258,7 @@ namespace VectorNewWAY
         {
             if (radioButtonScale.Checked)
             {
-                _mouseMode = new ScaleIMode();
+                _mouseMode = new ScaleAMode();
             }
         }
 
@@ -274,7 +274,7 @@ namespace VectorNewWAY
         {
             if (FILL.Checked)
             {
-                _mouseMode = new FillIMode();
+                _mouseMode = new FillAMode();
             }
         }
 
