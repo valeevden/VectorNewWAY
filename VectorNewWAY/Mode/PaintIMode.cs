@@ -18,7 +18,7 @@ namespace VectorNewWAY.Mode
     public class PaintIMode : IMode
     {
         AFigure _figure;
-        PointF _startPoint;
+        PointF _brushStartPoint;
         bool _mouseMove = false;
         SingletonData _singletone;
 
@@ -35,7 +35,10 @@ namespace VectorNewWAY.Mode
             {
                 _figure = fabric.CreateFigure(p);
             }
+
             _figure.Set(e.Location);
+
+            if (_figure is BrushIFigure) _brushStartPoint = e.Location;
         }
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
@@ -45,12 +48,11 @@ namespace VectorNewWAY.Mode
                 _figure.PointsList.Add(_figure.MouseDownPoint);
             }
             
-            _figure.Update(_startPoint, e.Location);
+            _figure.Update(_brushStartPoint, e.Location);
             _mouseMove = true;
             _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
-            _figure.SecondPoint = e.Location;
             
-            if (_figure is BrushIFigure) _startPoint = e.Location;
+            if (_figure is BrushIFigure) _brushStartPoint = e.Location;
 
             GC.Collect();
         }

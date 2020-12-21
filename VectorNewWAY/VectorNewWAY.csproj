@@ -55,9 +55,9 @@
     <Compile Include="Fabrics\NAngleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
-    <Compile Include="FigureFinalizer\InActiveISaver.cs" />
-    <Compile Include="FigureFinalizer\ISaver.cs" />
-    <Compile Include="FigureFinalizer\ActiveISaver.cs" />
+    <Compile Include="Saver\InActiveISaver.cs" />
+    <Compile Include="Saver\ISaver.cs" />
+    <Compile Include="Saver\ActiveISaver.cs" />
     <Compile Include="FigureState\FinishedIFigureState.cs" />
     <Compile Include="FigureState\IFigureState.cs" />
     <Compile Include="FigureState\InProgressIFigureState.cs" />

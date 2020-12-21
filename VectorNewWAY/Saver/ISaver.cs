@@ -9,6 +9,6 @@ namespace VectorNewWAY.Saver
 {
     public interface ISaver
     {
-        void FinalizeFigure(AFigure figure);
+        void SaveFigure(AFigure figure);
     }
 }

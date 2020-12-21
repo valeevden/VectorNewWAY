@@ -200,7 +200,7 @@ namespace VectorNewWAY.Figures
         }
         public virtual void ApplySaver()
         {
-            Saver.FinalizeFigure(this);
+            Saver.SaveFigure(this);
         }
     }
 }

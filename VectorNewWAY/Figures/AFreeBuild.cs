@@ -16,7 +16,7 @@ namespace VectorNewWAY.Figures
         {
             Saver = new InActiveISaver();
             Setter = new FreeBuildSetter();
-            State = new InProgressIFigureState();
+            State = new FinishedIFigureState();
         }
     }
 }

@@ -10,7 +10,7 @@ namespace VectorNewWAY.Saver
 {
     public class InActiveISaver: ISaver
     {
-        public void FinalizeFigure(AFigure figure)
+        public void SaveFigure(AFigure figure)
         {
         }
     }

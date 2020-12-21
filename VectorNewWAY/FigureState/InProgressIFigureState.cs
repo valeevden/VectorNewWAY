@@ -14,7 +14,7 @@ namespace VectorNewWAY.FigureState
         {
           
         }
-        public void FinalizeFigure(AFigure figure)
+        public void SaveFigure(AFigure figure)
         {
             figure.State = new FinishedIFigureState();
             figure.ApplySaver();

@@ -21,7 +21,7 @@ namespace VectorNewWAY.FigureState
             figure.PointsList[0] = firstMouseDown;
             figure.State = new InProgressIFigureState();
         }
-        public void FinalizeFigure(AFigure figure)
+        public void SaveFigure(AFigure figure)
         {
             _singletone.FigureList.Add(figure);
         }

@@ -23,7 +23,6 @@ namespace VectorNewWAY.Figures
             Painter = new PathIPainter();
             Filler = new PathFiller();
             AnglesNumber = 1;
-            State = new FinishedIFigureState();
         }
 
         public override void Update(PointF startP, PointF endP)

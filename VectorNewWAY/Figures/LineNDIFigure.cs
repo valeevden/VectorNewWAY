@@ -27,7 +27,6 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            PointsList[AnglesNumber - 2] = startP;
             PointsList[AnglesNumber - 1] = endP;
         }
        

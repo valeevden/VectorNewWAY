@@ -11,6 +11,6 @@ namespace VectorNewWAY.FigureState
     public interface IFigureState
     {
         void Set(PointF e, AFigure figure);
-        void FinalizeFigure(AFigure figure);
+        void SaveFigure(AFigure figure);
     }
 }
