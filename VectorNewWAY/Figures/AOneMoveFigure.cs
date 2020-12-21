@@ -7,6 +7,7 @@ using System.Drawing;
 using VectorNewWAY.Saver;
 using VectorNewWAY.RightClickReaction;
 using VectorNewWAY.FigureState;
+using VectorNewWAY.Setter;
 
 namespace VectorNewWAY.Figures
 {
@@ -16,7 +17,7 @@ namespace VectorNewWAY.Figures
         {
             Saver = new ActiveISaver();
             RightClickReaction = new NoReactionIReaction(this);
-            State = new FinishedIFigureState();
+            Setter = new OneMoveSetter();
         }
 
     }

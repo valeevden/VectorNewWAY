@@ -13,6 +13,7 @@ using VectorNewWAY.RightClickReaction;
 using VectorNewWAY.Painters;
 using VectorNewWAY.FigureState;
 using VectorNewWAY.Saver;
+using VectorNewWAY.Setter;
 
 namespace VectorNewWAY.Figures
 {
@@ -21,6 +22,7 @@ namespace VectorNewWAY.Figures
         public EdgeMod Edge;
         public IFigureState State;
         public ISaver Saver;
+        public ISetter Setter;
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
         public PointF MouseDownPoint { get; set; }
@@ -56,12 +58,13 @@ namespace VectorNewWAY.Figures
             RotateMatrix = new Matrix();
             Center = new PointF(0, 0);
             Edge = new EdgeMod();
-            
-            
-            
+
+            State = new FinishedIFigureState();
+
         }
         public void Set(PointF e)
         {
+            Setter.Set(this);
             State.Set(e, this);
         }
 

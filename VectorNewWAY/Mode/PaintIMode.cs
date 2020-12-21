@@ -42,14 +42,7 @@ namespace VectorNewWAY.Mode
         }
         public void MouseMove(Pen pen, MouseEventArgs e)
         {
-            if ((_figure is AFreeBuild) && (_mouseMove == false))
-            {
-                _figure.AnglesNumber++;
-                _figure.PointsList.Add(_figure.MouseDownPoint);
-            }
-            
             _figure.Update(_brushStartPoint, e.Location);
-            _mouseMove = true;
             _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, pen);
             
             if (_figure is BrushIFigure) _brushStartPoint = e.Location;

@@ -84,6 +84,9 @@
     <Compile Include="Mode\RotateIMode.cs" />
     <Compile Include="RightClickReaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="RightClickReaction\FreeLineIRightClickReaction.cs" />
+    <Compile Include="Setter\FreeBuildSetter.cs" />
+    <Compile Include="Setter\ISetter.cs" />
+    <Compile Include="Setter\OneMoveSetter.cs" />
     <Compile Include="SingletonData.cs" />
     <Compile Include="Figures\AFigure.cs" />
     <Compile Include="Figures\EllipseFigure.cs" />
