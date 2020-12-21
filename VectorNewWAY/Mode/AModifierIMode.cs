@@ -18,7 +18,7 @@ namespace VectorNewWAY.Mode
         
         public SingletonData _singletone;
         public AFigure _modifyingFigure;
-        public PointF _startPoint;
+        public PointF _previousPoint;
         public void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
         {
             _singletone = SingletonData.GetData();
@@ -30,7 +30,7 @@ namespace VectorNewWAY.Mode
                     _modifyingFigure = checkFigure;
                     _singletone.FigureList.Remove(checkFigure);
                     DrawAll();
-                    _startPoint = checkFigure.TouchPoint;
+                    _previousPoint = checkFigure.TouchPoint;
                     break;
                 }
             }
@@ -40,14 +40,13 @@ namespace VectorNewWAY.Mode
         {
             if (_modifyingFigure != null)
             {
-                PointF delta = new PointF(e.X - _startPoint.X, e.Y - _startPoint.Y);
+                PointF delta = new PointF(e.X - _previousPoint.X, e.Y - _previousPoint.Y);
 
-                _startPoint = e.Location;
+                _previousPoint = e.Location;
 
                 Modifier.Modify(_modifyingFigure, delta);
 
                 _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_modifyingFigure, new Pen(_modifyingFigure.Color, _modifyingFigure.Width));
-                // pictureBox1.Image = canvas.DrawIt(movingFigure, new Pen(movingFigure.Color, movingFigure.Width));
 
                 GC.Collect();
             }
