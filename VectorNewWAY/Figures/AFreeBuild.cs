@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using VectorNewWAY.Saver;
-using VectorNewWAY.MouseDownSetter;
 using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.Figures
@@ -15,7 +14,6 @@ namespace VectorNewWAY.Figures
         public AFreeBuild(Pen pen):base(pen)
         {
             Saver = new InActiveISaver();
-            Setter = new FreeBuildSetter();
             State = new FinishedIFigureState();
         }
     }
