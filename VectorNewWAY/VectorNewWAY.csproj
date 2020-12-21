@@ -104,7 +104,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mode\FillIMode.cs" />
+    <Compile Include="Mode\FillAMode.cs" />
     <Compile Include="Mode\IMode.cs" />
     <Compile Include="Mode\MoveAMode.cs" />
     <Compile Include="Mode\PaintIMode.cs" />

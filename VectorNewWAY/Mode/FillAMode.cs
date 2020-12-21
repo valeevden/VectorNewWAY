@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using System.Drawing;
-using VectorNewWAY.Mode;
 using VectorNewWAY.Figures;
-using VectorNewWAY.FigureList;
 using VectorNewWAY.Fabrics;
 
 namespace VectorNewWAY.Mode
 {
-    public class FillIMode : AModifierIMode
+    public class FillAMode : AModifierIMode
     {
 
         public override void MouseMove(Pen pen, MouseEventArgs e)
