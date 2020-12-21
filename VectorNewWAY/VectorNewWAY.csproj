@@ -55,6 +55,10 @@
     <Compile Include="Fabrics\NAngleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
+    <Compile Include="Mode\AModifierIMode.cs" />
+    <Compile Include="Mode\Modifier\IModifier.cs" />
+    <Compile Include="Mode\Modifier\MoveIModifier.cs" />
+    <Compile Include="Mode\Modifier\RotateIModifier.cs" />
     <Compile Include="Saver\InActiveISaver.cs" />
     <Compile Include="Saver\ISaver.cs" />
     <Compile Include="Saver\ActiveISaver.cs" />
@@ -81,7 +85,7 @@
     <Compile Include="Figures\Triangle3DFigure.cs" />
     <Compile Include="Fillers\LineIFiller.cs" />
     <Compile Include="Mode\PeakIMode.cs" />
-    <Compile Include="Mode\RotateIMode.cs" />
+    <Compile Include="Mode\RotateAMode.cs" />
     <Compile Include="RightClickReaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="RightClickReaction\FreeLineIRightClickReaction.cs" />
     <Compile Include="Setter\FreeBuildSetter.cs" />
@@ -101,7 +105,7 @@
     </Compile>
     <Compile Include="Mode\FillIMode.cs" />
     <Compile Include="Mode\IMode.cs" />
-    <Compile Include="Mode\MoveIMode.cs" />
+    <Compile Include="Mode\MoveAMode.cs" />
     <Compile Include="Mode\PaintIMode.cs" />
     <Compile Include="Mode\ScaleIMode.cs" />
     <Compile Include="Painters\IPainter.cs" />
