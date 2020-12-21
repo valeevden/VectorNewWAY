@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using VectorNewWAY.Figures;
 
-namespace VectorNewWAY.Reaction
+namespace VectorNewWAY.RightClickReaction
 {
-    public class FreeLineIRightClickReaction : AReaction
+    public class NoReactionIReaction : AReaction
     {
-        public FreeLineIRightClickReaction(AFigure figure) : base(figure)
+        public NoReactionIReaction(AFigure figure): base(figure)
         {
-         
+       
         }
-
     }
 }

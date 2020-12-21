@@ -9,8 +9,8 @@ using VectorNewWAY.Mode;
 using VectorNewWAY.Figures;
 using VectorNewWAY.FigureList;
 using VectorNewWAY.Fabrics;
-using VectorNewWAY.Reaction;
-using VectorNewWAY.FigureFinalizer;
+using VectorNewWAY.RightClickReaction;
+using VectorNewWAY.Saver;
 using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.Mode
@@ -58,13 +58,13 @@ namespace VectorNewWAY.Mode
         {
             _mouseMove = false;
 
-            _figure.ApplyFinalizer();
+            _figure.ApplySaver();
 
             if (e.Button == MouseButtons.Right && _figure is AFreeBuild)
             {
-                _figure.Reaction.Do();
-                _figure.Finalizer = new ActiveIFinalizer();
-                _figure.ApplyFinalizer();
+                _figure.RightClickReaction.FinishBuilding();
+                _figure.Saver = new ActiveISaver();
+                _figure.ApplySaver();
             }
         }
     }

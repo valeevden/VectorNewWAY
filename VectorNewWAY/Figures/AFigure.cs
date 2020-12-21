@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using VectorNewWAY.Fillers;
-using VectorNewWAY.Reaction;
+using VectorNewWAY.RightClickReaction;
 using VectorNewWAY.Painters;
 using VectorNewWAY.FigureState;
-using VectorNewWAY.FigureFinalizer;
+using VectorNewWAY.Saver;
 using VectorNewWAY.MouseDownSetter;
 
 namespace VectorNewWAY.Figures
@@ -21,7 +21,7 @@ namespace VectorNewWAY.Figures
     {
         public EdgeMod Edge;
         public IFigureState State;
-        public IFinalizer Finalizer;
+        public ISaver Saver;
         public IMouseDownSetter Setter;
         public PointF StartPoint { get; set; }//точка mouseDown
         public PointF SecondPoint { get; set; }//точка mouseUp
@@ -35,7 +35,7 @@ namespace VectorNewWAY.Figures
         public Color Color { get; set; }//цвет фигуры
         public int Width { get; set; } // Толщина pen
         public IFiller Filler { get; set; }//Заливальщик фигуры
-        public AReaction Reaction { get; set; }//Реакция по "" фигуры
+        public AReaction RightClickReaction { get; set; }//Реакция по "" фигуры
         public int AnglesNumber { get; set; }//количество углов
         public float RotateAngle { get; set; }//Угол поворота
         public PointF Center { get; set; }
@@ -198,9 +198,9 @@ namespace VectorNewWAY.Figures
             RectangleF rectangle = new RectangleF(PointsList[0].X, PointsList[0].Y, width, height);
             return rectangle;
         }
-        public virtual void ApplyFinalizer()
+        public virtual void ApplySaver()
         {
-            Finalizer.FinalizeFigure(this);
+            Saver.FinalizeFigure(this);
         }
     }
 }

@@ -55,9 +55,9 @@
     <Compile Include="Fabrics\NAngleIFabric.cs" />
     <Compile Include="Fabrics\RectTriangleIFabric.cs" />
     <Compile Include="Fabrics\Triangle3DIFabric.cs" />
-    <Compile Include="FigureFinalizer\InActiveIFinalizer.cs" />
-    <Compile Include="FigureFinalizer\IFinalizer.cs" />
-    <Compile Include="FigureFinalizer\ActiveIFinalizer.cs" />
+    <Compile Include="FigureFinalizer\InActiveISaver.cs" />
+    <Compile Include="FigureFinalizer\ISaver.cs" />
+    <Compile Include="FigureFinalizer\ActiveISaver.cs" />
     <Compile Include="FigureState\FinishedIFigureState.cs" />
     <Compile Include="FigureState\IFigureState.cs" />
     <Compile Include="FigureState\InProgressIFigureState.cs" />
@@ -85,8 +85,8 @@
     <Compile Include="MouseDownSetter\FreeBuildSetter.cs" />
     <Compile Include="MouseDownSetter\IMouseDownSetter.cs" />
     <Compile Include="MouseDownSetter\OneMoveSetter.cs" />
-    <Compile Include="Reaction\FreeFigureIRightClickReaction.cs" />
-    <Compile Include="Reaction\FreeLineIRightClickReaction.cs" />
+    <Compile Include="RightClickReaction\FreeFigureIRightClickReaction.cs" />
+    <Compile Include="RightClickReaction\FreeLineIRightClickReaction.cs" />
     <Compile Include="SingletonData.cs" />
     <Compile Include="Figures\AFigure.cs" />
     <Compile Include="Figures\EllipseFigure.cs" />
@@ -109,8 +109,8 @@
     <Compile Include="Painters\PolygonIPainter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reaction\AReaction.cs" />
-    <Compile Include="Reaction\NoReactionIReaction.cs" />
+    <Compile Include="RightClickReaction\AReaction.cs" />
+    <Compile Include="RightClickReaction\NoReactionIReaction.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

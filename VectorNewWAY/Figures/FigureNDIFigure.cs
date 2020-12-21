@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using VectorNewWAY.Painters;
 using VectorNewWAY.Fillers;
-using VectorNewWAY.Reaction;
+using VectorNewWAY.RightClickReaction;
 using VectorNewWAY.FigureState;
 
 namespace VectorNewWAY.Figures
@@ -19,7 +19,7 @@ namespace VectorNewWAY.Figures
     {
         public FigureNDIFigure(Pen pen) : base(pen)
         {
-            Reaction = new FreeFigureIRightClickReaction(this);
+            RightClickReaction = new FreeFigureIRightClickReaction(this);
             Painter = new PathIPainter();
             Filler = new PathFiller();
             AnglesNumber = 1;

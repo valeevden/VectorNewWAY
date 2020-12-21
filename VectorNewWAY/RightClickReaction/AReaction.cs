@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using VectorNewWAY.Figures;
 using VectorNewWAY.FigureList;
 
-namespace VectorNewWAY.Reaction
+namespace VectorNewWAY.RightClickReaction
 {
     public abstract class AReaction
     {
@@ -17,7 +17,7 @@ namespace VectorNewWAY.Reaction
             Figure = figure;
             Singletone = SingletonData.GetData();
         }
-        public virtual void Do()
+        public virtual void FinishBuilding()
         {
             
         }

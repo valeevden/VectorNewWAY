@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;//для Brush
 using VectorNewWAY.Painters;
 using VectorNewWAY.Fillers;
-using VectorNewWAY.Reaction;
+using VectorNewWAY.RightClickReaction;
 //using PaintForSchool.RightClickReaction;
 
 namespace VectorNewWAY.Figures
@@ -21,7 +21,7 @@ namespace VectorNewWAY.Figures
         public CircleFigure(Pen pen) : base (pen)
         {
             Painter = new PathIPainter();
-            Reaction = new NoReactionIReaction(this);
+            RightClickReaction = new NoReactionIReaction(this);
             Filler = new PathFiller();
             AnglesNumber = 0;
         }

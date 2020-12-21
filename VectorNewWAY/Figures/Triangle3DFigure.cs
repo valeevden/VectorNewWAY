@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using VectorNewWAY.Painters;
 using VectorNewWAY.Fillers;
-using VectorNewWAY.Reaction;
+using VectorNewWAY.RightClickReaction;
 using VectorNewWAY.FigureList;
 
 namespace VectorNewWAY.Figures
@@ -37,7 +37,7 @@ namespace VectorNewWAY.Figures
             PointsList[AnglesNumber - 2] = MouseDownPoint;
             PointsList[AnglesNumber - 1] = endP;
         }
-        public override void ApplyFinalizer()
+        public override void ApplySaver()
         {
             if (AnglesNumber == 3)
             {

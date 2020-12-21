@@ -7,7 +7,7 @@ using VectorNewWAY.FigureList;
 using VectorNewWAY.Figures;
 using System.Drawing;
 
-namespace VectorNewWAY.Reaction
+namespace VectorNewWAY.RightClickReaction
 {
     public class FreeFigureIRightClickReaction : AReaction
     {
@@ -19,7 +19,7 @@ namespace VectorNewWAY.Reaction
             _singletone = SingletonData.GetData();
         }
 
-        public override void Do()
+        public override void FinishBuilding()
         {
             _figure.PointsList.Add(new PointF(_figure.PointsList[0].X, _figure.PointsList[0].Y));
             _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_figure, new Pen(_figure.Color, _figure.Width));

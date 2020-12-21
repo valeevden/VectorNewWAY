@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using VectorNewWAY.Figures;
 
-namespace VectorNewWAY.FigureFinalizer
+namespace VectorNewWAY.Saver
 {
-    public interface IFinalizer
+    public interface ISaver
     {
         void FinalizeFigure(AFigure figure);
     }

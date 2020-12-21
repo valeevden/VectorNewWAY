@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using VectorNewWAY.Painters;
-using VectorNewWAY.Reaction;
+using VectorNewWAY.RightClickReaction;
 using VectorNewWAY.Fillers;
 
 namespace VectorNewWAY.Figures
