@@ -29,7 +29,6 @@ namespace VectorNewWAY.Mode
                 {
                     _modifyingFigure = checkFigure;
                     _singletone.FigureList.Remove(checkFigure);
-                    _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
                     DrawAll();
                     _startPoint = checkFigure.TouchPoint;
                     break;
@@ -59,13 +58,14 @@ namespace VectorNewWAY.Mode
             if (_modifyingFigure != null)
             {
                 _singletone.FigureList.Add(_modifyingFigure);
-                _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
+                
                 DrawAll();
             }
         }
 
         private void DrawAll()
         {
+            _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
             foreach (AFigure figureINList in _singletone.FigureList)
             {
                 _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(_modifyingFigure.Color, _modifyingFigure.Width));
