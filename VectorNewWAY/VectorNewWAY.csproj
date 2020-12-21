@@ -82,9 +82,6 @@
     <Compile Include="Fillers\LineIFiller.cs" />
     <Compile Include="Mode\PeakIMode.cs" />
     <Compile Include="Mode\RotateIMode.cs" />
-    <Compile Include="MouseDownSetter\FreeBuildSetter.cs" />
-    <Compile Include="MouseDownSetter\IMouseDownSetter.cs" />
-    <Compile Include="MouseDownSetter\OneMoveSetter.cs" />
     <Compile Include="RightClickReaction\FreeFigureIRightClickReaction.cs" />
     <Compile Include="RightClickReaction\FreeLineIRightClickReaction.cs" />
     <Compile Include="SingletonData.cs" />
