@@ -11,7 +11,7 @@ namespace VectorNewWAY.Mode
         {
             foreach (AFigure checkFigure in _singletone.FigureList)
             {
-                if (checkFigure.IsEdge(e.Location) || (checkFigure.IsArea(e.Location) ))
+                if (checkFigure.IsEdge(e.Location) || checkFigure.IsArea(e.Location))
                 {
                     checkFigure.IsFilled = true;
                     checkFigure.Color = p.Color;

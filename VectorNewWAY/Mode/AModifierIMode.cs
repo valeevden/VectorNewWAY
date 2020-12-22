@@ -66,6 +66,7 @@ namespace VectorNewWAY.Mode
                 
                 DrawAll();
             }
+            _modifyingFigure = null;
         }
 
         protected void DrawAll()

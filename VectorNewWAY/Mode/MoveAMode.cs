@@ -1,5 +1,4 @@
-﻿
-using VectorNewWAY.Mode.Modifier;
+﻿using VectorNewWAY.Mode.Modifier;
 
 namespace VectorNewWAY.Mode
 {
@@ -9,6 +8,5 @@ namespace VectorNewWAY.Mode
         {
             Modifier = new MoveIModifier();
         }
-
     }
 }
