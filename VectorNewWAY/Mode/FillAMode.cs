@@ -7,27 +7,30 @@ namespace VectorNewWAY.Mode
 {
     public class FillAMode : AModifierIMode
     {
+        public override void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
+        {
+            foreach (AFigure checkFigure in _singletone.FigureList)
+            {
+                if (checkFigure.IsEdge(e.Location) || (checkFigure.IsArea(e.Location) ))
+                {
+                    checkFigure.IsFilled = true;
+                    checkFigure.Color = p.Color;
+                    DrawAll();
+                    break;
+                }
+            }
+        }
 
         public override void MouseMove(Pen pen, MouseEventArgs e)
         {
-
+            
         }
 
 
         public override void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
-            if (_modifyingFigure != null)
-            {
-                _modifyingFigure.IsFilled = true;
-                _modifyingFigure.Color = pen.Color;
-                _singletone.FigureList.Add(_modifyingFigure);
-                _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
-                foreach (AFigure figureINList in _singletone.FigureList)
-                {
-                    _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(figureINList.Color, figureINList.Width));
-                }
-                _singletone.Canvas.Save();
-            }
+           
+                
         }
     }
 }

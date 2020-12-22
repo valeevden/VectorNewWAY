@@ -19,10 +19,16 @@ namespace VectorNewWAY.Mode
         public SingletonData _singletone;
         public AFigure _modifyingFigure;
         public PointF _previousPoint;
-        public virtual void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
+
+        public AModifierIMode()
         {
             _singletone = SingletonData.GetData();
             _modifyingFigure = null;
+
+        }
+
+        public virtual void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
+        {
             foreach (AFigure checkFigure in _singletone.FigureList)
             {
                 if (checkFigure.IsEdge(e.Location) || (checkFigure.IsArea(e.Location) && checkFigure.IsFilled))
@@ -62,12 +68,12 @@ namespace VectorNewWAY.Mode
             }
         }
 
-        private void DrawAll()
+        protected void DrawAll()
         {
             _singletone.PictureBox1.Image = _singletone.Canvas.Clear();
             foreach (AFigure figureINList in _singletone.FigureList)
             {
-                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(_modifyingFigure.Color, _modifyingFigure.Width));
+                _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(figureINList, new Pen(figureINList.Color, figureINList.Width));
                 _singletone.Canvas.Save();
             }
         }
