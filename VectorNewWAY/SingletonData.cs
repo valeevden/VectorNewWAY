@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using VectorNewWAY.Figures;
 using System.Windows.Forms;
 
@@ -16,9 +12,7 @@ namespace VectorNewWAY.FigureList
         public List<AFigure> FigureList { get; set; }
         protected SingletonData()
         {
-            //_figureList = new SingletonFigureList();//зачем мы это написали?? вызов конструктора в конструкторе
             FigureList = new List<AFigure> { };
-
         }
 
         public static SingletonData GetData()

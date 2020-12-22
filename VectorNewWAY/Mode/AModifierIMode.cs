@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using VectorNewWAY.Fabrics;
 using VectorNewWAY.Figures;
@@ -15,7 +11,6 @@ namespace VectorNewWAY.Mode
     public abstract class AModifierIMode : IMode
     {
         public IModifier Modifier;
-        
         public SingletonData _singletone;
         public AFigure _modifyingFigure;
         public PointF _previousPoint;
@@ -24,7 +19,6 @@ namespace VectorNewWAY.Mode
         {
             _singletone = SingletonData.GetData();
             _modifyingFigure = null;
-
         }
 
         public virtual void MouseDown(Pen p, MouseEventArgs e, AFigure figure, IFigureFabric fabric)
@@ -47,13 +41,9 @@ namespace VectorNewWAY.Mode
             if (_modifyingFigure != null)
             {
                 PointF delta = new PointF(e.X - _previousPoint.X, e.Y - _previousPoint.Y);
-
                 _previousPoint = e.Location;
-
                 Modifier.Modify(_modifyingFigure, delta);
-
                 _singletone.PictureBox1.Image = _singletone.Canvas.DrawIt(_modifyingFigure, new Pen(_modifyingFigure.Color, _modifyingFigure.Width));
-
                 GC.Collect();
             }
         }
@@ -63,7 +53,6 @@ namespace VectorNewWAY.Mode
             if (_modifyingFigure != null)
             {
                 _singletone.FigureList.Add(_modifyingFigure);
-                
                 DrawAll();
             }
             _modifyingFigure = null;

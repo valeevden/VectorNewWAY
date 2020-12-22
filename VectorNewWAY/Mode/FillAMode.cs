@@ -26,7 +26,6 @@ namespace VectorNewWAY.Mode
             return;
         }
 
-
         public override void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
             return;
