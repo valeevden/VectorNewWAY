@@ -13,7 +13,6 @@ namespace VectorNewWAY.Setter
         public void Set(AFigure figure)
         {
             figure.AnglesNumber++;
-            figure.PointsList.Add(new PointF(0,0));
         }
 }
 }

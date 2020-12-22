@@ -34,9 +34,9 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            PointsList = new List<PointF>();
-            PointsList.Add(MouseDownPoint);
-            PointsList.Add(endP);
+            
+            PointsList[0] = MouseDownPoint;
+            PointsList[1] = endP;
         }
 
         public override RectangleF MakeRectangleFromPointsList()

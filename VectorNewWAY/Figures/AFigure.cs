@@ -64,6 +64,7 @@ namespace VectorNewWAY.Figures
         }
         public void Set(PointF e)
         {
+            PointsList.Add(new PointF(0, 0));
             Setter.Set(this);
             State.Set(e, this);
         }

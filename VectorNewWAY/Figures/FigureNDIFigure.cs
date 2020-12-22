@@ -27,7 +27,7 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            
+            PointsList[0] = (MouseDownPoint);
             PointsList[AnglesNumber - 1] = endP;
         }
        

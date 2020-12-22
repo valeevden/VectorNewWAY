@@ -12,6 +12,7 @@ using VectorNewWAY.Painters;
 using VectorNewWAY.Fillers;
 using VectorNewWAY.RightClickReaction;
 using VectorNewWAY.FigureList;
+using VectorNewWAY.Saver;
 
 namespace VectorNewWAY.Figures
 {
@@ -41,11 +42,9 @@ namespace VectorNewWAY.Figures
         {
             if (AnglesNumber == 3)
             {
-                PointsList.Add(new PointF(PointsList[0].X, PointsList[0].Y));
-                SingletonData singletone;
-                singletone = SingletonData.GetData();
-                singletone.PictureBox1.Image = singletone.Canvas.DrawIt(this, new Pen(this.Color, this.Width));
+                Saver = new ActiveISaver();
             }
+            Saver.SaveFigure(this);
         }
 
     }

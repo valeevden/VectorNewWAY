@@ -18,7 +18,7 @@ namespace VectorNewWAY.FigureState
         }
         public void Set(PointF firstMouseDown, AFigure figure)
         {
-            figure.PointsList[0] = firstMouseDown;
+            figure.MouseDownPoint = firstMouseDown;
             figure.State = new InProgressIFigureState();
         }
         public void SaveFigure(AFigure figure)

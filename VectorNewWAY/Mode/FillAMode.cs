@@ -23,14 +23,13 @@ namespace VectorNewWAY.Mode
 
         public override void MouseMove(Pen pen, MouseEventArgs e)
         {
-            
+            return;
         }
 
 
         public override void MouseUp(Pen pen, MouseEventArgs e, IFigureFabric fabric)
         {
-           
-                
+            return;
         }
     }
 }

@@ -38,15 +38,19 @@ namespace VectorNewWAY.Figures
 
         public override void Update(PointF startP, PointF endP)
         {
-            float radius = endP.X - PointsList[0].X;
-            PointF startRectangleHere = new PointF(endP.X, PointsList[0].Y + radius);
-            RPointsList = new List<PointF>();
-            RPointsList.Add(startRectangleHere);
-            RPointsList.Add(PointsList[0]);
-            RPointsList.Add(endP);
+            PointsList[0] = MouseDownPoint;
+            PointsList[1] = endP;
+
         }
         public override RectangleF MakeRectangleFromPointsList()
         {
+            float radius = PointsList[1].X - PointsList[0].X;
+            PointF startRectangleHere = new PointF(PointsList[1].X, PointsList[0].Y + radius);
+            RPointsList = new List<PointF>();
+            RPointsList.Add(startRectangleHere);
+            RPointsList.Add(PointsList[0]);
+            RPointsList.Add(PointsList[1]);
+
             float width = 2 * (RPointsList[1].X - RPointsList[0].X);
             float height = 2 * (RPointsList[1].Y - RPointsList[0].Y);
             RectangleF rectangle = new RectangleF(RPointsList[0].X, RPointsList[0].Y, width, height);
