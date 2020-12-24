@@ -33,11 +33,7 @@ namespace VectorNewWAY.Figures
             return Path;
         }
 
-        public override void Update(PointF startP, PointF endP)
-        {
-            PointsList[AnglesNumber - 2] = MouseDownPoint;
-            PointsList[AnglesNumber - 1] = endP;
-        }
+        
         public override void ApplySaver()
         {
             if (AnglesNumber == 3)
