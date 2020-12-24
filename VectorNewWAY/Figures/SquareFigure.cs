@@ -31,13 +31,6 @@ namespace VectorNewWAY.Figures
             Path.Transform(RotateMatrix);
             return Path;
         }
-
-        public override void Update(PointF startP, PointF endP)
-        {
-            PointsList[0] = MouseDownPoint;
-            PointsList[1] = endP;
-        }
-
         public override RectangleF MakeRectangleFromPointsList()
         {
             float a = Math.Abs(PointsList [0].X - PointsList[1].X);

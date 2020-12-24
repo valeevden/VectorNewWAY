@@ -36,12 +36,7 @@ namespace VectorNewWAY.Figures
             return Path;
         }
 
-        public override void Update(PointF startP, PointF endP)
-        {
-            PointsList[0] = MouseDownPoint;
-            PointsList[1] = endP;
-
-        }
+        
         public override RectangleF MakeRectangleFromPointsList()
         {
             float radius = PointsList[1].X - PointsList[0].X;

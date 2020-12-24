@@ -19,6 +19,10 @@ namespace VectorNewWAY.Figures
             RightClickReaction = new NoReactionIReaction(this);
             Setter = new OneMoveSetter();
         }
-
+        public override void Update(PointF startP, PointF endP)
+        {
+            PointsList[0] = MouseDownPoint;
+            PointsList[1] = endP;
+        }
     }
 }
